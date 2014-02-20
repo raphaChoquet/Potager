@@ -1,7 +1,7 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %}
 
 {% block content %}
-    <a href="">Rejoins les Bettraves</a>
-    <br>
-    <a href="">Rejoins les Kiwis</a>
+    {% for faction in factions %}
+    <a href="">Rejoins les {% faction.name %}</a>
+    {% endfor %}
 {% endblock %}
