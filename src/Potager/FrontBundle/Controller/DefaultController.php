@@ -14,7 +14,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $factions = $this->getDoctrine()
+        	->getRepository('PotagerBusinessBundle:faction')
+        	->findAll();
+
+        return array('factions'=>$factions);
     }
+
 
 }
