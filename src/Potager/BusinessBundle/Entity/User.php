@@ -304,4 +304,50 @@ class User
     {
         return array_merge($this->fightsAttacker, $this->fightsDefender);
     }
+
+    /**
+     * Set faction
+     *
+     * @param \Potager\BusinessBundle\Entity\Faction $faction
+     * @return User
+     */
+    public function setFaction(\Potager\BusinessBundle\Entity\Faction $faction = null)
+    {
+        $this->faction = $faction;
+
+        return $this;
+    }
+
+    /**
+     * Get faction
+     *
+     * @return \Potager\BusinessBundle\Entity\Faction 
+     */
+    public function getFaction()
+    {
+        return $this->faction;
+    }
+
+    /**
+     * Set attribute
+     *
+     * @param \Potager\BusinessBundle\Entity\Attribute $attribute
+     * @return User
+     */
+    public function setAttribute(\Potager\BusinessBundle\Entity\Attribute $attribute = null)
+    {
+        $this->attribute = $attribute;
+
+        return $this;
+    }
+
+    /**
+     * Get attribute
+     *
+     * @return \Potager\BusinessBundle\Entity\Attribute 
+     */
+    public function getAttribute()
+    {
+        return $this->attribute;
+    }
 }

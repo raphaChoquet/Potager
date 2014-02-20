@@ -101,4 +101,27 @@ class Fight
     {
         return $this->date;
     }
+
+    /**
+     * Set winnner
+     *
+     * @param integer $winnner
+     * @return Fight
+     */
+    public function setWinnner($winnner)
+    {
+        $this->winnner = $winnner;
+
+        return $this;
+    }
+
+    /**
+     * Get winnner
+     *
+     * @return integer 
+     */
+    public function getWinnner()
+    {
+        return $this->winnner;
+    }
 }

@@ -132,4 +132,37 @@ class Faction
     {
         return $this->nbrPlayer;
     }
+
+    /**
+     * Add users
+     *
+     * @param \Potager\BusinessBundle\Entity\User $users
+     * @return Faction
+     */
+    public function addUser(\Potager\BusinessBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Potager\BusinessBundle\Entity\User $users
+     */
+    public function removeUser(\Potager\BusinessBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }
