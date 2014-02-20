@@ -1,0 +1,15 @@
+potager_business:
+    resource: "@PotagerBusinessBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+potager_back:
+    resource: "@PotagerBackBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+potager_front:
+    resource: "@PotagerFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
