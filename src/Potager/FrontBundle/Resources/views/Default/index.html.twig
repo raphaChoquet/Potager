@@ -1,35 +1,55 @@
-{% extends 'PotagerFrontBundle::layout.html.twig' %}
-
-{% block content %}
+{% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
 <div id="header">
-	<img src="{{ asset('bundles/potagerfront/images/logo.png') }}" alt="Garden War" />
+	<img src="{{ asset('bundles/potagerfront/images/logo.png') }}"
+		alt="Garden War" />
 </div>
 <div id="banner">
 	<div id="about_game">
 		<h2>Rejoins le combat !</h2>
-		<p>Bienvenue sur le champs de bataille, la guerre est déclarée entre les Kiwis et les Betteraves, mais qui va gagner ?<br><br>
-Choisis ton camps, crée un personnage et apporte la victoire à ton équipe</p>
+		<p>
+			Bienvenue sur le champs de bataille, la guerre est déclarée entre les
+			Kiwis et les Betteraves, mais qui va gagner ?<br> <br> Choisis ton
+			camps, crée un personnage et apporte la victoire à ton équipe
+		</p>
 	</div>
 	<div id="connect_form">
 		<h2>Se connecter</h2>
 		<form>
 			<div id="connect_form_left">
-				<input type="text" name="email" placeholder="Email" />
-				<input type="text" name="mdp" placeholder="Mot de passe" />
+				<input type="text" name="email" placeholder="Email" /> <input
+					type="text" name="mdp" placeholder="Mot de passe" />
 			</div>
 			<div id="connect_form_right">
 				<input id="send_connect" type="submit" name="envoyer" value="Jouer" />
 			</div>
 		</form>
 	</div>
-	<div id=""></div>
+</div>
+<!-- fin #banner -->
+<div id="wrapper" class="home">
+	<div id="team_home" class="clearfix">
+		<div id="team_home_left">
+			<p>Team Betterave</p>
+			blabla
+		</div>
+		<div id="team_home_right">
+			<p>Team Kiwi</p>
+		</div>
+	</div>
+
+	<div id="victory_team">
+		<p>Victoires</p>
+		<div id="result_betterave">60%</div>
+		<div id="full">
+			<div id="progress_bar" style="width: 60%;"></div>
+		</div>
+		<div id="result_kiwi">40%</div>
+	</div>
 </div>
 
-    {% for faction in factions %}
-    <a href="/rejoindre/{{ faction.name }}">Rejoins les {{ faction.name }}</a>
-    {% endfor %}
-    
-{#     <img src="{{ asset('bundles/potagerfront/images/kiwi-teeth.png') }}" />#}
-    
-{% endblock %}
+{% for faction in factions %}
+<a href="/rejoindre/{{ faction.name }}">Rejoins les {{ faction.name }}</a>
+{% endfor %} {# <img src="{{
+asset('bundles/potagerfront/images/kiwi-teeth.png') }}" />#} {% endblock
+%}

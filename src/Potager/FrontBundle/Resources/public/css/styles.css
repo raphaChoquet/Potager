@@ -47,6 +47,24 @@ table {
 	border-spacing: 0;
 }
 
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+
 /* DEBUT CSS */
 
 
@@ -127,4 +145,78 @@ body {
     padding-top: 45px;
     width: 55px;
     cursor:pointer;
+}
+
+#wrapper.home {
+	position:relative;
+}
+
+#team_home {
+
+}
+
+#team_home_left {
+	float:left;
+	width:600px;
+	font-size:30px;
+}
+
+#team_home_left p {
+	content:inherit;
+	padding-bottom:5px;
+	border-bottom:7px solid #92162d;
+	width:250px;
+	margin:10px auto;
+	text-align:center;
+}
+
+#team_home_right {
+	float:left;
+	width:600px;
+	font-size:30px;
+}
+
+#team_home_right p {
+	width:150px;
+	padding-bottom:5px;
+	border-bottom:7px solid #97ce38;
+	margin:10px auto;
+	text-align:center;
+}
+
+#victory_team {
+    height: 75px;
+    left: 50%;
+    margin-left: -188px;
+    position: relative;
+    text-align: center;
+    top: 0;
+    width: 375px;
+}
+
+#full {
+    background-color: #97CE38;
+    height: 20px;
+    left: 50px;
+    position: absolute;
+    width: 260px;
+}
+
+#progress_bar {
+	background-color:#92162D;
+	height:20px;
+}
+
+#victory_team p {
+	font-size:30px;
+	text-align:center;
+}
+
+#result_betterave {
+	position:absolute;
+}
+
+#result_kiwi {
+    position: absolute;
+    right: 0;
 }
