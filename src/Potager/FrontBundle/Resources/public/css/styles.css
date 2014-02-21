@@ -86,7 +86,7 @@ body {
 	background-color:rgba(255,255,255,0.5);
 	width:320px;
 	height:197px;
-	padding:15px 30px;
+	padding:10px 30px;
 }
 
 #connect_form {
@@ -99,8 +99,32 @@ body {
 	height:123px;
 }
 
+#connect_form form {
+	overflow:auto;
+}
+
 #connect_form form input {
-	width:225px;
+	width:200px;
 	height:25px;
 	margin-bottom:10px;
+}
+
+#connect_form form #send_connect {
+	background-color:#fff;
+	border:0;
+	width:50px;
+	height:30px;
+}
+
+#connect_form_left {
+	float:left;
+	width:210px;
+	margin-right:5px;
+}
+
+#connect_form_right {
+    float: left;
+    padding-top: 45px;
+    width: 55px;
+    cursor:pointer;
 }
