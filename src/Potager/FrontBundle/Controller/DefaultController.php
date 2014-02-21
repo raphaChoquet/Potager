@@ -17,10 +17,29 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $factions = $this->getDoctrine()
-        	->getRepository('PotagerBusinessBundle:faction')
+        	->getRepository('PotagerBusinessBundle:Faction')
         	->findAll();
 
         return array('factions'=>$factions);
     }
 
+    /**
+     * @Route("/rejoindre/{factionName}")
+     * @Template()
+     */
+    public function registerAction($factionName)
+    {
+       $faction = $this->getDoctrine()
+            ->getRepository('PotagerBusinessBundle:Faction')
+            ->findOneBy(array('name' => $factionName));
+
+        $images = $this->getDoctrine()
+            ->getRepository('PotagerBusinessBundle:Avatar')
+            ->findBy(array('faction' => $faction));
+
+        var_dump($images);
+        die();
+
+        return array('faction' => $faction, 'images' => $images);
+    }
 }
