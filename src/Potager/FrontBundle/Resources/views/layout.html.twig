@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/potagerfront/css/styles.css') }}" type="text/css" media="all" />
+	{% endblock %}
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+	<div id="main">
+	    {% block content %}
+	    {% endblock %}
+    </div>
 </body>
 </html>

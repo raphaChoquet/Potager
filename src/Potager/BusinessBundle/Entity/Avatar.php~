@@ -68,4 +68,27 @@ class Avatar
     {
         return $this->url;
     }
+
+    /**
+     * Set faction
+     *
+     * @param \Potager\BusinessBundle\Entity\Faction $faction
+     * @return Avatar
+     */
+    public function setFaction(\Potager\BusinessBundle\Entity\Faction $faction = null)
+    {
+        $this->faction = $faction;
+
+        return $this;
+    }
+
+    /**
+     * Get faction
+     *
+     * @return \Potager\BusinessBundle\Entity\Faction 
+     */
+    public function getFaction()
+    {
+        return $this->faction;
+    }
 }
