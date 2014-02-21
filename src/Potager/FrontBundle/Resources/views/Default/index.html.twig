@@ -1,7 +1,30 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %}
 
 {% block content %}
+
+<div id="header">
+	<img src="{{ asset('bundles/potagerfront/images/logo.png') }}" alt="Garden War" />
+</div>
+<div id="banner">
+	<div id="about_game">
+		<h2>Rejoins le combat !</h2>
+		<p>Bienvenue sur le champs de bataille, la guerre est déclarée entre les Kiwis et les Betteraves, mais qui va gagner ?<br><br>
+Choisis ton camps, crée un personnage et apporte la victoire à ton équipe</p>
+	</div>
+	<div id="connect_form">
+		<h2>Se connecter</h2>
+		<form>
+			<input type="text" name="email" placeholder="Email" />
+			<input type="text" name="mdp" placeholder="Mot de passe" />
+		</form>
+	</div>
+	<div id=""></div>
+</div>
+
     {% for faction in factions %}
-    <a href="">Rejoins les {{ faction.name }}</a>
+    <a href="/rejoindre/{{ faction.name }}">Rejoins les {{ faction.name }}</a>
     {% endfor %}
+    
+{#     <img src="{{ asset('bundles/potagerfront/images/kiwi-teeth.png') }}" />#}
+    
 {% endblock %}
