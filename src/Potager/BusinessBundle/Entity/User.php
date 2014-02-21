@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\UserRepository")
  */
 class User
@@ -88,12 +88,12 @@ class User
      */
     private $score;
 
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="Fight", mappedBy="attacker")
      **/
     private $fightsAttacker;
 
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="Fight", mappedBy="defender")
      **/
     private $fightsDefender;
@@ -354,5 +354,73 @@ class User
     public function getAttribute()
     {
         return $this->attribute;
+    }
+
+    /**
+     * Add fightsAttacker
+     *
+     * @param \Potager\BusinessBundle\Entity\Fight $fightsAttacker
+     * @return User
+     */
+    public function addFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
+    {
+        $fightsAttacker->isAttacker = true;
+        $this->fightsAttacker[] = $fightsAttacker;
+
+        return $this;
+    }
+
+    /**
+     * Remove fightsAttacker
+     *
+     * @param \Potager\BusinessBundle\Entity\Fight $fightsAttacker
+     */
+    public function removeFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
+    {
+        $this->fightsAttacker->removeElement($fightsAttacker);
+    }
+
+    /**
+     * Get fightsAttacker
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFightsAttacker()
+    {
+        return $this->fightsAttacker;
+    }
+
+    /**
+     * Add fightsDefender
+     *
+     * @param \Potager\BusinessBundle\Entity\Fight $fightsDefender
+     * @return User
+     */
+    public function addFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
+    {
+        $fightsAttacker->isAttacker = false;
+        $this->fightsDefender[] = $fightsDefender;
+
+        return $this;
+    }
+
+    /**
+     * Remove fightsDefender
+     *
+     * @param \Potager\BusinessBundle\Entity\Fight $fightsDefender
+     */
+    public function removeFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
+    {
+        $this->fightsDefender->removeElement($fightsDefender);
+    }
+
+    /**
+     * Get fightsDefender
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFightsDefender()
+    {
+        return $this->fightsDefender;
     }
 }

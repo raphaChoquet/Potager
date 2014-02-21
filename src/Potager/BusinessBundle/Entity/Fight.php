@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Fight
  *
- * @ORM\Table()
+ * @ORM\Table(name="fight")
  * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\FightRepository")
  */
 class Fight
@@ -21,12 +21,12 @@ class Fight
      */
     private $id;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="fightsAttacker")
      **/
     private $attacker;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="fightsDefender")
      **/
     private $defender;
@@ -34,9 +34,9 @@ class Fight
     /**
      * @var boolean
      *
-     * @ORM\Column(name="winnner", type="integer")
+     * @ORM\Column(name="attacker_win", type="boolean")
      */
-    private $winnner;
+    private $attackerWin;
 
     /**
      * @var \DateTime
@@ -45,6 +45,10 @@ class Fight
      */
     private $date;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime("now");
+    }
 
     /**
      * Get id
@@ -55,30 +59,7 @@ class Fight
     {
         return $this->id;
     }
-
-    /**
-     * Set isWin
-     *
-     * @param boolean $isWin
-     * @return Fight
-     */
-    public function setIsWin($isWin)
-    {
-        $this->isWin = $isWin;
-
-        return $this;
-    }
-
-    /**
-     * Get isWin
-     *
-     * @return boolean 
-     */
-    public function getIsWin()
-    {
-        return $this->isWin;
-    }
-
+    
     /**
      * Set date
      *
@@ -102,26 +83,73 @@ class Fight
         return $this->date;
     }
 
+
     /**
-     * Set winnner
+     * Set attacker
      *
-     * @param integer $winnner
+     * @param \Potager\BusinessBundle\Entity\User $attacker
      * @return Fight
      */
-    public function setWinnner($winnner)
+    public function setAttacker(\Potager\BusinessBundle\Entity\User $attacker = null)
     {
-        $this->winnner = $winnner;
+        $this->attacker = $attacker;
 
         return $this;
     }
 
     /**
-     * Get winnner
+     * Get attacker
      *
-     * @return integer 
+     * @return \Potager\BusinessBundle\Entity\User 
      */
-    public function getWinnner()
+    public function getAttacker()
     {
-        return $this->winnner;
+        return $this->attacker;
+    }
+
+    /**
+     * Set defender
+     *
+     * @param \Potager\BusinessBundle\Entity\User $defender
+     * @return Fight
+     */
+    public function setDefender(\Potager\BusinessBundle\Entity\User $defender = null)
+    {
+        $this->defender = $defender;
+
+        return $this;
+    }
+
+    /**
+     * Get defender
+     *
+     * @return \Potager\BusinessBundle\Entity\User 
+     */
+    public function getDefender()
+    {
+        return $this->defender;
+    }
+
+    /**
+     * Set attackerWin
+     *
+     * @param boolean $attackerWin
+     * @return Fight
+     */
+    public function setAttackerWin($attackerWin)
+    {
+        $this->attackerWin = $attackerWin;
+
+        return $this;
+    }
+
+    /**
+     * Get attackerWin
+     *
+     * @return boolean 
+     */
+    public function getAttackerWin()
+    {
+        return $this->attackerWin;
     }
 }

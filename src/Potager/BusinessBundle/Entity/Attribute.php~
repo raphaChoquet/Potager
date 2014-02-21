@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Attribute
  *
- * @ORM\Table()
+ * @ORM\Table(name="attribute")
  * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\AttributeRepository")
  */
 class Attribute
@@ -215,5 +215,28 @@ class Attribute
     public function getLuck()
     {
         return $this->luck;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Potager\BusinessBundle\Entity\User $user
+     * @return Attribute
+     */
+    public function setUser(\Potager\BusinessBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Potager\BusinessBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
