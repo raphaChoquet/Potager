@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Potager\BusinessBundle\Entity\Faction;
 
-
 class DefaultController extends Controller
 {
     /**
@@ -20,7 +19,16 @@ class DefaultController extends Controller
         	->getRepository('PotagerBusinessBundle:Faction')
         	->findAll();
 
-        return array('factions'=>$factions);
+        $scores = array();
+        foreach ($factions as $faction) {
+            $scores[$faction->getName()] = $faction->getScore();
+        }
+
+        $calc =  $this->get('potager_business.calculate');
+
+        $scores = $calc->toPercent($scores);
+
+        return array('factions'=>$factions, 'scores' => $scores);
     }
 
     /**
@@ -36,9 +44,6 @@ class DefaultController extends Controller
         $images = $this->getDoctrine()
             ->getRepository('PotagerBusinessBundle:Avatar')
             ->findBy(array('faction' => $faction));
-
-        var_dump($images);
-        die();
 
         return array('faction' => $faction, 'images' => $images);
     }

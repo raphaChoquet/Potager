@@ -17,4 +17,9 @@
         </service>
     </services>
     -->
+
+     <services>
+        <service id="potager_business.calculate" class="Potager\BusinessBundle\Service\Calculate">
+        </service>
+    </services>
 </container>
