@@ -23,29 +23,4 @@ class DefaultController extends Controller
         return array('factions'=>$factions);
     }
 
-
-    /**
-     * @Route("/init")
-     * @Template()
-     */
-    public function initAction()
-    {
-        $faction = new Faction();
-        $faction->setName('Betterave');
-        $faction->setScore(10000);
-
-        $faction2 = new Faction();
-        $faction2->setName('Kiwi');
-        $faction2->setScore(0);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($faction);
-        $em->persist($faction2);
-        $em->flush();
-
-        echo 'insert Faction';
-        exit();
-    }
-
-
 }
