@@ -83,28 +83,6 @@ class Fight
         return $this->date;
     }
 
-    /**
-     * Set winnner
-     *
-     * @param integer $winnner
-     * @return Fight
-     */
-    public function setWinner($winnner)
-    {
-        $this->winnner = $winnner;
-
-        return $this;
-    }
-
-    /**
-     * Get winnner
-     *
-     * @return integer 
-     */
-    public function getWinner()
-    {
-        return $this->winnner;
-    }
 
     /**
      * Set attacker
@@ -150,5 +128,28 @@ class Fight
     public function getDefender()
     {
         return $this->defender;
+    }
+
+    /**
+     * Set attackerWin
+     *
+     * @param boolean $attackerWin
+     * @return Fight
+     */
+    public function setAttackerWin($attackerWin)
+    {
+        $this->attackerWin = $attackerWin;
+
+        return $this;
+    }
+
+    /**
+     * Get attackerWin
+     *
+     * @return boolean 
+     */
+    public function getAttackerWin()
+    {
+        return $this->attackerWin;
     }
 }
