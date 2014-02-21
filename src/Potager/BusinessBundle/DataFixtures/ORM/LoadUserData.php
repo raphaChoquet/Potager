@@ -14,7 +14,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	*/
 	public function load(ObjectManager $manager)
 	{
-		for($i = 0; $i < 10: $i++) {
+		for($i = 0; $i < 10; $i++) {
 			$user = new User();
 			$user->setName('user ' . $i);
 			$user->setEmail('user-' . $i . '@user.com');
