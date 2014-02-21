@@ -3,6 +3,7 @@
 namespace Potager\BusinessBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Faction
@@ -52,6 +53,8 @@ class Faction
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->score = 0;
+        $this->nbrPlayer = 0;
     }
 
     /**
