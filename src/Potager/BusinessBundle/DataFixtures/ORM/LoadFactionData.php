@@ -18,7 +18,6 @@ class LoadFactionData extends AbstractFixture implements OrderedFixtureInterface
 		$faction->setName('Betterave');
 		
 		$manager->persist($faction);
-		$manager->flush();
 
 		$this->addReference('Betterave', $faction);
 
