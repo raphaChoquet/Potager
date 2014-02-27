@@ -82,7 +82,6 @@ body {
 }
 
 #main {
-	background-color: #fff;
 	width: 1200px;
 	margin: 0 auto;
 }
@@ -94,10 +93,13 @@ body {
 }
 
 #footer {
+	background-position:0 45px;
 	background-image:url("../images/bg_footer.jpg");
 	background-repeat:repeat-x;
+	background-color:#fff;
 	width: 1200px;
 	height:50px;
+	padding-top: 50px;
 }
 
 #footer p {
@@ -142,13 +144,14 @@ body {
 	background-color: rgba(255,255,255,0.7);
 	padding: 15px 30px;
 	left: 740px;
-	top: 60px;
+	top: 49px;
 	width: 283px;
-	height: 123px;
 }
 
-#connect_form form {
-	overflow: auto;
+#connect_form form [type=checkbox]{
+	width: auto;
+height: auto;
+margin-bottom: 0;
 }
 
 #connect_form form input {
@@ -162,6 +165,7 @@ body {
 	border: 0;
 	width: 50px;
 	height: 30px;
+	margin-top: -3px;
 }
 
 #connect_form_left {
@@ -189,10 +193,11 @@ body {
 
 #wrapper.home {
 	position: relative;
+	background: #fff;
 }
 
 #join_team {
-	margin-top: 45px;
+	padding-top: 45px;
 	position: relative;
 	height: 120px;
 	width: 1200px;
@@ -242,7 +247,7 @@ body {
 	height: 144px;
 	left: 325px;
 	position: absolute;
-	top: -10px;
+	top: 35px;
 	width: 552px;
 }
 
