@@ -68,11 +68,6 @@ class Attribute
      */
     private $luck;
 
-    public function __construct()
-    {
-        $this->hp = 20*stamina;
-    }
-
     /**
      * Get id
      *
