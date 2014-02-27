@@ -1,21 +1,9 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+ v2.0 | 20110126
+ License: none (public domain)
+ */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -24,8 +12,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
@@ -37,8 +24,7 @@ ol, ul {
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
@@ -48,175 +34,291 @@ table {
 }
 
 .clearfix:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 .clearfix {
-    display: inline-block;
+	display: inline-block;
 }
 html[xmlns] .clearfix {
-    display: block;
+	display: block;
 }
 * html .clearfix {
-    height: 1%;
+	height: 1%;
+}
+
+@font-face {
+
+	font-family: 'Brandon Grotesque Medium';
+	src: url('../fonts/Brandon_med.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/Brandon_med.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/Brandon_med.woff') format('woff'), /* Modern Browsers */
+	url('../fonts/Brandon_med.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../fonts/Brandon_med.svg#42e0c7c233eb5259e2b1a7ec7e16d4ce') format('svg'); /* Legacy iOS */
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Brandon Grotesque Regular';
+	src: url('../fonts/Brandon_reg.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/Brandon_reg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/Brandon_reg.woff') format('woff'), /* Modern Browsers */
+	url('Brandon_reg.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../fonts/Brandon_reg.svg#50bf5a2005a5412419d6a4b30314e68e') format('svg'); /* Legacy iOS */
+	font-style: normal;
+	font-weight: 400;
 }
 
 /* DEBUT CSS */
 
-
 body {
-	background-image:url("../images/crossword.png");
+	font-family: 'Brandon Grotesque Regular';
+	background-image: url("../images/crossword.png");
 }
 
 #main {
-	background-color:#fff;
-	width:1200px;
+	background-color: #fff;
+	width: 1200px;
 	margin: 0 auto;
 }
 
 #header {
-	position:relative;
-	z-index:2;
-	text-align:center;
-	height:118px;
+	position: relative;
+	z-index: 3;
+	height: 118px;
+}
+
+#footer {
+	background-image:url("../images/bg_footer.jpg");
+	background-repeat:repeat-x;
+	width: 1200px;
+	height:50px;
+}
+
+#footer p {
+	padding-top:20px;
+	text-align: center;
+}
+
+#logo {
+	left: 520px;
+	position: absolute;
+	top: 20px;
 }
 
 #banner {
-	position:relative;
-	background-image:url("../images/banner.jpg");
-	width:1200px;
-	height:288px;
+	position: relative;
+	background-image: url("../images/banner.jpg");
+	width: 1200px;
+	height: 282px;
+	z-index: 2;
 }
 
 #banner h2 {
-	font-size:30px;
-	margin-bottom:20px;
+	font-family: 'Brandon Grotesque Medium';
+	font-size: 25px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	color: #312d23;
 }
 
 #about_game {
-	position:absolute;
-	left:85px;
-	top:25px;
-	background-color:rgba(255,255,255,0.5);
-	width:320px;
-	height:197px;
-	padding:10px 30px;
+	background-color: rgba(255, 255, 255, 0.7);
+	height: 187px;
+	left: 85px;
+	padding: 20px 30px;
+	position: absolute;
+	top: 25px;
+	width: 320px;
 }
 
 #connect_form {
-	position:absolute;
-	background-color:rgba(255,255,255,0.5);
-	padding:15px 30px;
-	left:740px;
-	top:60px;
-	width:283px;
-	height:123px;
+	position: absolute;
+	background-color: rgba(255,255,255,0.7);
+	padding: 15px 30px;
+	left: 740px;
+	top: 60px;
+	width: 283px;
+	height: 123px;
 }
 
 #connect_form form {
-	overflow:auto;
+	overflow: auto;
 }
 
 #connect_form form input {
-	width:200px;
-	height:25px;
-	margin-bottom:10px;
+	width: 200px;
+	height: 25px;
+	margin-bottom: 10px;
 }
 
 #connect_form form #send_connect {
-	background-color:#fff;
-	border:0;
-	width:50px;
-	height:30px;
+	background-color: #fff;
+	border: 0;
+	width: 50px;
+	height: 30px;
 }
 
 #connect_form_left {
-	float:left;
-	width:210px;
-	margin-right:5px;
+	float: left;
+	width: 210px;
+	margin-right: 5px;
 }
 
 #connect_form_right {
-    float: left;
-    padding-top: 45px;
-    width: 55px;
-    cursor:pointer;
+	float: left;
+	padding-top: 45px;
+	width: 55px;
+	cursor: pointer;
 }
+
+#vs_round {
+	height: 112px;
+	left: 543px;
+	position: absolute;
+	top: 230px;
+	width: 112px;
+}
+
+/* WRAPPER */
 
 #wrapper.home {
-	position:relative;
+	position: relative;
 }
 
-#team_home {
-
+#join_team {
+	margin-top: 45px;
+	position: relative;
+	height: 120px;
+	width: 1200px;
 }
 
-#team_home_left {
-	float:left;
-	width:600px;
-	font-size:30px;
+#betterave_team {
+	position: absolute;
+	width: 600px;
+	height: 120px;
+	background-color: #92162d;
 }
 
-#team_home_left p {
-	content:inherit;
-	padding-bottom:5px;
-	border-bottom:7px solid #92162d;
-	width:250px;
-	margin:10px auto;
-	text-align:center;
+#betterave_team > a, #kiwi_team > a {
+    display: block;
+    height: 80px;
+    width: 600px;
+	padding-top: 40px;
+	font-family: 'Brandon Grotesque Medium';
+	color: #fff;
+	font-size: 46px;
+	text-transform: uppercase;
+	text-decoration:none;
 }
 
-#team_home_right {
-	float:left;
-	width:600px;
-	font-size:30px;
+#betterave_team a {
+    color: #FFFFFF;
+    font-size: 46px;
+    padding-left: 60px;
+    text-transform: uppercase;
 }
 
-#team_home_right p {
-	width:150px;
-	padding-bottom:5px;
-	border-bottom:7px solid #97ce38;
-	margin:10px auto;
-	text-align:center;
+#kiwi_team {
+	position: absolute;
+	width: 600px;
+	height: 120px;
+	left: 600px;
+	background-color: #97ce38;
+}
+
+#kiwi_team a {
+    padding-left: 320px;
+    width: 280px;
 }
 
 #victory_team {
-    height: 75px;
-    left: 50%;
-    margin-left: -188px;
-    position: relative;
-    text-align: center;
-    top: 0;
-    width: 375px;
-}
-
-#full {
-    background-color: #97CE38;
-    height: 20px;
-    left: 50px;
-    position: absolute;
-    width: 260px;
-}
-
-#progress_bar {
-	background-color:#92162D;
-	height:20px;
+	background-image: url("../images/bg_score.png");
+	height: 144px;
+	left: 325px;
+	position: absolute;
+	top: -10px;
+	width: 552px;
 }
 
 #victory_team p {
-	font-size:30px;
-	text-align:center;
+	font-size: 30px;
+	text-align: center;
+}
+
+.title_victory {
+	color: #312D23;
+	font-family: 'Brandon Grotesque Medium';
+	font-size: 28px;
+	left: 200px;
+	position: absolute;
+	text-transform: uppercase;
+	top: 35px;
+}
+
+#full {
+	background-color: #97CE38;
+	height: 20px;
+	left: 145px;
+	position: absolute;
+	top: 75px;
+	width: 260px;
+}
+
+#progress_bar {
+	background-color: #92162D;
+	height: 20px;
 }
 
 #result_betterave {
-	position:absolute;
+	font-size: 20px;
+	left: 98px;
+	position: absolute;
+	top: 75px;
 }
 
 #result_kiwi {
-    position: absolute;
-    right: 0;
+	font-size: 20px;
+	position: absolute;
+	right: 106px;
+	top: 75px;
+}
+
+#choose_arrow {
+	color: #312D23;
+	font-family: 'Brandon Grotesque Medium';
+	font-size: 20px;
+	height: 90px;
+	left: 500px;
+	position: relative;
+	text-transform: uppercase;
+	top: 50px;
+	width: 210px;
+}
+
+#choose_arrow:before {
+	background-image: url("../images/arrow_left.png");
+	content: "";
+	height: 48px;
+	left: -110px;
+	position: absolute;
+	top: -30px;
+	width: 98px;
+}
+
+#choose_arrow:after {
+	background-image: url("../images/arrow_left.png");
+	transform: rotateY(180deg);
+	-webkit-transform: rotateX(180deg);
+	content: "";
+	height: 48px;
+	left: 210px;
+	position: absolute;
+	top: -30px;
+	width: 98px;
 }
