@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new Potager\FrontBundle\PotagerFrontBundle(),
             new Potager\BackBundle\PotagerBackBundle(),
             new Potager\BusinessBundle\PotagerBusinessBundle(),
-            //new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
