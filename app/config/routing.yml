@@ -13,3 +13,21 @@ potager_front:
     type:     annotation
     prefix:   /
 
+fos_user_security:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/security.yml"
+
+fos_user_profile:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/profil.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/inscription.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/change_motdepasse.xml"
+    prefix: /profile
