@@ -423,4 +423,3 @@ class Character
         return $this->fightsDefender;
     }
 }
-
