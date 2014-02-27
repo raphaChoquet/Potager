@@ -110,7 +110,6 @@ class Character
         $this->score = 0;
     }
 
-
     /**
      * Get id
      *
