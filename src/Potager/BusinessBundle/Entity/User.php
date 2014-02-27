@@ -1,43 +1,35 @@
-<?php
+<?php 
+
+// src/Potager/BusinessBundle/Entity/User.php
 
 namespace Potager\BusinessBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Character
- *
- * @ORM\Table(name="persona")
- * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\CharacterRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="user")
  */
-class Character
+class User extends BaseUser
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
-     /**
-     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="characters")
+    /**
+     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="users")
      **/
     private $faction;
 
-     /**
-     * @ORM\OneToOne(targetEntity="Attribute", mappedBy="character")
+    /**
+     * @ORM\OneToOne(targetEntity="Attribute", mappedBy="user")
      **/
     private $attribute;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
 
     /**
      * @var string
@@ -45,20 +37,6 @@ class Character
      * @ORM\Column(name="avatar", type="string", length=255)
      */
     private $avatar;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
 
     /**
      * @var integer
@@ -98,10 +76,9 @@ class Character
      **/
     private $fightsDefender;
 
-
-
     public function __construct()
     {
+        parent::__construct();
         $this->fightsAttacker = new ArrayCollection();
         $this->fightsDefender = new ArrayCollection();
         $this->remainingFight = 5;
@@ -109,7 +86,6 @@ class Character
         $this->fightLost = 0;
         $this->score = 0;
     }
-
 
     /**
      * Get id
@@ -122,33 +98,10 @@ class Character
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Character
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set avatar
      *
      * @param string $avatar
-     * @return Character
+     * @return User
      */
     public function setAvatar($avatar)
     {
@@ -168,56 +121,10 @@ class Character
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Character
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Character
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
      * Set remainingFight
      *
      * @param integer $remainingFight
-     * @return Character
+     * @return User
      */
     public function setRemainingFight($remainingFight)
     {
@@ -240,7 +147,7 @@ class Character
      * Set fightWon
      *
      * @param integer $fightWon
-     * @return Character
+     * @return User
      */
     public function setFightWon($fightWon)
     {
@@ -262,8 +169,8 @@ class Character
     /**
      * Set fightLost
      *
-     * @param string $fightLost
-     * @return Character
+     * @param integer $fightLost
+     * @return User
      */
     public function setFightLost($fightLost)
     {
@@ -275,7 +182,7 @@ class Character
     /**
      * Get fightLost
      *
-     * @return string 
+     * @return integer 
      */
     public function getFightLost()
     {
@@ -286,7 +193,7 @@ class Character
      * Set score
      *
      * @param integer $score
-     * @return Character
+     * @return User
      */
     public function setScore($score)
     {
@@ -305,16 +212,11 @@ class Character
         return $this->score;
     }
 
-    public function getAllFight()
-    {
-        return array_merge($this->fightsAttacker, $this->fightsDefender);
-    }
-
     /**
      * Set faction
      *
      * @param \Potager\BusinessBundle\Entity\Faction $faction
-     * @return Character
+     * @return User
      */
     public function setFaction(\Potager\BusinessBundle\Entity\Faction $faction = null)
     {
@@ -337,7 +239,7 @@ class Character
      * Set attribute
      *
      * @param \Potager\BusinessBundle\Entity\Attribute $attribute
-     * @return Character
+     * @return User
      */
     public function setAttribute(\Potager\BusinessBundle\Entity\Attribute $attribute = null)
     {
@@ -360,11 +262,10 @@ class Character
      * Add fightsAttacker
      *
      * @param \Potager\BusinessBundle\Entity\Fight $fightsAttacker
-     * @return Character
+     * @return User
      */
     public function addFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
     {
-        $fightsAttacker->isAttacker = true;
         $this->fightsAttacker[] = $fightsAttacker;
 
         return $this;
@@ -394,11 +295,10 @@ class Character
      * Add fightsDefender
      *
      * @param \Potager\BusinessBundle\Entity\Fight $fightsDefender
-     * @return Character
+     * @return User
      */
     public function addFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
     {
-        $fightsAttacker->isAttacker = false;
         $this->fightsDefender[] = $fightsDefender;
 
         return $this;
@@ -424,4 +324,3 @@ class Character
         return $this->fightsDefender;
     }
 }
-

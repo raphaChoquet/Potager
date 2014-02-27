@@ -22,7 +22,7 @@ class LoadAttributeData extends AbstractFixture implements OrderedFixtureInterfa
 			$attribute->setStamina(5);
 			$attribute->setAgility(5);
 			$attribute->setLuck(1);
-			$attribute->setCharacter($this->getReference('character-'.$i));
+			$attribute->setUser($this->getReference('user-'.$i));
 			$manager->persist($attribute);
 
 		}

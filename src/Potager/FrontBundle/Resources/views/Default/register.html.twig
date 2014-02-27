@@ -1,19 +1,15 @@
-{% form_theme form _self %}
-
-{% block _form_avatar_widget %}
-    <div>
-        {{ block('form_row_simple') }}
-    </div>
-{% endblock %}
-
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
     {{ form_row(form.name) }}
     {{ form_row(form.email) }}
     {{ form_row(form.password) }}
-    {{ form_widget(form.avatar) }}
 
-    {% form_theme form _self %}
-    <input type="submit" />
+    {% for child in form.avatar %}
+    <div>
+        <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
+    </div>
+    {% endfor %}
+    
+    {{ form_row(form.save) }}
 {{ form_end(form) }}
