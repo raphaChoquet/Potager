@@ -66,7 +66,6 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            die();
             return $this->redirect($this->generateUrl('task_success'));
         }
 
