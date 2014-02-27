@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Potager\BusinessBundle\Entity\Character;
+use Potager\BusinessBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 class DefaultController extends Controller
@@ -43,9 +43,9 @@ class DefaultController extends Controller
             ->getRepository('PotagerBusinessBundle:Faction')
             ->findOneBy(array('name' => $factionName));
 
-        $character = new Character();
+        $user = new User();
 
-        $form = $this->createFormBuilder($character)
+        $form = $this->createFormBuilder($user)
             ->add('name', 'text')
             ->add('email', 'email')
             ->add('password', 'password')

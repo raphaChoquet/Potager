@@ -20,4 +20,5 @@ class Calculate
 
 		return $values;
 	}
+
 }
