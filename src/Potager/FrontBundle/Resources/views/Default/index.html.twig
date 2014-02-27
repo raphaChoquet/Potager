@@ -16,15 +16,6 @@
 	</div>
 	<div id="connect_form">
 		<h2>Se connecter</h2>
-		<form>
-			<div id="connect_form_left">
-				<input type="text" name="email" placeholder="Email" /> <input
-					type="text" name="mdp" placeholder="Mot de passe" />
-			</div>
-			<div id="connect_form_right">
-				<input id="send_connect" type="submit" name="envoyer" value="Jouer" />
-			</div>
-		</form>
 
 {{ render(controller('FOSUserBundle:Security:login')) }}
 
