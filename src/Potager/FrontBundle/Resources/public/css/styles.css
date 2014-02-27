@@ -314,7 +314,7 @@ body {
 #choose_arrow:after {
 	background-image: url("../images/arrow_left.png");
 	transform: rotateY(180deg);
-	-webkit-transform: rotateX(180deg);
+	-webkit-transform: rotateY(180deg);
 	content: "";
 	height: 48px;
 	left: 210px;
