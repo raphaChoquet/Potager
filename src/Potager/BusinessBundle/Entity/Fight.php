@@ -22,12 +22,12 @@ class Fight
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Character", inversedBy="fightsAttacker")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="fightsAttacker")
      **/
     private $attacker;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Character", inversedBy="fightsDefender")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="fightsDefender")
      **/
     private $defender;
 
@@ -87,10 +87,10 @@ class Fight
     /**
      * Set attacker
      *
-     * @param \Potager\BusinessBundle\Entity\Character $attacker
+     * @param \Potager\BusinessBundle\Entity\User $attacker
      * @return Fight
      */
-    public function setAttacker(\Potager\BusinessBundle\Entity\Character $attacker = null)
+    public function setAttacker(\Potager\BusinessBundle\Entity\User $attacker = null)
     {
         $this->attacker = $attacker;
 
@@ -100,7 +100,7 @@ class Fight
     /**
      * Get attacker
      *
-     * @return \Potager\BusinessBundle\Entity\Character 
+     * @return \Potager\BusinessBundle\Entity\User 
      */
     public function getAttacker()
     {
@@ -110,10 +110,10 @@ class Fight
     /**
      * Set defender
      *
-     * @param \Potager\BusinessBundle\Entity\Character $defender
+     * @param \Potager\BusinessBundle\Entity\User $defender
      * @return Fight
      */
-    public function setDefender(\Potager\BusinessBundle\Entity\Character $defender = null)
+    public function setDefender(\Potager\BusinessBundle\Entity\User $defender = null)
     {
         $this->defender = $defender;
 
@@ -123,7 +123,7 @@ class Fight
     /**
      * Get defender
      *
-     * @return \Potager\BusinessBundle\Entity\Character 
+     * @return \Potager\BusinessBundle\Entity\User 
      */
     public function getDefender()
     {

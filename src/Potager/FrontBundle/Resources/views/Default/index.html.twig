@@ -1,7 +1,8 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
 <div id="header">
-	<img src="{{ asset('bundles/potagerfront/images/logo.png') }}"
+	<img id="logo"
+		src="{{ asset('bundles/potagerfront/images/logo.png') }}"
 		alt="Garden War" />
 </div>
 <div id="banner">
@@ -10,7 +11,7 @@
 		<p>
 			Bienvenue sur le champs de bataille, la guerre est déclarée entre les
 			Kiwis et les Betteraves, mais qui va gagner ?<br> <br> Choisis ton
-			camps, crée un personnage et apporte la victoire à ton équipe
+			camps, crée un personnage et apporte la victoire à ton équipe !
 		</p>
 	</div>
 	<div id="connect_form">
@@ -30,31 +31,35 @@
 
 
 	</div>
+	<div id="vs_round">
+		<img src="{{ asset('bundles/potagerfront/images/vs_round.png') }}"
+			alt="VS">
+	</div>
 </div>
 <!-- fin #banner -->
 <div id="wrapper" class="home">
-	<div id="team_home" class="clearfix">
-		<div id="team_home_left">
-			<p>Team Betterave</p>
-			blabla
+
+	<div id="join_team">
+		{% for faction in factions %}
+		<div id="{{ faction.name|lower }}_team">
+			<a href="./rejoindre/{{ faction.name }}">{{ faction.name|lower }}</a>
 		</div>
-		<div id="team_home_right">
-			<p>Team Kiwi</p>
+		{% endfor %}
+		<div id="victory_team">
+			<p class="title_victory">Victoires</p>
+			<div id="result_betterave">{{ scores.Betterave }}%</div>
+			<div id="full">
+				<div id="progress_bar" style="width: {{ scores.Betterave }}%;"></div>
+			</div>
+			<div id="result_kiwi">{{ scores.Kiwi }}%</div>
 		</div>
 	</div>
 
-	<div id="victory_team">
-		<p>Victoires</p>
-		<div id="result_betterave">{{ scores.Betterave }}%</div>
-		<div id="full">
-			<div id="progress_bar" style="width: {{ scores.Betterave }}%;"></div>
-		</div>
-		<div id="result_kiwi">{{ scores.Kiwi }}%</div>
+	<div id="choose_arrow">
+		<p>Choisis ton camps</p>
 	</div>
+
+
 </div>
 
-{% for faction in factions %}
-<a href="/rejoindre/{{ faction.name }}">Rejoins les {{ faction.name }}</a>
-{% endfor %} {# <img src="{{
-asset('bundles/potagerfront/images/kiwi-teeth.png') }}" />#} {% endblock
-%}
+{% endblock %}
