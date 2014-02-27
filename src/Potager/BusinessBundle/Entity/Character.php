@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Character
  *
- * @ORM\Table(name="character")
+ * @ORM\Table(name="persona")
  * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\CharacterRepository")
  */
 class Character
