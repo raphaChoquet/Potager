@@ -425,32 +425,3 @@ class Character
     }
 }
 
-
-// src/Potager/BusinessBundle/Entity/Character.php
-
-namespace Potager\BusinessBundle\Entity;
-
-use FOS\CharacterBundle\Entity\Character as BaseCharacter;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="fos_character")
- */
-class Character extends BaseCharacter
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
-}
-
-
