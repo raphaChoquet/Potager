@@ -5,6 +5,7 @@ namespace Potager\FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 use Potager\BusinessBundle\Entity\Character;
 use Doctrine\ORM\EntityRepository;
 
@@ -36,17 +37,13 @@ class DefaultController extends Controller
      * @Route("/rejoindre/{factionName}")
      * @Template()
      */
-    public function registerAction($factionName)
+    public function registerAction($factionName, Request $request)
     {
        $faction = $this->getDoctrine()
             ->getRepository('PotagerBusinessBundle:Faction')
             ->findOneBy(array('name' => $factionName));
 
         $character = new Character();
-
-        // $images = $this->getDoctrine()
-        //     ->getRepository('PotagerBusinessBundle:Avatar')
-        //     ->findBy(array('faction' => $faction));
 
         $form = $this->createFormBuilder($character)
             ->add('name', 'text')
@@ -63,7 +60,15 @@ class DefaultController extends Controller
                         ->setParameter('faction', $faction);
                 }
             ))
+            ->add('save', 'submit')
             ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            die();
+            return $this->redirect($this->generateUrl('task_success'));
+        }
 
         return array('form' => $form->createView());
     }
