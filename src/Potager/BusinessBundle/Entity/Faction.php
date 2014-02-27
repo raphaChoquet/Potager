@@ -24,9 +24,9 @@ class Faction
 
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="faction")
+     * @ORM\OneToMany(targetEntity="Character", mappedBy="faction")
      **/
-    private $users;
+    private $characters;
 
     /**
      * @var string
@@ -52,7 +52,7 @@ class Faction
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->characters = new ArrayCollection();
         $this->score = 0;
         $this->nbrPlayer = 0;
     }
@@ -137,35 +137,35 @@ class Faction
     }
 
     /**
-     * Add users
+     * Add characters
      *
-     * @param \Potager\BusinessBundle\Entity\User $users
+     * @param \Potager\BusinessBundle\Entity\Character $characters
      * @return Faction
      */
-    public function addUser(\Potager\BusinessBundle\Entity\User $users)
+    public function addCharacter(\Potager\BusinessBundle\Entity\Character $characters)
     {
-        $this->users[] = $users;
+        $this->characters[] = $characters;
 
         return $this;
     }
 
     /**
-     * Remove users
+     * Remove characters
      *
-     * @param \Potager\BusinessBundle\Entity\User $users
+     * @param \Potager\BusinessBundle\Entity\Character $characters
      */
-    public function removeUser(\Potager\BusinessBundle\Entity\User $users)
+    public function removeCharacter(\Potager\BusinessBundle\Entity\Character $characters)
     {
-        $this->users->removeElement($users);
+        $this->characters->removeElement($characters);
     }
 
     /**
-     * Get users
+     * Get characters
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUsers()
+    public function getCharacters()
     {
-        return $this->users;
+        return $this->characters;
     }
 }

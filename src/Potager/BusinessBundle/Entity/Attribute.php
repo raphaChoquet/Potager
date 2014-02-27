@@ -22,9 +22,9 @@ class Attribute
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="attribut")
+     * @ORM\OneToOne(targetEntity="Character", inversedBy="attribut")
      **/
-    private $user;
+    private $character;
 
     /**
      * @var integer
@@ -218,25 +218,25 @@ class Attribute
     }
 
     /**
-     * Set user
+     * Set character
      *
-     * @param \Potager\BusinessBundle\Entity\User $user
+     * @param \Potager\BusinessBundle\Entity\Character $character
      * @return Attribute
      */
-    public function setUser(\Potager\BusinessBundle\Entity\User $user = null)
+    public function setCharacter(\Potager\BusinessBundle\Entity\Character $character = null)
     {
-        $this->user = $user;
+        $this->character = $character;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get character
      *
-     * @return \Potager\BusinessBundle\Entity\User 
+     * @return \Potager\BusinessBundle\Entity\Character 
      */
-    public function getUser()
+    public function getCharacter()
     {
-        return $this->user;
+        return $this->character;
     }
 }

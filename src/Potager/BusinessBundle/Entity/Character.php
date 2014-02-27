@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * User
+ * Character
  *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\UserRepository")
+ * @ORM\Table(name="character")
+ * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\CharacterRepository")
  */
-class User
+class Character
 {
     /**
      * @var integer
@@ -23,12 +23,12 @@ class User
     private $id;
 
      /**
-     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="characters")
      **/
     private $faction;
 
      /**
-     * @ORM\OneToOne(targetEntity="Attribute", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Attribute", mappedBy="character")
      **/
     private $attribute;
 
@@ -125,7 +125,7 @@ class User
      * Set name
      *
      * @param string $name
-     * @return User
+     * @return Character
      */
     public function setName($name)
     {
@@ -148,7 +148,7 @@ class User
      * Set avatar
      *
      * @param string $avatar
-     * @return User
+     * @return Character
      */
     public function setAvatar($avatar)
     {
@@ -171,7 +171,7 @@ class User
      * Set email
      *
      * @param string $email
-     * @return User
+     * @return Character
      */
     public function setEmail($email)
     {
@@ -194,7 +194,7 @@ class User
      * Set password
      *
      * @param string $password
-     * @return User
+     * @return Character
      */
     public function setPassword($password)
     {
@@ -217,7 +217,7 @@ class User
      * Set remainingFight
      *
      * @param integer $remainingFight
-     * @return User
+     * @return Character
      */
     public function setRemainingFight($remainingFight)
     {
@@ -240,7 +240,7 @@ class User
      * Set fightWon
      *
      * @param integer $fightWon
-     * @return User
+     * @return Character
      */
     public function setFightWon($fightWon)
     {
@@ -263,7 +263,7 @@ class User
      * Set fightLost
      *
      * @param string $fightLost
-     * @return User
+     * @return Character
      */
     public function setFightLost($fightLost)
     {
@@ -286,7 +286,7 @@ class User
      * Set score
      *
      * @param integer $score
-     * @return User
+     * @return Character
      */
     public function setScore($score)
     {
@@ -314,7 +314,7 @@ class User
      * Set faction
      *
      * @param \Potager\BusinessBundle\Entity\Faction $faction
-     * @return User
+     * @return Character
      */
     public function setFaction(\Potager\BusinessBundle\Entity\Faction $faction = null)
     {
@@ -337,7 +337,7 @@ class User
      * Set attribute
      *
      * @param \Potager\BusinessBundle\Entity\Attribute $attribute
-     * @return User
+     * @return Character
      */
     public function setAttribute(\Potager\BusinessBundle\Entity\Attribute $attribute = null)
     {
@@ -360,7 +360,7 @@ class User
      * Add fightsAttacker
      *
      * @param \Potager\BusinessBundle\Entity\Fight $fightsAttacker
-     * @return User
+     * @return Character
      */
     public function addFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
     {
@@ -394,7 +394,7 @@ class User
      * Add fightsDefender
      *
      * @param \Potager\BusinessBundle\Entity\Fight $fightsDefender
-     * @return User
+     * @return Character
      */
     public function addFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
     {
@@ -424,3 +424,33 @@ class User
         return $this->fightsDefender;
     }
 }
+
+
+// src/Potager/BusinessBundle/Entity/Character.php
+
+namespace Potager\BusinessBundle\Entity;
+
+use FOS\CharacterBundle\Entity\Character as BaseCharacter;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_character")
+ */
+class Character extends BaseCharacter
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+
+

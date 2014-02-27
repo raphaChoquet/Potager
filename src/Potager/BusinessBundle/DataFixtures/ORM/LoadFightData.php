@@ -16,13 +16,13 @@ class LoadFightData extends AbstractFixture implements OrderedFixtureInterface
 	{
 		for($i = 0; $i < 10; $i++) {
 			if($i === 9) {
-				$defender = $this->getReference('user-0');
+				$defender = $this->getReference('character-0');
 			} else {
-				$defender = $this->getReference('user-' . ($i + 1));
+				$defender = $this->getReference('character-' . ($i + 1));
 			}
 
 			$fight = new Fight();
-			$fight->setAttacker($this->getReference('user-'.$i));
+			$fight->setAttacker($this->getReference('character-'.$i));
 			$fight->setDefender($defender);
 
 			$fight->setAttackerWin(rand(0, 1));@
