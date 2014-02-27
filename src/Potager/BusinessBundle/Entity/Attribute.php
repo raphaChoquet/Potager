@@ -68,7 +68,6 @@ class Attribute
      */
     private $luck;
 
-
     /**
      * Get id
      *
