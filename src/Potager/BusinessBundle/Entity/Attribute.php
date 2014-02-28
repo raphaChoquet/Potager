@@ -22,7 +22,7 @@ class Attribute
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="attribut")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="attribute")
      **/
     private $user;
 
