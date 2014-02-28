@@ -68,7 +68,8 @@ class Attribute
      */
     private $luck;
 
-    public function __contruct() {
+    public function __construct() {
+
         $this->level = 1;
         $this->strenght = 5;
         $this->stamina = 5;

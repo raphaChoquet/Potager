@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Potager\BusinessBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
+
+use Potager\BusinessBundle\Entity\Attribute;
 class DefaultController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class DefaultController extends Controller
         $user = new User();
 
         $form = $this->createFormBuilder($user)
-            ->add('name', 'text')
+            ->add('username', 'text')
             ->add('email', 'email')
             ->add('password', 'password')
             ->add('avatar', 'entity', array(
@@ -76,12 +78,16 @@ class DefaultController extends Controller
      * @Route("/test")
      * @Template()
      */
-    public function testAction() {
-        $calc =  $this->get('potager_business.calculate');
+    public function combatAction() {
+        $user1 = new Attribute();
+        $user2 = new Attribute();
 
-        $scores = $calc->timeToDie(6, 6, 5, 0);
+        $fight =  $this->get('potager_business.fight');
 
-        echo 'time : ' . $scores;
+        $timeForUser1 = $fight->attack($user1, $user2);
+        $timeForUser2 = $fight->attack($user1, $user2);
+
+        echo $timeForUser1 . ' :: ' . $timeForUser2;
         die();
     }
 }
