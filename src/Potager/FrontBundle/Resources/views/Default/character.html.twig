@@ -1,0 +1,24 @@
+{% extends 'PotagerFrontBundle::layout.html.twig' %} 
+
+{% block content %}
+
+<div id="header">
+	<img id="logo"
+		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+		alt="Garden War" />
+</div>
+<div id="banner">
+	<div id="">
+		<img alt="avatar">
+		<p>
+			Bienvenue {{ app.user.username }}
+
+			
+		</p>
+	</div>
+</div>
+
+{# dans la nav faire le lien vers "profil/edit" pour "compte" #}
+
+
+{% endblock %}
