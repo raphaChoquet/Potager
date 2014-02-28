@@ -93,17 +93,14 @@ body {
 }
 
 #footer {
-	background-position:0 45px;
-	background-image:url("../images/bg_footer.jpg");
-	background-repeat:repeat-x;
-	background-color:#fff;
+	border-top:5px solid #b2a47f;
+	background-color:#f9f8f8;
 	width: 1200px;
 	height:50px;
-	padding-top: 50px;
 }
 
 #footer p {
-	padding-top:20px;
+	padding-top: 17px;
 	text-align: center;
 }
 
@@ -194,6 +191,7 @@ margin-bottom: 0;
 #wrapper.home {
 	position: relative;
 	background: #fff;
+	padding-bottom:45px;
 }
 
 #join_team {
@@ -245,7 +243,7 @@ margin-bottom: 0;
 #victory_team {
 	background-image: url("../images/bg_score.png");
 	height: 144px;
-	left: 325px;
+	left: 328px;
 	position: absolute;
 	top: 35px;
 	width: 552px;
@@ -269,7 +267,7 @@ margin-bottom: 0;
 #full {
 	background-color: #97CE38;
 	height: 20px;
-	left: 145px;
+	left: 142px;
 	position: absolute;
 	top: 75px;
 	width: 260px;
