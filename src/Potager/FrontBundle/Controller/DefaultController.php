@@ -36,7 +36,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/rejoindre/{factionName}")
+     * @Route("/rejoindre/{factionName}", name="rejoindre")
      * @Template()
      */
     public function registerAction($factionName, Request $request)
