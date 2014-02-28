@@ -71,4 +71,28 @@ class DefaultController extends Controller
 
         return array('form' => $form->createView());
     }
+
+    /**
+     * @Route("/test")
+     * @Template()
+     */
+    public function testAction() {
+        $calc =  $this->get('potager_business.calculate');
+
+        $scores = $calc->timeToDie(6, 6, 5, 0);
+
+        echo 'time : ' . $scores;
+        die();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

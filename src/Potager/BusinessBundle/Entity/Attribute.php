@@ -68,6 +68,14 @@ class Attribute
      */
     private $luck;
 
+    public function __contruct() {
+        $this->level = 1;
+        $this->strenght = 5;
+        $this->stamina = 5;
+        $this->agility = 5;
+        $this->luck = 1;
+    }
+
     /**
      * Get id
      *

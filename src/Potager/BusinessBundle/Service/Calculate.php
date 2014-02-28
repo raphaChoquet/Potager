@@ -21,4 +21,30 @@ class Calculate
 		return $values;
 	}
 
+	public function timeToDie($stamina, $strenght, $agility, $luck)
+	{
+		$damage = $strenght * 5;
+		$aps = ($agility * 20) / 100;
+		$hp = $stamina * 40;
+		$damageTotal = 0;
+		$isKill = true;
+		$nbrAttack = 0;
+		$i = 0;
+		while ($isKill) {
+			$nbrAttack++;
+			$tmpDamage = $damage;
+			$damageTotal += $tmpDamage;
+
+			if ($hp <= $damageTotal) {
+				return $nbrAttack * (1 / $aps);
+			}
+
+			if($i > 200) {
+				$isKill = false;
+			}
+			$i++;
+		}
+ 
+	}
+
 }
