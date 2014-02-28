@@ -32,10 +32,8 @@ class User extends BaseUser
     private $attribute;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="avatar", type="string", length=255)
-     */
+     * @ORM\ManyToOne(targetEntity="Avatar")
+     **/
     private $avatar;
 
     /**
