@@ -3,15 +3,19 @@
 {% block content %}
 
 <div id="header">
-	<img id="logo"
+		<img id="logo"
 		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
 		alt="Garden War" />
 </div>
 <div id="banner">
 	<div id="">
-		<img alt="avatar">
+		<img alt="avatar" src="{{ asset(user.avatar.url) }}">
 		<p>
-			Bienvenue {{ app.user.username }}
+			Bienvenue {{ user.username }}
+
+			<br>
+			Tu fais partie des 
+			{{ user.faction.name }}
 
 			
 		</p>

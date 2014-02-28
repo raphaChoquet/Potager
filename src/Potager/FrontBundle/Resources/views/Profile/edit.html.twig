@@ -1,5 +1,26 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block content %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-{% endblock fos_user_content %}
+	<div id="header">
+		<img id="logo"
+			src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+			alt="Garden War" />
+	</div>
+	<div id="banner">
+		<div id="">
+			<img alt="avatar">
+			<p>
+				Bienvenue {{ app.user.username }}
+
+				
+			</p>
+		</div>
+	</div>
+	<!-- fin #banner -->
+	<div id="wrapper" class="home">
+		{% block fos_user_content %}
+		{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+		{% endblock fos_user_content %}
+	</div>
+
+{% endblock content %}
