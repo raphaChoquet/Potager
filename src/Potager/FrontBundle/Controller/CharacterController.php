@@ -19,15 +19,10 @@ class CharacterController extends Controller
      */
     public function characterAction()
 	{
-	    $user1 = new Attribute();
-        $user2 = new Attribute();
+        $factions = $this->getDoctrine()
+        ->getRepository('PotagerBusinessBundle:Faction')
+        ->findAll();
 
-        $fight =  $this->get('potager_business.fight');
-
-        $timeForUser1 = $fight->attack($user1, $user2);
-        $timeForUser2 = $fight->attack($user1, $user2);
-
-        return array($timeForUser1 . ' :: ' . $timeForUser2);
-        
+        return array('factions'=>$factions);
 	}
 }
