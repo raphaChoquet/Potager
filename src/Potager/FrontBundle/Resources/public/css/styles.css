@@ -82,8 +82,9 @@ body {
 }
 
 #main {
-	width: 1200px;
-	margin: 0 auto;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 1200px;
 }
 
 #header {
@@ -221,21 +222,26 @@ margin-bottom: 0;
 }
 
 #betterave_team a {
+	position:absolute;
+	left:0;
     color: #FFFFFF;
     font-size: 46px;
     padding-left: 60px;
     text-transform: uppercase;
+    width: 540px;
 }
 
 #kiwi_team {
 	position: absolute;
-	width: 600px;
+	width: 1200px;
 	height: 120px;
 	left: 600px;
 	background-color: #97ce38;
 }
 
 #kiwi_team a {
+	left:0;
+	position:absolute;
     padding-left: 320px;
     width: 280px;
 }
@@ -304,9 +310,7 @@ margin-bottom: 0;
 	width: 210px;
 }
 
-#choose_arrow:before {
-	background-image: url("../images/arrow_left.png");
-	content: "";
+.choose_arrowLeft {
 	height: 48px;
 	left: -110px;
 	position: absolute;
@@ -314,11 +318,9 @@ margin-bottom: 0;
 	width: 98px;
 }
 
-#choose_arrow:after {
-	background-image: url("../images/arrow_left.png");
+.choose_arrowRight {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
-	content: "";
 	height: 48px;
 	left: 210px;
 	position: absolute;
