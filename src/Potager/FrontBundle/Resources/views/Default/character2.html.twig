@@ -1,28 +1,38 @@
-{% extends 'PotagerFrontBundle::layout.html.twig' %} 
-
-{% block content %}
+{% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
 <div id="header">
 		<img id="logo"
 		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
 		alt="Garden War" />
 </div>
-<div id="banner">
-	<div id="">
+<div id="banner" class="betterave">
+	<div id="avatar" class="betterave">
 		<img alt="avatar" src="{{ asset(user.avatar.url) }}">
-		<p>
-			Bienvenue {{ user.username }}
+	</div>
+	<div id="myUser" class="betterave">
+		<p>Bienvenue {{ app.user.username }},<br> Tu fais partie des 
+			{{ user.faction.name }}</p>
 
-			<br>
-			Tu fais partie des 
-			{{ user.faction.name }}
-
-			
-		</p>
+	</div>
+</div>
+<!-- fin#banner -->
+<div id="nav" class="betterave">
+	<ul>
+		<li class="active"><a href="#">Statistiques</a></li>
+		<li><a href="#">Rejoindre le champs</a></li>
+		<li><a href="#">Compte</a></li>
+	</ul>
+</div>
+<div id="resumeFight" class="betterave">
+	<div id="victoryFight">
+		<p>victoires</p>
+	</div>
+	<div id="barreFight">
+		<p class="title">Combats</p>
+	</div>
+	<div id="looseFight">
+		<p>défaites</p>
 	</div>
 </div>
 
-{# dans la nav faire le lien vers "profil/edit" pour "compte" #}
-
-
-{% endblock %}
+{# dans la nav faire le lien vers "profil/edit" pour "compte" #} {% endblock %}

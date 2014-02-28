@@ -82,9 +82,9 @@ body {
 }
 
 #main {
-    margin: 0 auto;
-    overflow: hidden;
-    width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 1200px;
 }
 
 #header {
@@ -94,10 +94,10 @@ body {
 }
 
 #footer {
-	border-top:5px solid #b2a47f;
-	background-color:#f9f8f8;
+	border-top: 5px solid #b2a47f;
+	background-color: #f9f8f8;
 	width: 1200px;
-	height:50px;
+	height: 50px;
 }
 
 #footer p {
@@ -113,10 +113,13 @@ body {
 
 #banner {
 	position: relative;
-	background-image: url("../images/banner.jpg");
 	width: 1200px;
 	height: 282px;
 	z-index: 2;
+}
+
+#banner.home {
+	background-image: url("../images/banner.jpg");
 }
 
 #banner h2 {
@@ -146,10 +149,10 @@ body {
 	width: 283px;
 }
 
-#connect_form form [type=checkbox]{
+#connect_form form [type=checkbox] {
 	width: auto;
-height: auto;
-margin-bottom: 0;
+	height: auto;
+	margin-bottom: 0;
 }
 
 #connect_form form input {
@@ -192,7 +195,7 @@ margin-bottom: 0;
 #wrapper.home {
 	position: relative;
 	background: #fff;
-	padding-bottom:45px;
+	padding-bottom: 45px;
 }
 
 #join_team {
@@ -210,25 +213,25 @@ margin-bottom: 0;
 }
 
 #betterave_team > a, #kiwi_team > a {
-    display: block;
-    height: 80px;
-    width: 600px;
+	display: block;
+	height: 80px;
+	width: 600px;
 	padding-top: 40px;
 	font-family: 'Brandon Grotesque Medium';
 	color: #fff;
 	font-size: 46px;
 	text-transform: uppercase;
-	text-decoration:none;
+	text-decoration: none;
 }
 
 #betterave_team a {
-	position:absolute;
-	left:0;
-    color: #FFFFFF;
-    font-size: 46px;
-    padding-left: 60px;
-    text-transform: uppercase;
-    width: 540px;
+	position: absolute;
+	left: 0;
+	color: #FFFFFF;
+	font-size: 46px;
+	padding-left: 60px;
+	text-transform: uppercase;
+	width: 540px;
 }
 
 #kiwi_team {
@@ -240,10 +243,10 @@ margin-bottom: 0;
 }
 
 #kiwi_team a {
-	left:0;
-	position:absolute;
-    padding-left: 320px;
-    width: 280px;
+	left: 0;
+	position: absolute;
+	padding-left: 320px;
+	width: 280px;
 }
 
 #victory_team {
@@ -328,10 +331,159 @@ margin-bottom: 0;
 	width: 98px;
 }
 
+/* CHARACTER */
+
+#banner.betterave {
+	background-image: url("../images/banner_betterave.jpg");
+}
+
+#banner.kiwi {
+	background-image: url("../images/banner_betterave.jpg");
+}
+
+#avatar {
+	position: absolute;
+	left: 265px;
+	top: 68px;
+	width: 160px;
+	height: 154px;
+	background-color: rgba(255,255,255,0.7);
+	text-align: center;
+}
+
+#avatar.betterave {
+	border: 5px solid #92162d;
+}
+
+#avatar.kiwi {
+	border: 5px solid #97ce38;
+}
+
+#myUser {
+	position: absolute;
+	left: 753px;
+	padding: 20px 30px;
+	color: #ffffff;
+	font-size: 32px;
+}
+
+#myUser.betterave {
+	background-color: #92162d;
+}
+
+#myUser.kiwi {
+	background-color: #97ce38;
+}
+
+#nav {
+    background-color: #FFFFFF;
+    height: 30px;
+    padding: 10px 0;
+    position: relative;
+    z-index: 10;
+}
+
+#nav ul {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+#nav ul li {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	padding-bottom: 20px;
+	text-align: center;
+	width: 330px;
+}
+
+#nav ul li a {
+	color: #000000;
+	text-transform: uppercase;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+#nav ul li a:hover {
+	color: #b2a47f;
+}
+
+#nav ul li.active a:hover {
+	color: #000;
+}
+
+#nav ul li.active {
+	background-position: center 28px;
+	background-repeat: no-repeat;
+}
+
+#nav.betterave ul li.active {
+	background-image: url("../images/active_betterave.png");
+}
+
+#nav.kiwi ul li.active {
+	background-image: url("../images/active_betterave.png");
+}
+
+#resumeFight {
+	position:relative;
+	width:1200px;
+	height:120px;
+}
+
+#resumeFight.betterave {
+	background-color: #92162d;
+}
+
+#victoryFight {
+	left:155px;
+	top:15px;
+	position:absolute;
+	width:160px;
+	height:100px;
+	background-image:url("../images/picto_victory.png");
+	background-repeat:no-repeat;
+	background-position:center top;
+	color:#ffffff;
+	font-size:25px;
+	text-transform:uppercase;
+	text-align:center;
+	padding-top:63px;
+}
+
+#barreFight {
+	position:absolute;
+	width:555px;
+	left:330px;
+	top:15px;
+}
+
+#barreFight .title {
+	color:#ffffff;
+	font-size:35px;
+	text-align:center;
+	text-transform:uppercase;
+}
+
+#looseFight {
+	left:910px;
+	top:15px;
+	position:absolute;
+	width:130px;
+	height:100px;
+	background-image:url("../images/picto_loose.png");
+	background-repeat:no-repeat;
+	background-position:center top;
+	color:#ffffff;
+	font-size:25px;
+	text-transform:uppercase;
+	text-align:center;
+	padding-top:63px;
+}
 
 /* ------------------------
----- HELPER ---------------
-------------------------- */
+ ---- HELPER ---------------
+ ------------------------- */
 
 .hideme {
 	opacity: 0;
