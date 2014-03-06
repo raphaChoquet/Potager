@@ -1,0 +1,31 @@
+fos_user_security_login:
+    pattern: /connexion
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+fos_user_security_check:
+    pattern: /connexion_verification
+    defaults: { _controller: FOSUserBundle:Security:check }
+
+fos_user_security_logout:
+    pattern: /deconnexion
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+fos_user_profile:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/profil.xml"
+    prefix: /profil
+
+fos_user_register:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/inscription.xml"
+    prefix: /rejoindre
+
+fos_user_resetting:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@PotagerBusinessBundle/Resources/config/routing/change_motdepasse.xml"
+    prefix: /profil
+
+sonata_admin_dashboard:
+     pattern:  /admin/dashboard
+

@@ -8,35 +8,35 @@
 </div>
 
 {% for type, messages in app.session.flashbag.all() %}
-{% for message in messages %}
-    <div class="flash-{{ type }}">
-        {{ message }}
-    </div>
-{% endfor %}
+    {% for message in messages %}
+        <div class="flash-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endfor %}
 
 
 {% block fos_user_content %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+    {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post" class="clearfix {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}hideme{% endif %}">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="clearfix {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}hideme{% endif %}">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <div id="connect_form_left">
-	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Email(username)"  />
+        <div id="connect_form_left">
+    	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Email(username)"  />
 
-	    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" />
+    	    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" />
 
-    	<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    	<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-    </div>
-	<div id="connect_form_right">
-		<input type="submit" id="send_connect" name="_submit" value="Jouer" />
-	</div>
-</form>
+        	<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        	<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        </div>
+    	<div id="connect_form_right">
+    		<input type="submit" id="send_connect" name="_submit" value="Jouer" />
+    	</div>
+    </form>
 {% endblock fos_user_content %}
