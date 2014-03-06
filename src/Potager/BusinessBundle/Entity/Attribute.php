@@ -36,9 +36,9 @@ class Attribute
     /**
      * @var integer
      *
-     * @ORM\Column(name="hp", type="integer")
+     * @ORM\Column(name="xp", type="integer")
      */
-    private $hp;
+    private $xp;
 
     /**
      * @var integer

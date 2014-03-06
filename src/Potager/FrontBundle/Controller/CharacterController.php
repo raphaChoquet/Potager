@@ -19,12 +19,7 @@ class CharacterController extends Controller
      */
     public function characterAction()
 	{
-
         $user = $this->getUser();
-
         return array('user' => $user);
-
-        //return array('factions'=>$factions, 'faction'=>$faction);
-        
 	}
 }

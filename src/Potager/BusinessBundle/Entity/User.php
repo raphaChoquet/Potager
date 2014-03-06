@@ -44,27 +44,6 @@ class User extends BaseUser
     private $remainingFight;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="fight_won", type="integer")
-     */
-    private $fightWon;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fight_lost", type="integer")
-     */
-    private $fightLost;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="score", type="integer")
-     */
-    private $score;
-
-    /**
      * @ORM\OneToMany(targetEntity="Fight", mappedBy="attacker")
      **/
     private $fightsAttacker;
@@ -73,6 +52,7 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Fight", mappedBy="defender")
      **/
     private $fightsDefender;
+
 
     public function __construct()
     {
@@ -139,75 +119,6 @@ class User extends BaseUser
     public function getRemainingFight()
     {
         return $this->remainingFight;
-    }
-
-    /**
-     * Set fightWon
-     *
-     * @param integer $fightWon
-     * @return User
-     */
-    public function setFightWon($fightWon)
-    {
-        $this->fightWon = $fightWon;
-
-        return $this;
-    }
-
-    /**
-     * Get fightWon
-     *
-     * @return integer 
-     */
-    public function getFightWon()
-    {
-        return $this->fightWon;
-    }
-
-    /**
-     * Set fightLost
-     *
-     * @param integer $fightLost
-     * @return User
-     */
-    public function setFightLost($fightLost)
-    {
-        $this->fightLost = $fightLost;
-
-        return $this;
-    }
-
-    /**
-     * Get fightLost
-     *
-     * @return integer 
-     */
-    public function getFightLost()
-    {
-        return $this->fightLost;
-    }
-
-    /**
-     * Set score
-     *
-     * @param integer $score
-     * @return User
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    /**
-     * Get score
-     *
-     * @return integer 
-     */
-    public function getScore()
-    {
-        return $this->score;
     }
 
     /**
@@ -321,4 +232,60 @@ class User extends BaseUser
     {
         return $this->fightsDefender;
     }
+
+    /**
+     * Get fightWon
+     *
+     * @return integer 
+     */
+    public function getFightWon()
+    {
+         $fightAttackerWin = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() > 0);
+         });
+
+         $fightsDefenderWin = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() < 0);
+         });
+
+        return $fightAttackerWin->count() + $fightsDefenderWin->count();
+    }
+
+    /**
+     * Get fightLost
+     *
+     * @return integer 
+     */
+    public function getFightLost()
+    {
+         $fightAttackerLost = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() < 0);
+         });
+
+         $fightsDefenderLost = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() > 0);
+         });
+
+        return $fightAttackerLost->count() + $fightsDefenderLost->count();
+    }
+
+
+    /**
+     * Get fightDraw
+     *
+     * @return integer 
+     */
+    public function getFightDraw()
+    {
+        $fightAttackerDraw = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() == 0);
+         });
+
+         $fightsDefenderDraw = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() == 0);
+         });
+
+        return $fightAttackerDraw->count() + $fightsDefenderDraw->count();
+    }
+
 }
