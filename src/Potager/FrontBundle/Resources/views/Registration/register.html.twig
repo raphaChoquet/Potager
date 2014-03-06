@@ -1,16 +1,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <form action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-     
-
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword) }}
-    {% for child in form.avatar %}
+    <p> {{ form_errors(form) }}</p>
     <div>
-        <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username) }}
     </div>
-    {% endfor %}
     <div>
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+        <div>
+        {{ form_label(form.plainPassword) }}
+        {{ form_errors(form.plainPassword) }}
+        {{ form_widget(form.plainPassword) }}
+    </div>
+    <div>
+        {{ form_label(form.avatar) }}
+        {{ form_errors(form.avatar) }}
+        {% for child in form.avatar %}
+            <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
+        {% endfor %}
+    </div>
+    <div>
+        {{form_row(form._token)}}
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
 </form>
