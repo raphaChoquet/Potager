@@ -60,9 +60,6 @@ class User extends BaseUser
         $this->fightsAttacker = new ArrayCollection();
         $this->fightsDefender = new ArrayCollection();
         $this->remainingFight = 5;
-        $this->fightWon = 0;
-        $this->fightLost = 0;
-        $this->score = 0;
     }
 
     /**
