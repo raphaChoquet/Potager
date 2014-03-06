@@ -14,10 +14,10 @@ class FightController extends Controller
 
 
 	/**
-	* @Route("/searchFight")
-	* @Template()
+	* @Route("/fight/")
+	* @Template("PotagerFrontBundle:Default:fight.html.twig")
 	*/
-	public function searchFightAction() {
+	public function fightAction() {
 
 		$user = $this->getUser();
 		$faction = $user->getFaction();
@@ -65,7 +65,17 @@ class FightController extends Controller
         $timeForUser1 = $fight->attack($user->getAttribute(), $opponent->getAttribute());
         $timeForUser2 = $fight->attack($opponent->getAttribute(), $user->getAttribute());
 
-        echo $timeForUser1 . ' :: ' . $timeForUser2;
-		die();
+        if ($timeForUser1 < $timeForUser2) {
+			$resultFight = 'Victoire';       
+        } elseif ($timeForUser1 == $timeForUser2) {
+        	$resultFight = 'Egalité';  
+        } else {
+        	$resultFight = 'Défaite';  
+		}
+
+		return array('result' => $resultFight, 'user' => $user, 'opponent' => $opponent);
+
 	}
+
+	
 }
