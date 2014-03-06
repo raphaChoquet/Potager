@@ -175,6 +175,7 @@ class User extends BaseUser
      */
     public function addFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
     {
+        $fightsAttacker->isAttacker = true;
         $this->fightsAttacker[] = $fightsAttacker;
 
         return $this;
@@ -208,6 +209,7 @@ class User extends BaseUser
      */
     public function addFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
     {
+        $fightsDefender->isAttacker = false;
         $this->fightsDefender[] = $fightsDefender;
 
         return $this;
@@ -231,6 +233,15 @@ class User extends BaseUser
     public function getFightsDefender()
     {
         return $this->fightsDefender;
+    }
+
+
+    public function getAllFight() {
+        $fights = array_merge($this->fightsAttacker->toArray(), $this->fightsDefender->toArray());
+        usort($fights, function ($a, $b) {
+            return $a->getDate() < $b->getDate() ? -1 : 1;
+        });
+        return $fights;
     }
 
     /**
