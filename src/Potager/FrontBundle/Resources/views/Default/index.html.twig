@@ -33,7 +33,7 @@
 	<div id="join_team">
 		{% for faction in factions %}
 		<div id="{{ faction.name|lower }}_team">
-			<a href="{{ path('rejoindre', { factionName: faction.name }) }}">{{ faction.name|lower }}</a>
+			<a href="{{ path('fos_user_registration_register', { factionName: faction.name }) }}">{{ faction.name|lower }}</a>
 		</div>
 		{% endfor %}
 		<div id="victory_team">

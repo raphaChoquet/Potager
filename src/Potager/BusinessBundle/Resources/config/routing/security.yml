@@ -16,7 +16,7 @@ fos_user_profile:
 
 fos_user_register:
     resource: "@PotagerBusinessBundle/Resources/config/routing/inscription.xml"
-    prefix: /inscription
+    prefix: /rejoindre
 
 fos_user_resetting:
     resource: "@PotagerBusinessBundle/Resources/config/routing/resetting.xml"

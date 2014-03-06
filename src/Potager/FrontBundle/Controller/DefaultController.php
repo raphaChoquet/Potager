@@ -36,45 +36,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/rejoindre/{factionName}", name="rejoindre")
-     * @Template()
-     */
-    public function registerAction($factionName, Request $request)
-    {
-       $faction = $this->getDoctrine()
-            ->getRepository('PotagerBusinessBundle:Faction')
-            ->findOneBy(array('name' => $factionName));
-
-        $user = new User();
-
-        $form = $this->createFormBuilder($user)
-            ->add('username', 'text')
-            ->add('email', 'email')
-            ->add('password', 'password')
-            ->add('avatar', 'entity', array(
-                'class' => 'PotagerBusinessBundle:Avatar',
-                'property' => 'url',
-                'expanded' => true,
-                'query_builder' => function(EntityRepository $er) use ($faction) {
-
-                    return $er->createQueryBuilder('u')
-                        ->where('u.faction = :faction')
-                        ->setParameter('faction', $faction);
-                }
-            ))
-            ->add('save', 'submit')
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            return $this->redirect($this->generateUrl('task_success'));
-        }
-
-        return array('form' => $form->createView());
-    }
-
-    /**
      * @Route("/test")
      * @Template()
      */
