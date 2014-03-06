@@ -1,38 +1,156 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
 <div id="header">
-		<img id="logo"
+	<img id="logo"
 		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
 		alt="Garden War" />
 </div>
-<div id="banner" class="betterave">
-	<div id="avatar" class="betterave">
+<div id="banner" class="{{ user.faction.name|lower }}">
+	<div id="avatar" class="{{ user.faction.name|lower }}">
 		<img alt="avatar" src="{{ asset(user.avatar.url) }}">
 	</div>
-	<div id="myUser" class="betterave">
-		<p>Bienvenue {{ user.username }},<br> Tu fais partie des 
-			{{ user.faction.name }}</p>
-
+	<div id="myUser" class="{{ user.faction.name|lower }}">
+		<p>Bienvenue {{ user.username }}</p>
+		<a href="../deconnexion" class="deconnexion">Se déconnecter</a>
 	</div>
 </div>
 <!-- fin#banner -->
-<div id="nav" class="betterave">
+<div id="nav" class="{{ user.faction.name|lower }}">
 	<ul>
 		<li class="active"><a href="#">Statistiques</a></li>
 		<li><a href="#">Rejoindre le champs</a></li>
 		<li><a href="#">Compte</a></li>
 	</ul>
 </div>
-<div id="resumeFight" class="betterave">
+<div id="resumeFight" class="{{ user.faction.name|lower }}">
 	<div id="victoryFight">
 		<p>victoires</p>
 	</div>
 	<div id="barreFight">
 		<p class="title">Combats</p>
+		<div id="zone_barreFight">
+			<div id="myScoreWin">
+				<p>15</p>
+			</div>
+			<div id="fullbarre_enemy"
+				class="{% if user.faction.name|lower=="betterave" %}kiwi{% else %}betterave{% endif %}">
+				<div id="mybarre"
+					class="{% if user.faction.name|lower=="betterave" %}betterave{% else %}kiwi{% endif %}"
+					style="width: 80%;">
+					<!-- CSS -->
+				</div>
+			</div>
+			<div id="myScoreLoose">
+				<p>10</p>
+			</div>
+		</div>
 	</div>
 	<div id="looseFight">
 		<p>défaites</p>
 	</div>
 </div>
+<div id="last3fights">
+	<ul>
+		<li class="betterave">
+			<p class="title_last3fights">Victoire</p>
+			<div class="avatar_enemy">
+				<img src="{{ asset(user.avatar.url) }}" />
+			</div>
+			<p class="name_enemy">Kiwler</p>
+		</li>
+		<li class="betterave">
+			<p class="title_last3fights">Victoire</p>
+			<div class="avatar_enemy">
+				<img src="{{ asset(user.avatar.url) }}" />
+			</div>
+			<p class="name_enemy">Kiwler</p>
+		</li>
+		<li class="kiwi">
+			<p class="title_last3fights">Défaite</p>
+			<div class="avatar_enemy">
+				<img src="{{ asset(user.avatar.url) }}" />
+			</div>
+			<p class="name_enemy">Kiwler</p>
+		</li>
+	</ul>
+</div>
+<div id="caracteristic" class="betterave">
+	<p class="title_caracteristic">Caractéristiques</p>
 
-{# dans la nav faire le lien vers "profil/edit" pour "compte" #} {% endblock %}
+	<p>Vous êtes niveau 3</p>
+
+	<div class="skill experience">
+		<p class="skill_title">Expérience</p>
+		<div id="bar-1" class="bar-main-container azure">
+			<div class="wrap">
+				<div class="bar-percentage" data-percentage="38">38 %</div>
+				<div class="bar-container">
+					<div class="bar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="double_skills" class="clearfix">
+		<div id="skills_left">
+			<div class="skill">
+				<p class="skill_title">Force</p>
+				<div id="bar-2" class="bar-main-container emerald">
+					<div class="wrap">
+						<div class="bar-percentage" data-percentage="15">15 pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="addSkill">Add</div>
+			</div>
+
+			<div class="skill">
+				<p class="skill_title">Endurance</p>
+				<div id="bar-3" class="bar-main-container violet">
+					<div class="wrap">
+						<div class="bar-percentage" data-percentage="25">25 pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="addSkill">Add</div>
+			</div>
+		</div>
+		<div id="skills_right">
+			<div class="skill">
+				<p class="skill_title">Agilité</p>
+				<div id="bar-4" class="bar-main-container yellow">
+					<div class="wrap">
+						<div class="bar-percentage" data-percentage="30">30 pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="addSkill">Add</div>
+			</div>
+
+			<div class="skill">
+				<p class="skill_title">Chance</p>
+				<div id="bar-5" class="bar-main-container red">
+					<div class="wrap">
+						<div class="bar-percentage" data-percentage="60">60 pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="addSkill">Add</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+{# dans la nav faire
+ le lien vers "profil/edit" pour "compte" #} {%
+endblock %}
