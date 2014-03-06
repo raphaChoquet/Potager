@@ -352,8 +352,9 @@ body {
 }
 
 #avatar > img {
-	max-width: 100%;
-	padding-top: 10px;
+    max-height: 95%;
+    max-width: 95%;
+    padding: 2.5%;
 }
 
 #avatar.betterave {
@@ -581,6 +582,13 @@ body {
 	background-position: 3px 25px;
 	background-repeat: no-repeat;
 	color: #97ce38;
+}
+
+#last3fights ul li.egal {
+	background-image: url("../images/lastFightEgalite.png");
+	background-position: 3px 25px;
+	background-repeat: no-repeat;
+	color: #848283;
 }
 
 .title_last3fights {
