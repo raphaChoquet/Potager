@@ -236,7 +236,7 @@ class User extends BaseUser
     public function getAllFight() {
         $fights = array_merge($this->fightsAttacker->toArray(), $this->fightsDefender->toArray());
         usort($fights, function ($a, $b) {
-            return $a->getDate() < $b->getDate() ? -1 : 1;
+            return $a->getDate() > $b->getDate() ? -1 : 1;
         });
         return $fights;
     }

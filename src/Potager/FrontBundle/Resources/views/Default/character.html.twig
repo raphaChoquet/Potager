@@ -56,6 +56,10 @@
 </div>
 <div id="last3fights">
 	<ul>
+		{% set fights = user.allFight %}
+		{% for fight in fights|slice(0, 3) %}
+			{{ fight.attacker.username }}
+		{% endfor %}
 		<li class="betterave">
 			<p class="title_last3fights">Victoire</p>
 			<div class="avatar_enemy">
