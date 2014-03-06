@@ -25,7 +25,7 @@ class LoadFightData extends AbstractFixture implements OrderedFixtureInterface
 			$fight->setAttacker($this->getReference('user-'.$i));
 			$fight->setDefender($defender);
 
-			$fight->setAttackerWin(rand(0, 1));@
+			$fight->setAttackerWin(rand(0, 1));
 
 			$manager->persist($fight);
 

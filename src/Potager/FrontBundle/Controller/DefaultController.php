@@ -31,7 +31,7 @@ class DefaultController extends Controller
         $calc =  $this->get('potager_business.calculate');
 
         $scores = $calc->toPercent($scores);
-
+        
         return array('factions'=>$factions, 'scores' => $scores);
     }
 

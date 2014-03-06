@@ -17,7 +17,7 @@ class LoadAttributeData extends AbstractFixture implements OrderedFixtureInterfa
 		for($i = 0; $i < 10; $i++) {
 			$attribute = new Attribute();
 			$attribute->setLevel(1);
-			$attribute->setHp(100);
+			$attribute->setXp(100);
 			$attribute->setStrenght(5);
 			$attribute->setStamina(5);
 			$attribute->setAgility(5);

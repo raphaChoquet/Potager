@@ -36,9 +36,9 @@ class Attribute
     /**
      * @var integer
      *
-     * @ORM\Column(name="hp", type="integer")
+     * @ORM\Column(name="xp", type="integer")
      */
-    private $hp;
+    private $xp;
 
     /**
      * @var integer
@@ -108,29 +108,6 @@ class Attribute
     public function getLevel()
     {
         return $this->level;
-    }
-
-    /**
-     * Set hp
-     *
-     * @param integer $hp
-     * @return Attribute
-     */
-    public function setHp($hp)
-    {
-        $this->hp = $hp;
-
-        return $this;
-    }
-
-    /**
-     * Get hp
-     *
-     * @return integer 
-     */
-    public function getHp()
-    {
-        return $this->hp;
     }
 
     /**
@@ -246,5 +223,28 @@ class Attribute
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set xp
+     *
+     * @param integer $xp
+     * @return Attribute
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+
+        return $this;
+    }
+
+    /**
+     * Get xp
+     *
+     * @return integer 
+     */
+    public function getXp()
+    {
+        return $this->xp;
     }
 }

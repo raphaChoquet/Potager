@@ -34,7 +34,7 @@ class Fight
     /**
      * @var boolean
      *
-     * @ORM\Column(name="attacker_win", type="boolean")
+     * @ORM\Column(name="attacker_win", type="integer")
      */
     private $attackerWin;
 
