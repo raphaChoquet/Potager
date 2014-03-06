@@ -16,9 +16,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	{
 		for($i = 0; $i < 10; $i++) {
 			$user = new User();
-			$user->setUsername('user ' . $i);
+			$user->setUsername('user' . $i);
 			$user->setEmail('user-' . $i . '@user.com');
-			$user->setPassword('1234');
+			$user->setPlainPassword('test');
+			$user->setEnabled(true);
 
 			if($i%2 === 1) {
 				$user->setAvatar($this->getReference('avatarBetterave'));
