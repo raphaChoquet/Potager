@@ -14,7 +14,7 @@ potager_front:
     prefix:   /
 
 fos_user_security:
-    resource: "@PotagerBusinessBundle/Resources/config/routing/security.yml"
+    resource: "@PotagerBusinessBundle/Resources/config/routing/routing.yml"
 
 sonata_user:
     resource: "@PotagerBusinessBundle/Resources/config/routing/admin_security.xml"
