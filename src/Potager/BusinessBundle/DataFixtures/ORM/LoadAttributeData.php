@@ -24,7 +24,6 @@ class LoadAttributeData extends AbstractFixture implements OrderedFixtureInterfa
 			$attribute->setLuck(1);
 			$attribute->setUser($this->getReference('user-'.$i));
 			$manager->persist($attribute);
-
 		}
 		
 		$manager->flush();
