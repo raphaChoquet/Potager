@@ -83,7 +83,6 @@ class User extends BaseUser
         $this->fightWon = 0;
         $this->fightLost = 0;
         $this->score = 0;
-        $this->avatar = '';
     }
 
     /**

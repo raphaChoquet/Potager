@@ -19,11 +19,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 			$user->setUsername('user ' . $i);
 			$user->setEmail('user-' . $i . '@user.com');
 			$user->setPassword('1234');
-			$user->setAvatar('');
 
 			if($i%2 === 1) {
+				$user->setAvatar($this->getReference('avatarBetterave'));
 				$user->setFaction($this->getReference('Betterave'));
 			} else {
+				$user->setAvatar($this->getReference('avatarKiwi'));
 				$user->setFaction($this->getReference('Kiwi'));
 			}
 
@@ -40,6 +41,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 2;
+        return 3;
     }
 }

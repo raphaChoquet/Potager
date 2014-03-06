@@ -17,6 +17,7 @@ class LoadAvatarData extends AbstractFixture implements OrderedFixtureInterface
 		$avatar = new Avatar();
 		$avatar->setUrl('bundles/potagerbusiness/images/betterave-angry.png');
 		$avatar->setFaction($this->getReference('Betterave'));
+		$this->addReference('avatarBetterave', $avatar);
 				
 		$manager->persist($avatar);
 
@@ -47,6 +48,7 @@ class LoadAvatarData extends AbstractFixture implements OrderedFixtureInterface
 		$avatar = new Avatar();
 		$avatar->setUrl('bundles/potagerbusiness/images/kiwi-angry.png');
 		$avatar->setFaction($this->getReference('Kiwi'));
+		$this->addReference('avatarKiwi', $avatar);
 
 		$manager->persist($avatar);		
 
@@ -83,6 +85,6 @@ class LoadAvatarData extends AbstractFixture implements OrderedFixtureInterface
 	*/
 	public function getOrder()
 	{
-		return 5;
+		return 2;
 	}
 }
