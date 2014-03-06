@@ -76,3 +76,28 @@ fos_user:
     registration:
         form:
             type: potager_front_registration
+    group:
+        group_class: Sonata\UserBundle\Entity\Group
+
+# SonataAdminBundle//SonataBlockBundle/SonataUserBundle Configuration
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        #sonata.user.block.menu:    # used to display the menu in profile pages
+        #sonata.user.block.account: # used to display menu option (login option)
+
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
+parameters:
+    sonata.user.admin.user.entity: Potager\BusinessBundle\Entity\User
+    sonata.user.admin.user.class: Potager\BusinessBundle\Admin\UserAdmin
+
+services:
+    sonata.user.admin.group:
+        abstract: true
+        public: false
