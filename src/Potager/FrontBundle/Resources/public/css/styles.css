@@ -513,6 +513,13 @@ body {
 	background-color: #92162D;
 }
 
+#egalityBarre {
+	position:absolute;
+	z-index:0;
+	height:100%;
+	background-color:#848283;
+}
+
 #mybarre {
 	height: 100%;
 	position: absolute;
