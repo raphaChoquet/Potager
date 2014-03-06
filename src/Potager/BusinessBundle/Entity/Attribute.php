@@ -111,29 +111,6 @@ class Attribute
     }
 
     /**
-     * Set hp
-     *
-     * @param integer $hp
-     * @return Attribute
-     */
-    public function setHp($hp)
-    {
-        $this->hp = $hp;
-
-        return $this;
-    }
-
-    /**
-     * Get hp
-     *
-     * @return integer 
-     */
-    public function getHp()
-    {
-        return $this->hp;
-    }
-
-    /**
      * Set strenght
      *
      * @param integer $strenght
@@ -246,5 +223,28 @@ class Attribute
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set xp
+     *
+     * @param integer $xp
+     * @return Attribute
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+
+        return $this;
+    }
+
+    /**
+     * Get xp
+     *
+     * @return integer 
+     */
+    public function getXp()
+    {
+        return $this->xp;
     }
 }
