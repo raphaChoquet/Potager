@@ -1,0 +1,28 @@
+<div id="victoryFight">
+	<p>victoires</p>
+</div>
+<div id="barreFight">
+
+	<p class="title">Combats</p>
+	<div id="zone_barreFight">
+		<div id="myScoreWin">
+			<p>{{ user.fightWon }}</p>
+		</div>
+		<div id="fullbarre_enemy"
+			class="{% if user.faction.name|lower=="betterave" %}kiwi{% else %}betterave{% endif %}">
+			<div id="egalityBarre"
+				style="width:{{ stats.draw + stats.win }}%;">Egalite</div>
+			<div id="mybarre"
+				class="{% if user.faction.name|lower=="betterave" %}betterave{% else %}kiwi{% endif %}"
+				style="width: {{ stats.win }}%;">
+				<!-- CSS -->
+			</div>
+		</div>
+		<div id="myScoreLoose">
+			<p>{{ user.fightLost }}</p>
+		</div>
+	</div>
+</div>
+<div id="looseFight">
+	<p>défaites</p>
+</div>

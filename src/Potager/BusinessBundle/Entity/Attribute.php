@@ -71,6 +71,7 @@ class Attribute
     public function __construct() {
 
         $this->level = 1;
+        $this->xp = 0;
         $this->strenght = 5;
         $this->stamina = 5;
         $this->agility = 5;

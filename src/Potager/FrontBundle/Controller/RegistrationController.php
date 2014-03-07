@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Exception\AccountStatusException;
 
 use Potager\FrontBundle\Form\Type;
 use FOS\UserBundle\Model\UserInterface;
-
+use Potager\BusinessBundle\Entity\Attribute;
 
 class RegistrationController extends BaseController
 {
@@ -38,6 +38,10 @@ class RegistrationController extends BaseController
         if ($form->isValid()) {
             $user = $form->getData();
             $userManager->updateUser($user);
+            $attribute = new Attribute();
+            $attribute->setUser($user);
+            $em->persist($attribute);
+            $em->flush();
 
             $authUser = true;
             $route = 'fos_user_registration_confirmed';

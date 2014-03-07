@@ -238,7 +238,7 @@ class User extends BaseUser
         usort($fights, function ($a, $b) {
             return $a->getDate() > $b->getDate() ? -1 : 1;
         });
-        return $fights;
+        return new ArrayCollection($fights);
     }
 
     /**

@@ -17,63 +17,10 @@
 <!-- fin#banner -->
 {{ include('PotagerFrontBundle::nav.html.twig') }}
 <div id="resumeFight" class="{{ user.faction.name|lower }}">
-	<div id="victoryFight">
-		<p>victoires</p>
-	</div>
-	<div id="barreFight">
-		<p class="title">Combats</p>
-		<div id="zone_barreFight">
-			<div id="myScoreWin">
-				<p>{{ user.fightWon }}</p>
-			</div>
-			{% set percentWin = user.fightWon * 100 / (user.fightLost +
-			user.fightWon + user.fightDraw ) %} {% set percentDraw =
-			user.fightDraw * 100 / (user.fightLost + user.fightWon +
-			user.fightDraw ) %}
-			<div id="fullbarre_enemy"
-				class="{% if user.faction.name|lower=="betterave" %}kiwi{% else %}betterave{% endif %}">
-				<div id="egalityBarre"
-					style="width:{{ percentWin + percentDraw }}%;">Egalite</div>
-				<div id="mybarre"
-					class="{% if user.faction.name|lower=="betterave" %}betterave{% else %}kiwi{% endif %}"
-					style="width: {{ percentWin }}%;">
-					<!-- CSS -->
-				</div>
-			</div>
-			<div id="myScoreLoose">
-				<p>{{ user.fightLost }}</p>
-			</div>
-		</div>
-	</div>
-	<div id="looseFight">
-		<p>défaites</p>
-	</div>
+	{{ render (controller('PotagerFrontBundle:Character:stats', {'user': user})) }}
 </div>
 <div id="last3fights">
-	<ul>
-		{% set fights = user.allFight %} {% for fight in fights|slice(0, 3) %}
-		{# egal#} {% if fight.attacker.id == user.id %}
-		<li
-			class="{% if fight.attacker.id == user.id and fight.attackerWin == 1 %}{{ fight.attacker.faction.name|lower }}{% elseif fight.attacker.id == user.id and fight.attackerWin == -1 %}{{ fight.defender.faction.name|lower }}{% else %}egal{% endif %}">
-			<p class="title_last3fights">{% if fight.attackerWin == 1 %} Victoire
-				{% elseif fight.attackerWin == -1 %} Défaite {% else %} Égalité {%
-				endif %}</p>
-			<div class="avatar_enemy">
-				<img src="{{ asset(fight.defender.avatar.url) }}" />
-			</div>
-			<p class="name_enemy">{{ fight.defender.username }}</p>
-		</li> {% else %}
-		<li
-			class="{% if fight.defender.id == user.id and fight.attackerWin == 1 %}{{ fight.attacker.faction.name|lower }}{% elseif fight.defender.id == user.id and fight.attackerWin == -1 %}{{ fight.defender.faction.name|lower }}{% else %}egal{% endif %}">
-			<p class="title_last3fights">{% if fight.attackerWin == -1 %}
-				Victoire {% elseif fight.attackerWin == 1 %} Défaite {% else %}
-				Égalité {% endif %}</p>
-			<div class="avatar_enemy">
-				<img src="{{ asset(fight.attacker.avatar.url) }}" />
-			</div>
-			<p class="name_enemy">{{ fight.attacker.username }}</p>
-		</li> {% endif %} {% endfor %}
-	</ul>
+	{{ render (controller('PotagerFrontBundle:Character:lastFights', {'user': user})) }}
 </div>
 <div id="caracteristic" class="betterave">
 	<p class="title_caracteristic">Caractéristiques</p>
