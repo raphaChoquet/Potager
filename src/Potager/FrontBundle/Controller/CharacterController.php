@@ -14,7 +14,7 @@ use Potager\BusinessBundle\Entity\Attribute;
 class CharacterController extends Controller
 {
 	/**
-     * @Route("/personnage/")
+     * @Route("/personnage/", name="personnage")
      * @Template()
      */
     public function characterAction()

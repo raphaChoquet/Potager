@@ -1,25 +1,22 @@
-<div>
+
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-    <a href="{{ path('fos_user_security_logout') }}">
-        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-    </a>
-{% endif %}
+<div>
+    <p>
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+    </p>
+    <p><a href="{{ path('personnage')}}">Accéder à {% if app.user.faction.name == "Betterave" %} ma {% else %} mon {% endif %} {{ app.user.faction.name }}</a></p>
+
 </div>
+{% else %}
 
-{% for type, messages in app.session.flashbag.all() %}
-    {% for message in messages %}
-        <div class="flash-{{ type }}">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endfor %}
-
+<h2>Se connecter</h2>
 
 {% block fos_user_content %}
 
     {% trans_default_domain 'FOSUserBundle' %}
-
     {% if error %}
         <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
     {% endif %}
@@ -40,3 +37,5 @@
     	</div>
     </form>
 {% endblock fos_user_content %}
+
+{% endif %}
