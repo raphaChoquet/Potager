@@ -13,7 +13,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-
 class UserAdmin extends BaseUserAdmin
 {
     /**
@@ -57,6 +56,10 @@ class UserAdmin extends BaseUserAdmin
                     ->add('expired', null, array('required' => false))
                     ->add('enabled', null, array('required' => false))
                     ->add('credentialsExpired', null, array('required' => false))
+                    ->add('avatar', 'text', array(
+                        'required' => false, 
+                        'label' => 'Avatar'
+                    ))
                 ->end()
             ;
         }
@@ -85,6 +88,7 @@ class UserAdmin extends BaseUserAdmin
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
+            ->add('avatar_id', null, array('associated_tostring' => 'getAvatar'))
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
