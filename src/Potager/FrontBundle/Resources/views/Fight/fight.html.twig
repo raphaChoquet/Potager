@@ -1,27 +1,44 @@
-{% extends 'PotagerFrontBundle::layout.html.twig' %}
+{% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
-{% block content %}
+{% set page = 'fight' %}
+<div id="header">
+	<img id="logo"
+		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+		alt="Garden War" />
+</div>
+<div id="banner" class="{{ user.faction.name|lower }}">
+	<div id="avatar" class="{{ user.faction.name|lower }}">
+		<img alt="avatar" src="{{ asset(user.avatar.url) }}">
+	</div>
+	<div id="myUser" class="{{ user.faction.name|lower }}">
+		<p>Bienvenue {{ user.username }}</p>
+		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
+	</div>
+</div>
+<!-- fin#banner -->
+{{ include('PotagerFrontBundle::nav.html.twig') }}
+<div id="duels" class="{{ user.faction.name|lower }} clearfix">
+	<div id="duels_left">{{ fight.attacker.username }}</div>
+	<div id="duels_center">VS</div>
+	<div id="duels_right">{{ fight.defender.username }}</div>
+</div>
+<div id="ring">
 
-{{ fight.attacker.username }}
-<p>
-{% if faction.name == 'Betterave' %}
-	{% if fight.attackerWin == 1 %}
-		<img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}">
-	{% elseif fight.attackerWin == -1 %}
-		<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}">
-	{% else %}
-		est à égalité avec
-	{% endif %}
-{% else %}
-	{% if fight.attackerWin == 1 %}
-		<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}">
-	{% elseif fight.attackerWin == -1 %}
-		<img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}">
-	{% else %}
-		est à égalité avec
-	{% endif %}
-{% endif %}
-</p>
-{{ fight.defender.username }}
+<a id="doFight" href="{{ path('doFight', { id: fight.id }) }}">Se battre</a>
+
+<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}" id="plop" style="display:none;">
+	{#
+	{% if faction.name == 'Betterave' %} {% if fight.attackerWin == 1 %} <img
+		src="{{ asset('bundles/potagerfront/images/betterave_attack.gif') }}">
+	{% elseif fight.attackerWin == -1 %} <img
+		src="{{ asset('bundles/potagerfront/images/kiwi_defend.gif') }}"> {%
+	else %} est à égalité avec {% endif %} {% else %} {% if
+	fight.attackerWin == 1 %} <img
+		src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}"> {% elseif
+	fight.attackerWin == -1 %} <img
+		src="{{ asset('bundles/potagerfront/images/betterave.gif') }}"> {%
+	else %} est à égalité avec {% endif %} {% endif %}
+	#}
+</div>
 
 {% endblock %}
