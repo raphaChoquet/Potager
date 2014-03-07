@@ -74,7 +74,7 @@ class FightController extends Controller
 			return new JsonResponse(array('error' => true));
 		}
 	
-		$fightManager =  $this->get('potager_business.fight');
+		$fightManager = $this->get('potager_business.fight');
 		$resultFight = $fightManager->computeFightResult($user, $fight->getDefender());
 	
 		$fight->setAttackerWin($resultFight);

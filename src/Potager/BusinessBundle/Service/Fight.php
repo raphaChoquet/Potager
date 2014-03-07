@@ -66,8 +66,8 @@ class Fight
     
     public function computeFightResult($user, $defender) 
     {
-    	$timeForUser1 = $fightManager->attack($user->getAttribute(), $defender->getAttribute());
-    	$timeForUser2 = $fightManager->attack($defender->getAttribute(), $user->getAttribute());
+    	$timeForUser1 = $this->attack($user->getAttribute(), $defender->getAttribute());
+    	$timeForUser2 = $this->attack($defender->getAttribute(), $user->getAttribute());
     	
     	if ($timeForUser1 < $timeForUser2) {
     		$resultFight = 1;
