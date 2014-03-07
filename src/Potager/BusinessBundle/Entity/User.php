@@ -4,7 +4,7 @@
 
 namespace Potager\BusinessBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use Sonata\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -44,27 +44,6 @@ class User extends BaseUser
     private $remainingFight;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="fight_won", type="integer")
-     */
-    private $fightWon;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fight_lost", type="integer")
-     */
-    private $fightLost;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="score", type="integer")
-     */
-    private $score;
-
-    /**
      * @ORM\OneToMany(targetEntity="Fight", mappedBy="attacker")
      **/
     private $fightsAttacker;
@@ -74,15 +53,13 @@ class User extends BaseUser
      **/
     private $fightsDefender;
 
+
     public function __construct()
     {
         parent::__construct();
         $this->fightsAttacker = new ArrayCollection();
         $this->fightsDefender = new ArrayCollection();
         $this->remainingFight = 5;
-        $this->fightWon = 0;
-        $this->fightLost = 0;
-        $this->score = 0;
     }
 
     /**
@@ -142,75 +119,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set fightWon
-     *
-     * @param integer $fightWon
-     * @return User
-     */
-    public function setFightWon($fightWon)
-    {
-        $this->fightWon = $fightWon;
-
-        return $this;
-    }
-
-    /**
-     * Get fightWon
-     *
-     * @return integer 
-     */
-    public function getFightWon()
-    {
-        return $this->fightWon;
-    }
-
-    /**
-     * Set fightLost
-     *
-     * @param integer $fightLost
-     * @return User
-     */
-    public function setFightLost($fightLost)
-    {
-        $this->fightLost = $fightLost;
-
-        return $this;
-    }
-
-    /**
-     * Get fightLost
-     *
-     * @return integer 
-     */
-    public function getFightLost()
-    {
-        return $this->fightLost;
-    }
-
-    /**
-     * Set score
-     *
-     * @param integer $score
-     * @return User
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    /**
-     * Get score
-     *
-     * @return integer 
-     */
-    public function getScore()
-    {
-        return $this->score;
-    }
-
-    /**
      * Set faction
      *
      * @param \Potager\BusinessBundle\Entity\Faction $faction
@@ -264,6 +172,7 @@ class User extends BaseUser
      */
     public function addFightsAttacker(\Potager\BusinessBundle\Entity\Fight $fightsAttacker)
     {
+        $fightsAttacker->isAttacker = true;
         $this->fightsAttacker[] = $fightsAttacker;
 
         return $this;
@@ -297,6 +206,7 @@ class User extends BaseUser
      */
     public function addFightsDefender(\Potager\BusinessBundle\Entity\Fight $fightsDefender)
     {
+        $fightsDefender->isAttacker = false;
         $this->fightsDefender[] = $fightsDefender;
 
         return $this;
@@ -321,4 +231,69 @@ class User extends BaseUser
     {
         return $this->fightsDefender;
     }
+
+
+    public function getAllFight() {
+        $fights = array_merge($this->fightsAttacker->toArray(), $this->fightsDefender->toArray());
+        usort($fights, function ($a, $b) {
+            return $a->getDate() > $b->getDate() ? -1 : 1;
+        });
+        return $fights;
+    }
+
+    /**
+     * Get fightWon
+     *
+     * @return integer 
+     */
+    public function getFightWon()
+    {
+         $fightAttackerWin = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() > 0);
+         });
+
+         $fightsDefenderWin = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() < 0);
+         });
+
+        return $fightAttackerWin->count() + $fightsDefenderWin->count();
+    }
+
+    /**
+     * Get fightLost
+     *
+     * @return integer 
+     */
+    public function getFightLost()
+    {
+         $fightAttackerLost = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() < 0);
+         });
+
+         $fightsDefenderLost = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() > 0);
+         });
+
+        return $fightAttackerLost->count() + $fightsDefenderLost->count();
+    }
+
+
+    /**
+     * Get fightDraw
+     *
+     * @return integer 
+     */
+    public function getFightDraw()
+    {
+        $fightAttackerDraw = $this->fightsAttacker->filter(function ($var) {
+            return ($var->getAttackerWin() == 0);
+         });
+
+         $fightsDefenderDraw = $this->fightsDefender->filter(function ($var) {
+            return ($var->getAttackerWin() == 0);
+         });
+
+        return $fightAttackerDraw->count() + $fightsDefenderDraw->count();
+    }
+
 }

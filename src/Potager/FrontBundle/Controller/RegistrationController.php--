@@ -2,20 +2,15 @@
 
 namespace Potager\FrontBundle\Controller;
 
-
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
-use FOS\UserBundle\Event\UserEvent;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
-
-use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class RegistrationController extends BaseController
 {
@@ -58,7 +53,7 @@ class RegistrationController extends BaseController
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed', array('factionName' => $faction->getName()));
+                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
 

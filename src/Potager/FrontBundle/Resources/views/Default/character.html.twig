@@ -30,18 +30,23 @@
 		<p class="title">Combats</p>
 		<div id="zone_barreFight">
 			<div id="myScoreWin">
-				<p>15</p>
+				<p>{{ user.fightWon }}</p>
 			</div>
+			{%  set percentWin = user.fightWon * 100 / (user.fightLost + user.fightWon + user.fightDraw ) %}
+			{%  set percentDraw = user.fightDraw * 100 / (user.fightLost + user.fightWon + user.fightDraw ) %}
 			<div id="fullbarre_enemy"
 				class="{% if user.faction.name|lower=="betterave" %}kiwi{% else %}betterave{% endif %}">
+				<div id="egalityBarre" style="width:{{ percentWin }}%;">
+					<!-- CSS -->
+				</div>
 				<div id="mybarre"
 					class="{% if user.faction.name|lower=="betterave" %}betterave{% else %}kiwi{% endif %}"
-					style="width: 80%;">
+					style="width: {{ percentWin + percentDraw }}%;">
 					<!-- CSS -->
 				</div>
 			</div>
 			<div id="myScoreLoose">
-				<p>10</p>
+				<p>{{ user.fightLost }}</p>
 			</div>
 		</div>
 	</div>
@@ -51,6 +56,10 @@
 </div>
 <div id="last3fights">
 	<ul>
+		{% set fights = user.allFight %}
+		{% for fight in fights|slice(0, 3) %}
+			{{ fight.attacker.username }}
+		{% endfor %}
 		<li class="betterave">
 			<p class="title_last3fights">Victoire</p>
 			<div class="avatar_enemy">
@@ -77,13 +86,13 @@
 <div id="caracteristic" class="betterave">
 	<p class="title_caracteristic">Caractéristiques</p>
 
-	<p>Vous êtes niveau 3</p>
+	<p>Vous êtes niveau {{ user.attribute.level }}</p>
 
 	<div class="skill experience">
 		<p class="skill_title">Expérience</p>
 		<div id="bar-1" class="bar-main-container azure">
 			<div class="wrap">
-				<div class="bar-percentage" data-percentage="38">38 %</div>
+				<div class="bar-percentage" data-percentage="{{ user.attribute.xp }}">{{ user.attribute.xp }} %</div>
 				<div class="bar-container">
 					<div class="bar"></div>
 				</div>
@@ -97,7 +106,7 @@
 				<p class="skill_title">Force</p>
 				<div id="bar-2" class="bar-main-container emerald">
 					<div class="wrap">
-						<div class="bar-percentage" data-percentage="15">15 pts</div>
+						<div class="bar-percentage" data-percentage="{{ user.attribute.strenght }}">{{ user.attribute.strenght }} pts</div>
 						<div class="bar-container">
 							<div class="bar"></div>
 						</div>
@@ -110,7 +119,7 @@
 				<p class="skill_title">Endurance</p>
 				<div id="bar-3" class="bar-main-container violet">
 					<div class="wrap">
-						<div class="bar-percentage" data-percentage="25">25 pts</div>
+						<div class="bar-percentage" data-percentage="{{ user.attribute.stamina }}">{{ user.attribute.stamina }} pts</div>
 						<div class="bar-container">
 							<div class="bar"></div>
 						</div>
@@ -124,7 +133,7 @@
 				<p class="skill_title">Agilité</p>
 				<div id="bar-4" class="bar-main-container yellow">
 					<div class="wrap">
-						<div class="bar-percentage" data-percentage="30">30 pts</div>
+						<div class="bar-percentage" data-percentage="{{ user.attribute.agility }}">{{ user.attribute.agility }} pts</div>
 						<div class="bar-container">
 							<div class="bar"></div>
 						</div>
@@ -137,7 +146,7 @@
 				<p class="skill_title">Chance</p>
 				<div id="bar-5" class="bar-main-container red">
 					<div class="wrap">
-						<div class="bar-percentage" data-percentage="60">60 pts</div>
+						<div class="bar-percentage" data-percentage="{{ user.attribute.luck }}">{{ user.attribute.luck }} pts</div>
 						<div class="bar-container">
 							<div class="bar"></div>
 						</div>
