@@ -14,7 +14,7 @@ class FightController extends Controller
 
 	/**
 	* @Route("/fight/")
-	* @Template("PotagerFrontBundle:Default:fight.html.twig")
+	* @Template()
 	*/
 	public function fightAction() {
 
