@@ -2,8 +2,20 @@
 
 {% block content %}
 
-{{ user }}
-{{ opponent }}
-{{ result }}
+{{ fight.attacker.username }}
+<p>
+{% if faction.name == 'Betterave' %}
+	{% if fight.attackerWin == 1 %}
+		<img src="betterave.gif">
+	{% elseif fight.attackerWin == -1 %}
+	perd contre
+	{% else %}
+	est à égalité avec
+	{% endif %}
+{% else %}
+	<img src="kiwi.gif">	
+{% endif %}
+</p>
+{{ fight.defender.username }}
 
 {% endblock %}
