@@ -6,7 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
-use Potager\BusinessBundle\Entity\fight;
+use Potager\BusinessBundle\Entity\Fight;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FightController extends Controller
 {
@@ -16,34 +17,26 @@ class FightController extends Controller
 	* @Route("/fight/")
 	* @Template()
 	*/
-	public function fightAction() {
-
+	public function fightAction() 
+	{
 		$user = $this->getUser();
 		$faction = $user->getFaction();
 		$level = $user->getAttribute()->getLevel();
 
-
 		$repository = $this->getDoctrine()
 			->getRepository('PotagerBusinessBundle:User');
 
-
 		$diffLevel = 1;
-		while($diffLevel < 100) 
-		{
-			$query = $repository->createQueryBuilder('u')
-				->join('u.attribute', 'a')
-				->where('u.faction != :faction')
-				->andWhere('a.level >= :level1')
-				->andWhere('a.level <= :level2')
-				->setParameter('faction', $faction)
-				->setParameter('level1', $level - $diffLevel )
-				->setParameter('level2', $level + $diffLevel );
 
+		while ($diffLevel < 100) 
+		{
+			$query = $repository->getNearbyPlayerQuery($faction, $level, $diffLevel);
+			
 			$count = $query->select('COUNT(u)')
 				->getQuery()
 				->getResult();
 
-			if($count[0][1] != 0) {
+			if ($count[0][1] != 0) {
 				break;
 			}
 
@@ -56,34 +49,41 @@ class FightController extends Controller
 			->getQuery()
 			->getResult();
 
-
 		$opponent = $result[0];
-
-		$fight =  $this->get('potager_business.fight');
-
-        $timeForUser1 = $fight->attack($user->getAttribute(), $opponent->getAttribute());
-        $timeForUser2 = $fight->attack($opponent->getAttribute(), $user->getAttribute());
-
-        if ($timeForUser1 < $timeForUser2) {
-			$resultFight = 1;       
-        } elseif ($timeForUser1 == $timeForUser2) {
-        	$resultFight = 0;  
-        } else {
-        	$resultFight = -1;  
-		}
 
 		$fight = new Fight();
 		$fight->setAttacker($user);
 		$fight->setDefender($opponent);
-		$fight->setAttackerWin($resultFight);
 
 		$em = $this->getDoctrine()->getManager();
    	 	$em->persist($fight);
     	$em->flush();
 
-		return array('fight' => $fight, 'faction' => $faction);
-
-
+		return array('fight' => $fight, 'user' => $user);
+	}
+	
+	/**
+	 * @Route("/fight/go/{id}", name="doFight")
+	 * @Template()
+	 */
+	public function doFightAction(Fight $fight) 
+	{
+		$user = $this->getUser();
+				
+		if ($fight->getAttackerWin() !== null) {
+			return new JsonResponse(array('error' => true));
+		}
+	
+		$fightManager = $this->get('potager_business.fight');
+		$resultFight = $fightManager->computeFightResult($user, $fight->getDefender());
+	
+		$fight->setAttackerWin($resultFight);
+	
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($fight);
+		$em->flush();
+	
+		return new JsonResponse(array('result' => $resultFight));
 	}
 
 }

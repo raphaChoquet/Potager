@@ -1,0 +1,23 @@
+<ul>
+	{% for fight in fights %}
+	{% if fight.attacker.id == user.id %}<li
+		class="{% if fight.attacker.id == user.id and fight.attackerWin == 1 %}{{ fight.attacker.faction.name|lower }}{% elseif fight.attacker.id == user.id and fight.attackerWin == -1 %}{{ fight.defender.faction.name|lower }}{% else %}egal{% endif %}">
+		<p class="title_last3fights">{% if fight.attackerWin == 1 %} Victoire
+			{% elseif fight.attackerWin == -1 %} Défaite {% else %} Égalité {%
+			endif %}</p>
+		<div class="avatar_enemy">
+			<img src="{{ asset(fight.defender.avatar.url) }}" />
+		</div>
+		<p class="name_enemy">{{ fight.defender.username }}</p>
+	</li>{% else %}<li
+		class="{% if fight.defender.id == user.id and fight.attackerWin == 1 %}{{ fight.attacker.faction.name|lower }}{% elseif fight.defender.id == user.id and fight.attackerWin == -1 %}{{ fight.defender.faction.name|lower }}{% else %}egal{% endif %}">
+		<p class="title_last3fights">{% if fight.attackerWin == -1 %}
+			Victoire {% elseif fight.attackerWin == 1 %} Défaite {% else %}
+			Égalité {% endif %}</p>
+		<div class="avatar_enemy">
+			<img src="{{ asset(fight.attacker.avatar.url) }}" />
+		</div>
+		<p class="name_enemy">{{ fight.attacker.username }}</p>
+	</li>{% endif %}
+	{% endfor %}
+</ul>

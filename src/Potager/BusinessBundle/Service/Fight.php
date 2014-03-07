@@ -63,5 +63,21 @@ class Fight
     {
         return ($agility * 20) / 100;
     }
+    
+    public function computeFightResult($user, $defender) 
+    {
+    	$timeForUser1 = $this->attack($user->getAttribute(), $defender->getAttribute());
+    	$timeForUser2 = $this->attack($defender->getAttribute(), $user->getAttribute());
+    	
+    	if ($timeForUser1 < $timeForUser2) {
+    		$resultFight = 1;
+    	} elseif ($timeForUser1 == $timeForUser2) {
+    		$resultFight = 0;
+    	} else {
+    		$resultFight = -1;
+    	}
+    	
+    	return $resultFight;
+    }
 
 }
