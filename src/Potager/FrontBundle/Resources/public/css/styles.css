@@ -77,6 +77,7 @@ html[xmlns] .clearfix {
 /* DEBUT CSS */
 
 body {
+	background:red;
 	font-family: 'Brandon Grotesque Regular';
 	background-image: url("../images/crossword.png");
 }
@@ -458,7 +459,7 @@ body {
 	top: 15px;
 	position: absolute;
 	width: 160px;
-	height: 100px;
+	height: 40px;
 	background-image: url("../images/picto_victory.png");
 	background-repeat: no-repeat;
 	background-position: center top;
@@ -544,7 +545,7 @@ body {
 	top: 15px;
 	position: absolute;
 	width: 130px;
-	height: 100px;
+	height: 40px;
 	background-image: url("../images/picto_loose.png");
 	background-repeat: no-repeat;
 	background-position: center top;
@@ -605,13 +606,16 @@ body {
 }
 
 .avatar_enemy {
-	margin: 3px auto 15px;
-	text-align: center;
-	width: 102px;
+    height: 92px;
+    margin: 3px auto 15px;
+    overflow: hidden;
+    text-align: center;
+    width: 102px;
 }
 
 .avatar_enemy img {
-	max-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .name_enemy {
@@ -637,6 +641,16 @@ body {
 	padding-bottom: 10px;
 	width: 290px;
 	margin-bottom:30px;
+}
+
+#caracteristic ul {
+    margin-bottom:30px;
+}
+
+#caracteristic li {
+    display: inline-block;
+    width: 33%;
+    text-align:center;
 }
 
 #double_skills {

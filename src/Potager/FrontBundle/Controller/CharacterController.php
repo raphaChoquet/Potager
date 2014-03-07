@@ -15,7 +15,7 @@ class CharacterController extends Controller
 {
 	/**
      * @Route("/personnage/")
-     * @Template("PotagerFrontBundle:Default:character.html.twig")
+     * @Template()
      */
     public function characterAction()
 	{
