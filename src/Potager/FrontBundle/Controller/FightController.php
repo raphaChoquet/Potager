@@ -5,9 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Potager\BusinessBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
-use Potager\BusinessBundle\Entity\Attribute;
+use Potager\BusinessBundle\Entity\fight;
 
 class FightController extends Controller
 {
@@ -15,7 +14,7 @@ class FightController extends Controller
 
 	/**
 	* @Route("/fight/")
-	* @Template("PotagerFrontBundle:Default:fight.html.twig")
+	* @Template()
 	*/
 	public function fightAction() {
 
@@ -66,16 +65,25 @@ class FightController extends Controller
         $timeForUser2 = $fight->attack($opponent->getAttribute(), $user->getAttribute());
 
         if ($timeForUser1 < $timeForUser2) {
-			$resultFight = 'Victoire';       
+			$resultFight = 1;       
         } elseif ($timeForUser1 == $timeForUser2) {
-        	$resultFight = 'Egalité';  
+        	$resultFight = 0;  
         } else {
-        	$resultFight = 'Défaite';  
+        	$resultFight = -1;  
 		}
 
-		return array('result' => $resultFight, 'user' => $user, 'opponent' => $opponent);
+		$fight = new Fight();
+		$fight->setAttacker($user);
+		$fight->setDefender($opponent);
+		$fight->setAttackerWin($resultFight);
+
+		$em = $this->getDoctrine()->getManager();
+   	 	$em->persist($fight);
+    	$em->flush();
+
+		return array('fight' => $fight, 'faction' => $faction);
+
 
 	}
 
-	
 }
