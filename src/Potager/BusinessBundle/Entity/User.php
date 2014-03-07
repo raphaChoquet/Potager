@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Potager\BusinessBundle\Entity\UserRepository")
  * @ORM\Table(name="user")
  */
 class User extends BaseUser

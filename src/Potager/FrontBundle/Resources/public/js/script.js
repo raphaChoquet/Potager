@@ -83,6 +83,7 @@ $(function() {
 
 	/* CARACTERISTICS */
 
+	/*
 	$('.bar-percentage[data-percentage]').each(
 			function() {
 				var progress = $(this);
@@ -109,5 +110,22 @@ $(function() {
 							}
 						});
 			});
-
+	});
+	//*/
+	
+    $('#doFight').click(function(e) {
+    	e.preventDefault();
+		$.get($(this).attr('href'), function(data) {
+			if (data.result == 0) {
+				$('#doFight').hide();
+				$('#plop').show();
+			} else if (data.result == 1) {
+				$('#doFight').hide();
+				$('#plop').show();				
+			} else if (data.result == -1) {
+				$('#doFight').hide();
+				$('#plop').show();				
+			}
+		});
+    });
 });

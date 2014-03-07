@@ -1,5 +1,5 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
-
+{% set page = 'character' %}
 <div id="header">
 	<img id="logo"
 		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
@@ -15,13 +15,7 @@
 	</div>
 </div>
 <!-- fin#banner -->
-<div id="nav" class="{{ user.faction.name|lower }}">
-	<ul>
-		<li class="active"><a href="#">Statistiques</a></li>
-		<li><a href="#">Rejoindre le champs</a></li>
-		<li><a href="#">Compte</a></li>
-	</ul>
-</div>
+{{ include('PotagerFrontBundle::nav.html.twig') }}
 <div id="resumeFight" class="{{ user.faction.name|lower }}">
 	<div id="victoryFight">
 		<p>victoires</p>
