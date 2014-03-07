@@ -1,0 +1,27 @@
+{% extends 'PotagerFrontBundle::layout.html.twig' %}
+
+{% block content %}
+
+{{ fight.attacker.username }}
+<p>
+{% if faction.name == 'Betterave' %}
+	{% if fight.attackerWin == 1 %}
+		<img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}">
+	{% elseif fight.attackerWin == -1 %}
+		<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}">
+	{% else %}
+		est à égalité avec
+	{% endif %}
+{% else %}
+	{% if fight.attackerWin == 1 %}
+		<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}">
+	{% elseif fight.attackerWin == -1 %}
+		<img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}">
+	{% else %}
+		est à égalité avec
+	{% endif %}
+{% endif %}
+</p>
+{{ fight.defender.username }}
+
+{% endblock %}
