@@ -14,7 +14,7 @@ class FightController extends Controller
 
 
 	/**
-	* @Route("/fight/")
+	* @Route("/fight/", name="fight")
 	* @Template()
 	*/
 	public function fightAction() 
