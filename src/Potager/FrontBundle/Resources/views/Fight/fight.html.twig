@@ -6,50 +6,24 @@
 		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
 		alt="Garden War" />
 </div>
-<div id="banner" class="{{ user.faction.name|lower }}">
-	<div id="avatar" class="{{ user.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(user.avatar.url) }}">
+<div id="banner" class="{{ attacker.faction.name|lower }}">
+	<div id="avatar" class="{{ attacker.faction.name|lower }}">
+		<img alt="avatar" src="{{ asset(attacker.avatar.url) }}">
 	</div>
-	<div id="myUser" class="{{ user.faction.name|lower }}">
-		<p>Bienvenue {{ user.username }}</p>
+	<div id="myUser" class="{{ attacker.faction.name|lower }}">
+		<p>Bienvenue {{ attacker.username }}</p>
 		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
 	</div>
 </div>
 <!-- fin#banner -->
 {{ include('PotagerFrontBundle::nav.html.twig') }}
-<div id="duels" class="{{ user.faction.name|lower }} clearfix">
-	<div id="duels_left">{{ fight.attacker.username }}</div>
+<div id="duels" class="{{ attacker.faction.name|lower }} clearfix">
+	<div id="duels_left">{{ attacker.username }}</div>
 	<div id="duels_center">VS</div>
-	<div id="duels_right">{{ fight.defender.username }}</div>
+	<div id="duels_right">{{ defender.username }}</div>
 </div>
 <div id="ring">
 
-	<a id="doFight" href="{{ path('doFight', { id: fight.id }) }}">Se battre</a>
-
-	{# <img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}" id="plop" style="display:none;">#}
-	<div id="plop" style="display:none;">
-		{% if fight.attacker.faction.name == 'Betterave' %} 
-			{% if fight.attackerWin == 1 %}
-				 <img src="{{ asset('bundles/potagerfront/images/betterave_attack.gif') }}">
-			{% elseif fight.attackerWin == -1 %} 
-				<img src="{{ asset('bundles/potagerfront/images/kiwi_defend.gif') }}"> 
-			{% elseif fight.attackerWin == 0 %} 
-				Betterave et egalite
-			{% else %}
-				Blzenri zenimrn 
-			{% endif %} 
-			
-		{% else %} 
-		
-			{% if fight.attackerWin == 1 %} 
-				<img src="{{ asset('bundles/potagerfront/images/kiwi.gif') }}"> 
-				{% elseif fight.attackerWin == -1 %} 
-			<img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}"> 
-			{% elseif fight.attackerWin == 0 %} 
-				Pas Beterrave et egalite
-			{% endif %}
-		{% endif %}
-	</div>
+	<a id="doFight" href="{{ path('doFight', { id: defender.id }) }}">Se battre</a>
 </div>
-
 {% endblock %}

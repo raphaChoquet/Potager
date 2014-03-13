@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 use Potager\BusinessBundle\Entity\Fight;
+use Potager\BusinessBundle\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FightController extends Controller
@@ -19,9 +20,9 @@ class FightController extends Controller
 	*/
 	public function fightAction() 
 	{
-		$user = $this->getUser();
-		$faction = $user->getFaction();
-		$level = $user->getAttribute()->getLevel();
+		$attacker = $this->getUser();
+		$faction = $attacker->getFaction();
+		$level = $attacker->getAttribute()->getLevel();
 
 		$repository = $this->getDoctrine()
 			->getRepository('PotagerBusinessBundle:User');
@@ -49,33 +50,29 @@ class FightController extends Controller
 			->getQuery()
 			->getResult();
 
-		$opponent = $result[0];
+		$defender = $result[0];
 
-		$fight = new Fight();
-		$fight->setAttacker($user);
-		$fight->setDefender($opponent);
-
-		$em = $this->getDoctrine()->getManager();
-   	 	$em->persist($fight);
-    	$em->flush();
-
-		return array('fight' => $fight, 'user' => $user);
+		return array('defender' => $defender, 'attacker' => $attacker);
 	}
 	
 	/**
 	 * @Route("/fight/go/{id}", name="doFight")
 	 * @Template()
 	 */
-	public function doFightAction(Fight $fight) 
+	public function doFightAction(User $defender) 
 	{
-		$user = $this->getUser();
+		$attacker = $this->getUser();
+
+		$fight = new Fight();
+		$fight->setAttacker($attacker);
+		$fight->setDefender($defender);
 				
 		if ($fight->getAttackerWin() !== null) {
 			return new JsonResponse(array('error' => true));
 		}
 	
 		$fightManager = $this->get('potager_business.fight');
-		$resultFight = $fightManager->computeFightResult($user, $fight->getDefender());
+		$resultFight = $fightManager->computeFightResult($attacker, $fight->getDefender());
 	
 		$fight->setAttackerWin($resultFight);
 	
@@ -83,7 +80,7 @@ class FightController extends Controller
 		$em->persist($fight);
 		$em->flush();
 	
-		return new JsonResponse(array('result' => $resultFight));
+		return array('fight' => $fight);
 	}
 
 }
