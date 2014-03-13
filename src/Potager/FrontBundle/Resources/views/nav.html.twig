@@ -1,7 +1,7 @@
-<div id="nav" class="{{ user.faction.name|lower }}">
+<div id="nav" class="{{ app.user.faction.name|lower }}">
 	<ul>
-		<li class="{% if page == 'character' %}active{% endif %}"><a href="#">Statistiques</a></li>
-		<li class="{% if page == 'fight' %}active{% endif %}"><a href="../fight/">Rejoindre le champs</a></li>
+		<li class="{% if page == 'character' %}active{% endif %}"><a href="{{ path('personnage') }}">Personnage</a></li>
+		<li class="{% if page == 'fight' %}active{% endif %}"><a href="{{ path('fight') }}">Rejoindre le champs</a></li>
 		<li class="{% if page == 'account' %}active{% endif %}"><a href="#">Compte</a></li>
 	</ul>
 </div>
