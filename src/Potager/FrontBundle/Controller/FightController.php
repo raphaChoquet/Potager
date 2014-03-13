@@ -78,6 +78,12 @@ class FightController extends Controller
 	
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($fight);
+
+		$experienceManager = $this->get('potager_business.experience');
+		$experienceManager->fightResult($fight);
+		$em->persist($attacker);
+		$em->persist($defender);
+
 		$em->flush();
 	
 		return array('fight' => $fight);
