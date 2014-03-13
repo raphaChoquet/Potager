@@ -1,0 +1,10 @@
+sonata.admin.image:
+    class: Potager\BusinessBundle\Admin\AvatarAdmin
+    tags:
+        - { name: sonata.admin, manager_type: orm, label: "Image" }
+    arguments:
+        - ~
+        - Potager\BusinessBundle\Entity\Avatar
+        - 'SonataAdminBundle:CRUD'
+    calls:
+        - [ setTranslationDomain, [Potager\BusinessBundle]]

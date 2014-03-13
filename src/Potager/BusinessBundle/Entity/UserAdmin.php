@@ -56,6 +56,7 @@ class UserAdmin extends BaseUserAdmin
                     ->add('expired', null, array('required' => false))
                     ->add('enabled', null, array('required' => false))
                     ->add('credentialsExpired', null, array('required' => false))
+                    ->add('avatar_id', null, array('required' => false))
                 ->end()
             ;
         }
