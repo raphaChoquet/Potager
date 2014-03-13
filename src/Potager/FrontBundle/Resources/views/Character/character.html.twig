@@ -29,7 +29,7 @@
 		<li>Nombre de défaites : {{ user.fightLost }}</li>
 		<li>Nombre d'égalités : {{ user.fightDraw }}</li>
 	</ul>
-	<p>Vous êtes niveau {{ user.attribute.level }}</p>
+	<p>Vous êtes niveau <span id="levelUser">{{ user.attribute.level }}</span></p>
 
 	<div class="skill experience">
 		<p class="skill_title">Expérience</p>
@@ -46,7 +46,7 @@
 
 	<div id="double_skills" class="clearfix">
 		<div id="skills_left">
-			<div class="skill">
+			<div class="skill strenght">
 				<p class="skill_title">Force</p>
 				<div id="bar-2" class="bar-main-container emerald">
 					<div class="wrap">
@@ -58,10 +58,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="addSkill">Add</div>
+				<a id="strenght" class="addSkill" href="{{ path('addSkill', { attribute: 'strenght' }) }}">Add</a>
 			</div>
 
-			<div class="skill">
+			<div class="skill stamina">
 				<p class="skill_title">Endurance</p>
 				<div id="bar-3" class="bar-main-container violet">
 					<div class="wrap">
@@ -73,11 +73,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="addSkill">Add</div>
+				<a id="stamina" class="addSkill" href="{{ path('addSkill', { attribute: 'stamina' }) }}">Add</a>
 			</div>
 		</div>
 		<div id="skills_right">
-			<div class="skill">
+			<div class="skill agility">
 				<p class="skill_title">Agilité</p>
 				<div id="bar-4" class="bar-main-container yellow">
 					<div class="wrap">
@@ -89,10 +89,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="addSkill">Add</div>
+				<a id="agility" class="addSkill" href="{{ path('addSkill', { attribute: 'agility' }) }}">Add</a>
 			</div>
 
-			<div class="skill">
+			<div class="skill luck">
 				<p class="skill_title">Chance</p>
 				<div id="bar-5" class="bar-main-container red">
 					<div class="wrap">
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="addSkill">Add</div>
+				<a id="luck" class="addSkill" href="{{ path('addSkill', { attribute: 'luck' }) }}">Add</a>
 			</div>
 		</div>
 	</div>
