@@ -73,7 +73,7 @@ class FightController extends Controller
 	
 		$fightManager = $this->get('potager_business.fight');
 		$resultFight = $fightManager->computeFightResult($attacker, $fight->getDefender());
-	
+
 		$fight->setAttackerWin($resultFight);
 	
 		$em = $this->getDoctrine()->getManager();
@@ -87,6 +87,7 @@ class FightController extends Controller
 		$em->flush();
 	
 		return array('fight' => $fight);
+
 	}
 
 }
