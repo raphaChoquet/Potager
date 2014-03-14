@@ -1,22 +1,10 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 
 {% set page = 'fight' %}
-<div id="header">
-	<img id="logo"
-		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-		alt="Garden War" />
-</div>
-<div id="banner" class="{{ attacker.faction.name|lower }}">
-	<div id="avatar" class="{{ attacker.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(attacker.avatar.url) }}">
-	</div>
-	<div id="myUser" class="{{ attacker.faction.name|lower }}">
-		<p>Bienvenue {{ attacker.username }}</p>
-		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
-	</div>
-</div>
-<!-- fin#banner -->
+
+{{ include('PotagerFrontBundle::header.html.twig') }}
 {{ include('PotagerFrontBundle::nav.html.twig') }}
+
 <div id="duels" class="{{ attacker.faction.name|lower }} clearfix">
 	<div id="duels_left">{{ attacker.username }}</div>
 	<div id="duels_center">VS</div>
