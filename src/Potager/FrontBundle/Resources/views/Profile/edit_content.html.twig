@@ -5,6 +5,11 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="bkg-white border-{{ app.user.faction.name|lower}}">
+	
+	Changer Adresse e-mail
+
+	<a href="{{ path('fos_user_change_password') }}">Changer Mot de passe </a>
+
 	<div id="email">
 		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
 		    {{ form_widget(form) }}
@@ -15,9 +20,7 @@
 
 	</div>
 
-{#{{ include('PotagerFrontBundle:ChangePassword:changePassword.html.twig') }}#}
-
-{{ render (controller('PotagerFrontBundle:ChangePassword:changePassword')) }}
+{# {{ render (controller('PotagerFrontBundle:ChangePassword:changePassword')) }} #}
 
 </div>
 

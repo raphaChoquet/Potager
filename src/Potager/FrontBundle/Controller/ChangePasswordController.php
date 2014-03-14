@@ -14,11 +14,13 @@ class ChangePasswordController extends BaseController
     /**
      * Change user password
      */
-    public function changePasswordAction()
+    public function changePasswordAction(\Potager\BusinessBundle\Entity\User $user=null)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
+        if( $user == null ) {
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            if (!is_object($user) || !$user instanceof UserInterface) {
+                throw new AccessDeniedException('This user does not have access to this section.');
+            }
         }
 
         $form = $this->container->get('fos_user.change_password.form');

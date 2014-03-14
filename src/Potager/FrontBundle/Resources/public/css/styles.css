@@ -1085,3 +1085,76 @@ a:hover {
 	background-color: #fff;
 }
 
+.row {
+  padding: 1em 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+[class*=col-] {
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Column */
+.col-1  { width: 8.33333%; }
+.col-2  { width: 16.66667%; }
+.col-3  { width: 25%; }
+.col-4  { width: 33.33333%; }
+.col-5  { width: 41.66667%; }
+.col-6  { width: 50%; }
+.col-7  { width: 58.33333%; }
+.col-8  { width: 66.66667%; }
+.col-9  { width: 75%; }
+.col-10 { width: 83.33333%; }
+.col-11 { width: 91.66667%; }
+.col-12 { width: 100%; }
+
+.btn {
+	display: inline-block;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.btn-taupe {
+	background: #dbc899; /* Old browsers */
+background: -moz-linear-gradient(top,  #dbc899 0%, #b2a47f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbc899), color-stop(100%,#b2a47f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #dbc899 0%,#b2a47f 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbc899', endColorstr='#b2a47f',GradientType=0 ); /* IE6-9 */
+
+}
+
+.btn-taupe:hover {
+	background: #b2a47f; /* Old browsers */
+background: -moz-linear-gradient(top,  #b2a47f 0%, #dbc899 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2a47f), color-stop(100%,#dbc899)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #b2a47f 0%,#dbc899 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2a47f', endColorstr='#dbc899',GradientType=0 ); /* IE6-9 */
+
+}
+
+.btn-taupe.active {
+	background: white;
+	border: 3px solid #b2a47f;
+	color: #000;
+}
