@@ -23,7 +23,7 @@
 	<div id="duels_right">{{ defender.username }}</div>
 </div>
 <div id="ring">
-
-	<a id="doFight" href="{{ path('doFight', { id: defender.id }) }}">Se battre</a>
+	<p class="prepareToFight">Préparez-vous au combat !</p>
+	<a id="doFight" href="{{ path('doFight', { id: defender.id }) }}">La bagarre</a>
 </div>
 {% endblock %}

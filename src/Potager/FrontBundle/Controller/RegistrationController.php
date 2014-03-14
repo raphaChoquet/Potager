@@ -33,9 +33,13 @@ class RegistrationController extends BaseController
 
         $formFactory = $this->container->get('form.factory');
         $form = $formFactory->create("potager_front_registration", $user, array('faction' => $faction));
+        $form->setData($user);
         $form->handleRequest($request);
-
+        
         if ($form->isValid()) {
+            echo 'valid';
+            var_dump($form);
+            die();
             $user = $form->getData();
             $userManager->updateUser($user);
             $attribute = new Attribute();

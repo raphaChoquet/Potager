@@ -91,7 +91,9 @@ $(function() {
 	$('#doFight').click(function(e) {
 		e.preventDefault();
 		$.get($(this).attr('href'), function(data) {
+			$(".prepareToFight").remove();
 			$('#doFight').replaceWith(data);
+			$("html, body").animate({scrollTop:400}, '500', 'swing', function() {});
 		});
 	});
 
@@ -110,10 +112,9 @@ $(function() {
 		$.get($(this).attr('href'), function(data) {
 			$('.experience .bar-percentage').attr('data-percentage', 0).html('0 %');
 			defineBar($('.experience .bar-percentage[data-percentage]'));
-			console.log(data);
-			var newLevel = parseInt(data.level)+1;
-			$('.'+a+' .bar-percentage').attr('data-percentage', newLevel).html(newLevel+' pts');
-			$('.'+a+' .bar-container .bar').css('width',newLevel+'%');
+			var newSkill = parseInt(data.attribute)+1;
+			$('.'+a+' .bar-percentage').attr('data-percentage', newSkill).html(newSkill+' pts');
+			$('.'+a+' .bar-container .bar').css('width',newSkill+'%');
 
 			var newLevel = parseInt(b)+1;
 			$("#levelUser").html(newLevel);

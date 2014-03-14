@@ -56,15 +56,15 @@ class CharacterController extends Controller
 		$user->getAttribute()->setLevel($newLevel);
 
 		$newExperience = $user->getAttribute()->getXp();
-		$newExperience = $user->getAttribute()->setXp(0);
+		$user->getAttribute()->setXp(0);
 
 		$newAttribute = $user->getAttribute()->{'get'.ucfirst($attribute)}();
-		$newAttribute = $user->getAttribute()->{'set'.ucfirst($attribute)}($newAttribute+1);
+		$user->getAttribute()->{'set'.ucfirst($attribute)}($newAttribute+1);
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($user->getAttribute());
 		$em->flush();
 
-		return new JsonResponse(array('level' => $newLevel));
+		return new JsonResponse(array('level' => $newLevel, 'attribute' => $newAttribute));
 	}
 }

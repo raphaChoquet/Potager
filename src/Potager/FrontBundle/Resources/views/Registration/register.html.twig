@@ -9,7 +9,7 @@
         src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
         alt="Garden War" />
 </div>
-<form action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<form id="rejoindre" action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate>
     <div id="banner" class="{{ factionName|lower }}">
         <div id="about_game">
             {% if factionName == "Kiwi" %}
