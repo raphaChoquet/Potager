@@ -8,12 +8,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 
-/**
- * Controller managing the password change
- *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- * @author Christophe Coevoet <stof@notk.org>
- */
+
 class ChangePasswordController extends BaseController
 {
     /**
