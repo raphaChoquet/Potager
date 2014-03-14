@@ -11,7 +11,7 @@
 		<div id="fullbarre_enemy"
 			class="{% if user.faction.name|lower=="betterave" %}kiwi{% else %}betterave{% endif %}">
 			<div id="egalityBarre"
-				style="width:{{ stats.draw + stats.win }}%;">Egalite</div>
+				style="width:{{ stats.draw + stats.win }}%;"></div>
 			<div id="mybarre"
 				class="{% if user.faction.name|lower=="betterave" %}betterave{% else %}kiwi{% endif %}"
 				style="width: {{ stats.win }}%;">

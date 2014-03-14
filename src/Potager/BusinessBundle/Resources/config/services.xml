@@ -23,5 +23,7 @@
         </service>
         <service id="potager_business.fight" class="Potager\BusinessBundle\Service\Fight">
         </service>
+        <service id="potager_business.experience" class="Potager\BusinessBundle\Service\Experience">
+        </service>
     </services>
 </container>

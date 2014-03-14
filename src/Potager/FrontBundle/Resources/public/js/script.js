@@ -8,7 +8,7 @@ $(function() {
 		}, 500, function() {/**/
 		});
 		$("#betterave_team a").stop().animate({
-			left : 200
+			paddingLeft : 260
 		}, 500, function() {/**/
 		});
 		$("#betterave_team").stop().animate({
@@ -23,7 +23,7 @@ $(function() {
 	}, function() {
 		$("#betterave_team a").html("betterave");
 		$("#betterave_team a").stop().animate({
-			left : 0
+			paddingLeft : 60
 		}, 500, function() {/**/
 		});
 		$("#kiwi_team").stop().animate({
@@ -83,49 +83,65 @@ $(function() {
 
 	/* CARACTERISTICS */
 
-	/*
-	$('.bar-percentage[data-percentage]').each(
-			function() {
-				var progress = $(this);
-				var percentage = Math.ceil($(this).attr('data-percentage'));
-				$({
-					countNum : 0
-				}).animate(
-						{
-							countNum : percentage
-						},
-						{
-							duration : 2000,
-							easing : 'linear',
-							step : function() {
-								// What todo on every count
-								var pct = '';
-								if (percentage == 0) {
-									pct = Math.floor(this.countNum) + '%';
-								} else {
-									pct = Math.floor(this.countNum + 1) + '%';
-								}
-								progress.siblings().children().css(
-												'width', pct);
-							}
-						});
-			});
-	});
-	//*/
 	
-    $('#doFight').click(function(e) {
-    	e.preventDefault();
-		$.get($(this).attr('href'), function(data) {
-			if (data.result == 0) {
-				$('#doFight').hide();
-				$('#plop').show();
-			} else if (data.result == 1) {
-				$('#doFight').hide();
-				$('#plop').show();				
-			} else if (data.result == -1) {
-				$('#doFight').hide();
-				$('#plop').show();				
-			}
+	$('.bar-percentage[data-percentage]').each(function () {
+			defineBar($(this));
 		});
-    });
+
+	$('#doFight').click(function(e) {
+		e.preventDefault();
+		$.get($(this).attr('href'), function(data) {
+			$('#doFight').replaceWith(data);
+		});
+	});
+
+	var xpActuel = $(".experience .bar-percentage").attr('data-percentage');
+	if (xpActuel < 100) {
+		$(".addSkill").hide();
+	}
+	else {
+		$(".addSkill").show();
+	}
+
+	$(".addSkill").click(function(e) {
+		e.preventDefault();
+		var a = $(this).attr('id');
+		var b = $("#levelUser").html();
+		$.get($(this).attr('href'), function(data) {
+			$('.experience .bar-percentage').attr('data-percentage', 0).html('0 %');
+			defineBar($('.experience .bar-percentage[data-percentage]'));
+			var newSkill = parseInt(data.attribute)+1;
+			$('.'+a+' .bar-percentage').attr('data-percentage', newSkill).html(newSkill+' pts');
+			$('.'+a+' .bar-container .bar').css('width',newSkill+'%');
+
+			var newLevel = parseInt(b)+1;
+			$("#levelUser").html(newLevel);
+
+			$(".addSkill").hide();
+		});
+	});
 });
+
+
+function defineBar($progress) {
+	console.log($progress);
+	var percentage = Math.ceil($progress.attr('data-percentage'));
+	$({countNum : 0}).animate(
+	{
+		countNum : percentage
+	},
+	{
+		duration : 2000,
+		easing : 'linear',
+		step : function() {
+			var pct = '';
+			if (percentage == 0) {
+				pct = Math.floor(this.countNum) + '%';
+			} else {
+				pct = Math.floor(this.countNum + 1) + '%';
+			}
+			$progress.siblings().children().css(
+				'width', pct);
+		}
+	});
+}
