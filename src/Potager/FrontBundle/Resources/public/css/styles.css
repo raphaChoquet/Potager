@@ -870,13 +870,15 @@ body {
 }
 
 .margin-p {
-	margin-top: 1.2em;
-	margin-bottom: 1.2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 
-
-
+#rejoindre label {
+	display: inline-block;
+    width: 120px;
+}
 
 
 
