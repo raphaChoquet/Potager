@@ -1,6 +1,122 @@
+{% block content %}
+{% set page = 'visitusers' %}
+
+<div id="header">
+	<img id="logo"
+		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+		alt="Garden War" />
+</div>
+<div id="banner" class="{{ app.user.faction.name|lower }}">
+	<div id="avatar" class="{{ app.user.faction.name|lower }}">
+		<img alt="avatar" src="{{ asset(app.user.avatar.url) }}">
+	</div>
+	<div id="myUser" class="{{ app.user.faction.name|lower }}">
+		<p>Bienvenue {{ app.user.username }}</p>
+		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
+		<p><br>Visite du potager</p>
+	</div>
+</div>
+<!-- fin#banner -->
+{{ include('PotagerFrontBundle::nav.html.twig') }}
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+<div id="identification" class="bkg-{{ user.faction.name|lower}} border-{{ app.user.faction.name|lower}} clr-white center">
+
+		<h2>{{ user.username|upper }} fait partie des {{ user.faction.name|upper }}S</h2>
 </div>
+<div id="resumeFight" class="bkg-{{ user.faction.name|lower }}">
+	{{ render (controller('PotagerFrontBundle:Character:stats', {'user': user})) }}
+</div>
+
+<div id="last3fights">
+	{{ render (controller('PotagerFrontBundle:Character:lastFights', {'user': user})) }}
+</div>
+
+<div id="caracteristic" class="betterave">
+	<p class="title_caracteristic">Caractéristiques</p>
+
+	<p>{{ user.username|lower }} est niveau <span id="levelUser">{{ user.attribute.level }}</span></p>
+
+	<div class="skill experience">
+		<p class="skill_title">Expérience</p>
+		<div id="bar-1" class="bar-main-container azure">
+			<div class="wrap">
+				<div class="bar-percentage"
+					data-percentage="{{ user.attribute.xp }}">{{ user.attribute.xp }} %</div>
+				<div class="bar-container">
+					<div class="bar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="double_skills" class="clearfix">
+		<div id="skills_left">
+			<div class="skill strenght">
+				<p class="skill_title">Force</p>
+				<div id="bar-2" class="bar-main-container emerald">
+					<div class="wrap">
+						<div class="bar-percentage"
+							data-percentage="{{ user.attribute.strenght }}">{{
+							user.attribute.strenght }} pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<a id="strenght" class="addSkill" href="{{ path('addSkill', { attribute: 'strenght' }) }}">Add</a>
+			</div>
+
+			<div class="skill stamina">
+				<p class="skill_title">Endurance</p>
+				<div id="bar-3" class="bar-main-container violet">
+					<div class="wrap">
+						<div class="bar-percentage"
+							data-percentage="{{ user.attribute.stamina }}">{{
+							user.attribute.stamina }} pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<a id="stamina" class="addSkill" href="{{ path('addSkill', { attribute: 'stamina' }) }}">Add</a>
+			</div>
+		</div>
+		<div id="skills_right">
+			<div class="skill agility">
+				<p class="skill_title">Agilité</p>
+				<div id="bar-4" class="bar-main-container yellow">
+					<div class="wrap">
+						<div class="bar-percentage"
+							data-percentage="{{ user.attribute.agility }}">{{
+							user.attribute.agility }} pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<a id="agility" class="addSkill" href="{{ path('addSkill', { attribute: 'agility' }) }}">Add</a>
+			</div>
+
+			<div class="skill luck">
+				<p class="skill_title">Chance</p>
+				<div id="bar-5" class="bar-main-container red">
+					<div class="wrap">
+						<div class="bar-percentage"
+							data-percentage="{{ user.attribute.luck }}">{{
+							user.attribute.luck }} pts</div>
+						<div class="bar-container">
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+				<a id="luck" class="addSkill" href="{{ path('addSkill', { attribute: 'luck' }) }}">Add</a>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+{% endblock content %}

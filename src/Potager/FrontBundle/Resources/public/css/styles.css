@@ -77,9 +77,14 @@ html[xmlns] .clearfix {
 /* DEBUT CSS */
 
 body {
-	background: red;
+	background: white;
 	font-family: 'Brandon Grotesque Regular';
 	background-image: url("../images/crossword.png");
+}
+
+a {
+	color: #b2a47f;
+	text-decoration: underline;
 }
 
 #main {
@@ -521,6 +526,7 @@ body {
 	width: 530px;
 	height: 45px;
 	margin-top: 10px;
+	color: black;
 }
 
 #myScoreWin {
@@ -591,7 +597,7 @@ body {
 
 #last3fights {
 	background-color: #fff;
-	padding: 40px 0;
+	padding: 40px 0 0;
 }
 
 #last3fights > ul {
@@ -615,6 +621,10 @@ body {
 	background-repeat: no-repeat;
 	color: #92162D;
 }
+#last3fights ul li.betterave a {
+	color: #92162D;
+	text-decoration: none;
+}
 
 #last3fights ul li.kiwi {
 	background-image: url("../images/lastFightKiwi.png");
@@ -622,12 +632,20 @@ body {
 	background-repeat: no-repeat;
 	color: #97ce38;
 }
+#last3fights ul li.kiwi a {
+	color: #97ce38;
+	text-decoration: none;
+}
 
 #last3fights ul li.egal {
 	background-image: url("../images/lastFightEgalite.png");
 	background-position: 3px 25px;
 	background-repeat: no-repeat;
 	color: #848283;
+}
+#last3fights ul li.egal a {
+	color: #848283;
+	text-decoration: none;
 }
 
 .title_last3fights {
@@ -655,11 +673,15 @@ body {
 	text-align: center;
 }
 
+#last3fights ul li a:hover .name_enemy {
+	text-decoration: underline;
+}
+
 /* CARACTERISTIC */
 
 #caracteristic {
 	background-color: #FFFFFF;
-	padding: 0 120px 40px;
+	padding: 40px 120px;
 }
 
 #caracteristic > p {
@@ -705,6 +727,11 @@ body {
 .betterave .title_caracteristic {
 	color: #92162d;
 	border-bottom: 5px solid #92162d;
+}
+
+.kiwi .title_caracteristic {
+	color: #97ce38;
+	border-bottom: 5px solid #97ce38;
 }
 
 .skill {
@@ -861,9 +888,35 @@ body {
 	display:none;
 }
 
+
+/* OTHER PROFILES */
+
+#identification h2 {
+	padding: 15px 0;
+	font-size: 2em;
+	border: 5px white;
+	border-style: solid none;
+	background-color: #b2a47f;
+}
+
 /* ------------------------
  ---- HELPER ---------------
  ------------------------- */
+.bkg-betterave {
+	background-color: #92162d;
+}
+
+.bkg-kiwi {
+	background-color: #97ce38;
+}
+
+.border-betterave {
+	border-top: solid 10px #92162d;
+}
+
+.border-kiwi {
+	border-top: solid 10px #97ce38;
+}
 
 .hideme {
 	opacity: 0;
@@ -873,6 +926,20 @@ body {
 	margin-top: 1.2em;
 	margin-bottom: 1.2em;
 }
+
+.clr-white {
+	color: white;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+
 
 
 

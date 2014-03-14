@@ -3,7 +3,9 @@
 </div>
 <div id="barreFight">
 
-	<p class="title">Combats</p>
+	<p class="title">
+		{% if user.username==app.user.username %}Tes Combats
+		{% else %}Ses combats{% endif %}</p>
 	<div id="zone_barreFight">
 		<div id="myScoreWin">
 			<p>{{ user.fightWon }}</p>
