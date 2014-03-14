@@ -25,5 +25,8 @@
         </service>
         <service id="potager_business.experience" class="Potager\BusinessBundle\Service\Experience">
         </service>
+        <service id="potager_business.avatar" class="Potager\BusinessBundle\Service\Avatar">
+            <argument type="service" id="kernel"/>
+        </service>
     </services>
 </container>

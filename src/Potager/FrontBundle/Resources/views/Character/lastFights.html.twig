@@ -8,7 +8,7 @@
 				{% elseif fight.attackerWin == -1 %} Défaite {% else %} Égalité {%
 				endif %}</p>
 			<div class="avatar_enemy">
-				<img src="{{ asset(fight.defender.avatar.url) }}" />
+				<img src="{{ asset(fight.defender.avatar) }}" />
 			</div>
 			<p class="name_enemy">{{ fight.defender.username }}</p>
 		</a>
@@ -20,7 +20,7 @@
 				Victoire {% elseif fight.attackerWin == 1 %} Défaite {% else %}
 				Égalité {% endif %}</p>
 			<div class="avatar_enemy">
-				<img src="{{ asset(fight.attacker.avatar.url) }}" />
+				<img src="{{ asset(fight.attacker.avatar) }}" />
 			</div>
 			<p class="name_enemy">{{ fight.attacker.username }}</p>
 		</a>

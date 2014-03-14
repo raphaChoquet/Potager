@@ -31,8 +31,11 @@ class RegistrationController extends BaseController
 
         $user->setFaction($faction);
 
+        $avatarManager = $this->container->get('potager_business.avatar');
+        $avatars = $avatarManager->getAvatar($faction);
+
         $formFactory = $this->container->get('form.factory');
-        $form = $formFactory->create("potager_front_registration", $user, array('faction' => $faction, 'validation_groups' => array('Registration', 'Default')));
+        $form = $formFactory->create("potager_front_registration", $user, array('avatars' => $avatars, 'validation_groups' => array('Registration', 'Default')));
         $form->handleRequest($request);
         if ($form->isValid()) {
             $user = $form->getData();
