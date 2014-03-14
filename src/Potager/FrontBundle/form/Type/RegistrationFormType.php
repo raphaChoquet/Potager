@@ -15,19 +15,17 @@ class RegistrationFormType extends BaseType
     {
         parent::buildForm($builder, $options);
 
-        $faction = $options['faction'];
+        $avatars = $options['avatars'];
+        $fieldAvatars = array();
+        foreach ($avatars as $v) {
+            $fieldAvatar[$v] = $v;
+        }
 
-        $builder->add('avatar', 'entity', array(
-                    'class' => 'PotagerBusinessBundle:Avatar',
-                    'property' => 'url',
-                    'expanded' => true,
-                    'query_builder' => function(EntityRepository $er) use ($faction) {
-
-                        return $er->createQueryBuilder('u')
-                            ->where('u.faction = :faction')
-                            ->setParameter('faction', $faction);
-                    }
-                ));
+        $builder->add('avatar', 'choice', array(
+            'choices'  => $avatars,
+            'expanded' => true,
+            'required' => true
+        ));
     }
 
 
@@ -35,7 +33,7 @@ class RegistrationFormType extends BaseType
     {
         parent::setDefaultOptions($resolver);
 
-        $resolver->setRequired(array('faction'));
+        $resolver->setRequired(array('avatars'));
     }
 
     public function getName()

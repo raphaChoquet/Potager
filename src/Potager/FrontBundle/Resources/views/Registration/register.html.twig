@@ -1,7 +1,7 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
+{{ parent() }}
 <link rel="stylesheet" href="{{ asset('bundles/potagerfront/css/style2.css') }}" type="text/css" media="all" />
 {% endblock %}
 
@@ -10,20 +10,24 @@
 
 <div id="header">
     <img id="logo"
-        src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-        alt="Garden War" />
+    src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+    alt="Garden War" />
 </div>
 <div id="banner" class="{{ factionName|lower }}">
     <div id="about_game">
         {% if factionName == "Kiwi" %}
-        <h1>Killwome !!!!!</h1>
+        <h1>Bienvenue chez les kiwis !</h1>
+        <p> Rejoignez la force verte ! </p>
+        <a href="{{ path('home') }}">Vous n'aimez pas le vert ? Cliquez ici </a>
         {% else %}
-        <h1>Bienvenue dans le 4éme Reich</h1>
+        <h1>Bienvenue chez les Betteraves !</h1>
+        <p> Rejoignez la force rouge ! </p>
+        <a href="{{ path('home') }}">Le rouge vous déplait ? Cliquez ici </a>
         {% endif %}
         <div class="msg-error">{{ form_errors(form) }}</div>
     </div>
 </div>
-<form id="rejoindre" action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate>
+<form id="rejoindre" class="clearfix" action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate>
     <p class="margin-p">
         {{ form_label(form.username) }}
         {{ form_widget(form.username) }}
@@ -45,7 +49,7 @@
     <div class="msg-error">  
         {{ form_errors(form.plainPassword.first) }}
     </div>
-     <p class="margin-p">
+    <p class="margin-p">
         {{ form_label(form.plainPassword.second) }}    
         {{ form_widget(form.plainPassword.second) }}
     </p>
@@ -55,7 +59,7 @@
     <div class="margin-p">
         Selectionne ton avatar
         <a href="" id="btn-add-img">
-            <div id="add-img">+</div>
+            <div id="add-img" class="">+</div>
             <p>ADD</p>
         </a>
     </div>
@@ -67,12 +71,11 @@
         {{form_row(form._token)}}
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
-</form>
-
-<div>
+    <div id="listAvatars">
       {% for child in form.avatar %}
-            <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
-        {% endfor %}
-</div>
+      <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
+      {% endfor %}
+  </div>
+</form>
 
 {% endblock %}
