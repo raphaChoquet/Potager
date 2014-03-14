@@ -1,5 +1,5 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
-{% set page = 'account' %}
+{% set page = 'profile_edit' %}
 
 <div id="header">
 	<img id="logo"
@@ -21,6 +21,9 @@
 		{% block fos_user_content %}
 		{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 		{% endblock fos_user_content %}
+
+		
+		
 	</div>
 
 {% endblock content %}
