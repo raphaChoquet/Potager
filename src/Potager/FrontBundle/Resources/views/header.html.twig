@@ -11,7 +11,7 @@
 			<img alt="avatar" src="{{ asset(app.user.avatar) }}">
 		</a>
 	</div>
-	<div id="myUser" class="{{ app.user.faction.name|lower }}">
+	<div id="myUser" class="{{ app.user.faction.name|lower }}">@
 		<p>Bienvenue {{ app.user.username }}</p>
 		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
 		{% if page == 'visit_users' %}

@@ -17,6 +17,8 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class UserAdmin extends BaseUserAdmin
 {   
 
+    public $avatarManager;
+
     /**
      * {@inheritdoc}
      */
@@ -45,6 +47,11 @@ class UserAdmin extends BaseUserAdmin
             // .. more info
             ;
 
+        $avatars = $this->getAvatarManager()->getAvatar();
+        $fieldAvatars = array();
+        foreach ($avatars as $v) {
+            $fieldAvatar[$v] = $v;
+        }
         if (!$this->getSubject()->hasRole('ROLE_SUPER_ADMIN')) {
             $formMapper
                 ->with('Management')
@@ -64,12 +71,11 @@ class UserAdmin extends BaseUserAdmin
                         'property' => 'name',
                         'expanded' => true
                     ))
-                    ->add('avatar', 'entity', array(
-                        'class' => 'PotagerBusinessBundle:Avatar',
-                        'property' => 'url',
-                        'expanded' => true
-                    ), array('template' => 'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
-            ;
+                   ->add('avatar', 'choice', array(
+                        'choices'  => $fieldAvatar,
+                        'expanded' => true,
+                        'required' => true
+                    ));
         }
     }
 
@@ -116,4 +122,19 @@ class UserAdmin extends BaseUserAdmin
         return 'BackBundle:CRUD:base_standard_edit_field.html.twig';
     }
 */
+
+
+    /**
+     */
+    public function setAvatarManager($avatarManager)
+    {
+        $this->avatarManager = $avatarManager;
+    }
+
+    /**
+     */
+    public function getAvatarManager()
+    {
+        return $this->avatarManager;
+    }
 }

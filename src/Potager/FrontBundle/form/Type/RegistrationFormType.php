@@ -22,7 +22,7 @@ class RegistrationFormType extends BaseType
         }
 
         $builder->add('avatar', 'choice', array(
-            'choices'  => $fieldAvatar,
+            'choices'  => $avatars,
             'expanded' => true,
             'required' => true
         ));

@@ -62,6 +62,7 @@ class User extends BaseUser
         $this->fightsAttacker = new ArrayCollection();
         $this->fightsDefender = new ArrayCollection();
         $this->remainingFight = 5;
+        $this->avatar = '';
     }
 
     /**
