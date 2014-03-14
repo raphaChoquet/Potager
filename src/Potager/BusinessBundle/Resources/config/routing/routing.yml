@@ -24,7 +24,7 @@ fos_user_resetting:
 
 fos_user_change_password:
     resource: "@PotagerBusinessBundle/Resources/config/routing/change_motdepasse.xml"
-    prefix: /change_motdepasse
+    prefix: /fos_user_profile_edit
 
 sonata_admin_dashboard:
      pattern:  /admin/dashboard
