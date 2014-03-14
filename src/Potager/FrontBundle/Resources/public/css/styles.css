@@ -232,7 +232,7 @@ body {
 	font-size: 46px;
 	padding-left: 60px;
 	text-transform: uppercase;
-	width: 540px;
+	width: 100%;
 }
 
 #kiwi_team {
@@ -247,7 +247,7 @@ body {
 	left: 0;
 	position: absolute;
 	padding-left: 320px;
-	width: 280px;
+	width: 100%;
 }
 
 #victory_team {
@@ -868,3 +868,16 @@ body {
 .hideme {
 	opacity: 0;
 }
+
+.margin-p {
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
+}
+
+
+
+
+
+
+
+

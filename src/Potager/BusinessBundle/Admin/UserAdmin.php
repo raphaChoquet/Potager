@@ -13,8 +13,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Route\RouteCollection;
 
+
 class UserAdmin extends BaseUserAdmin
-{
+{   
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +36,6 @@ class UserAdmin extends BaseUserAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->with('General')
                 ->add('username')
@@ -56,11 +57,18 @@ class UserAdmin extends BaseUserAdmin
                     ->add('expired', null, array('required' => false))
                     ->add('enabled', null, array('required' => false))
                     ->add('credentialsExpired', null, array('required' => false))
-                    ->add('avatar', 'text', array(
+                    ->add('faction', 'entity', array(
                         'required' => false, 
-                        'label' => 'Avatar'
+                        'label' => 'Faction',
+                        'class' => 'PotagerBusinessBundle:Faction',
+                        'property' => 'name',
+                        'expanded' => true
                     ))
-                ->end()
+                    ->add('avatar', 'entity', array(
+                        'class' => 'PotagerBusinessBundle:Avatar',
+                        'property' => 'url',
+                        'expanded' => true
+                    ), array('template' => 'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
             ;
         }
     }
@@ -75,6 +83,11 @@ class UserAdmin extends BaseUserAdmin
             ->add('username')
             ->add('locked')
             ->add('email')
+            ->add('faction.name', 'doctrine_orm_choice', array('label' => 'Factions'), 'choice',  array(
+                     'choices' => array('Betterave' => 'Betterave', 'Kiwi' => 'Kiwi'),
+                     'expanded' => false,
+                     'multiple' => false
+                ))
         ;
     }
     /**
@@ -88,7 +101,7 @@ class UserAdmin extends BaseUserAdmin
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
-            ->add('avatar_id', null, array('associated_tostring' => 'getAvatar'))
+            ->add('faction', null, array('associated_tostring' => 'getName'))
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
@@ -97,4 +110,10 @@ class UserAdmin extends BaseUserAdmin
             ;
         }
     }
+
+/*        public function getEditTemplate()
+    {
+        return 'BackBundle:CRUD:base_standard_edit_field.html.twig';
+    }
+*/
 }
