@@ -91,7 +91,9 @@ $(function() {
 	$('#doFight').click(function(e) {
 		e.preventDefault();
 		$.get($(this).attr('href'), function(data) {
+			$(".prepareToFight").remove();
 			$('#doFight').replaceWith(data);
+			$("html, body").animate({scrollTop:400}, '500', 'swing', function() {});
 		});
 	});
 
