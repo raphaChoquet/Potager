@@ -5,7 +5,7 @@
         {% elseif fight.attackerWin == -1 %} 
             <img src="{{ asset('bundles/potagerfront/images/kiwi_defend.gif') }}"> 
         {% elseif fight.attackerWin == 0 %} 
-            Betterave et egalite
+            <img src="{{ asset('bundles/potagerfront/images/draw_beterave.gif') }}">
         {% else %}
             Blzenri zenimrn 
         {% endif %} 
@@ -17,7 +17,9 @@
             {% elseif fight.attackerWin == -1 %} 
         <img src="{{ asset('bundles/potagerfront/images/betterave.gif') }}"> 
         {% elseif fight.attackerWin == 0 %} 
-            Pas Beterrave et egalite
+            <img src="{{ asset('bundles/potagerfront/images/draw.gif') }}">
         {% endif %}
     {% endif %}
+
+    <a id="backToCharacters" href="{{ path('personnage') }}">&#60; Retour au camps</a>
 </div>
