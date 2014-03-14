@@ -6,4 +6,8 @@
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
     {% endif %}
+    <a href="{{ path('home') }}">Retour sur la page d'accueil</a><br>
+    <a href="{{ path('personnage') }}">Allez voir votre personnage !</a>
+
 {% endblock fos_user_content %}
+

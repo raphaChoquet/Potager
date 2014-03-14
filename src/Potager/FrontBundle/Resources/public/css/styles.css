@@ -945,16 +945,98 @@ a:hover {
 	text-align: center;
 }
 
-
-
+/*
 #rejoindre label {
 	display: inline-block;
     width: 120px;
 }
-
+*/
 /* ------------------------
  ---- RAPHAËL --------------
  ------------------------- */
+
+h1 {
+	font-size: 1.5em;
+	margin-bottom: 1em; 
+}
+
+.margin-p {
+	margin-top: 1em;
+	margin-bottom: 0;
+	line-height: 1.5em;
+}
+
+#rejoindre {
+	position:relative;
+	background-color: #fff;
+	width:100%;
+	padding:0 50px;
+}
+
+#rejoindre input {
+	border: 1px solid #CECECE;
+    padding: 13px 100px 13px 10px;
+}
+
+
+#rejoindre label {
+	display: block;
+}
+
+#listAvatars {
+    border: 1px solid #CCCCCC;
+    position: absolute;
+    top: 0;
+    width: 1000px;
+    z-index: 99;
+    display:none;
+}
+
+#listAvatars .test {
+    display: inline-block;
+}
+
+.msg-error {
+	color: #c62d1f;
+	line-height: 1.5em;
+}
+
+#add-img {
+	background: none repeat scroll 0 0 #e2e3e5;
+    color: #BCBDBF;
+    font-size: 8em;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    width: 150px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+
+	  /* No support for these yet, use at own risk */
+	-o-user-select: none;
+	user-select: none;   
+
+	position:absolute;
+}
+
+#btn-add-img {
+    color: #000000;
+    height: 150px;
+    position: relative;
+    text-decoration: none;
+    width: 150px;
+    display:block;
+}
+
+#btn-add-img p {
+    border: 1px solid #CCCCCC;
+    bottom: 0;
+    padding: 10px 20px;
+    position: absolute;
+    text-align: center;
+    width: 108px;
+}
 
  /* ------------------------
  ---- NARINDRA --------------
@@ -1074,9 +1156,27 @@ a:hover {
 	top:1px;
 }
 
+#logo {
+	-webkit-transition:all ease-in-out 250ms;
+   	-moz-transition:all ease-in-out 250ms;
+     -o-transition:all ease-in-out 250ms;
+}
+
+#logo:hover {
+	top: 15px;
+	-webkit-transition:all ease-in-out 250ms;
+   	-moz-transition:all ease-in-out 250ms;
+     -o-transition:all ease-in-out 250ms;
+        transition:all ease-in-out 250ms;
+}
+
  /* ------------------------
  ---- TRISTAN --------------
  ------------------------- */
+
+ #about_game p {
+ 	margin-bottom: 15px;
+ }
 
   /* ------------------------
  ---- CAMILLE --------------
