@@ -8,7 +8,7 @@
 </div>
 <div id="banner" class="{{ app.user.faction.name|lower }}">
 	<div id="avatar" class="{{ app.user.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(app.user.avatar.url) }}">
+		<img alt="avatar" src="{{ asset(app.user.avatar) }}">
 	</div>
 	<div id="myUser" class="{{ app.user.faction.name|lower }}">
 		<p>Bienvenue {{ app.user.username }}</p>
