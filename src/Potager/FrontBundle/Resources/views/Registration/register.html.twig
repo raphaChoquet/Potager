@@ -1,5 +1,9 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/potagerfront/css/style2.css') }}" type="text/css" media="all" />
+{% endblock %}
 
 {% block content %}
 {% trans_default_domain 'FOSUserBundle' %}
@@ -9,48 +13,66 @@
         src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
         alt="Garden War" />
 </div>
+<div id="banner" class="{{ factionName|lower }}">
+    <div id="about_game">
+        {% if factionName == "Kiwi" %}
+        <h1>Killwome !!!!!</h1>
+        {% else %}
+        <h1>Bienvenue dans le 4éme Reich</h1>
+        {% endif %}
+        <div class="msg-error">{{ form_errors(form) }}</div>
+    </div>
+</div>
 <form id="rejoindre" action="{{ path('fos_user_registration_register', {"factionName": factionName }) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" novalidate>
-    <div id="banner" class="{{ factionName|lower }}">
-        <div id="about_game">
-            {% if factionName == "Kiwi" %}
-            <p>Killwome !!!!!</p>
-            {% else %}
-            <p>Bienvenue dans le 4éme Reich</p>
-            {% endif %}
-            <p class="msg-error">{{ form_errors(form) }}</p>
-            <p class="margin-p">
-                {{ form_label(form.username) }}
-                {{ form_errors(form.username) }}
-                {{ form_widget(form.username) }}
-            </p>
-            <p class="margin-p">
-                {{ form_label(form.email) }}
-                {{ form_errors(form.email) }}
-                {{ form_widget(form.email) }}
-            </p>
-        </div>
+    <p class="margin-p">
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+    </p>
+    <div class="msg-error">
+        {{ form_errors(form.username) }}
     </div>
-    <p> {{ form_errors(form) }}</p>
-    <div>
+    <p class="margin-p">
         {{ form_label(form.email) }}
-        {{ form_errors(form.email) }}
         {{ form_widget(form.email) }}
+    </p>
+    <div class="msg-error">
+        {{ form_errors(form.email) }}
     </div>
-        <div>
-        {{ form_label(form.plainPassword) }}
-        {{ form_errors(form.plainPassword) }}
-        {{ form_widget(form.plainPassword) }}
+    <p class="margin-p">
+        {{ form_label(form.plainPassword.first) }}    
+        {{ form_widget(form.plainPassword.first) }}
+    </p>
+    <div class="msg-error">  
+        {{ form_errors(form.plainPassword.first) }}
     </div>
-    <div>
-        {{ form_label(form.avatar) }}
+     <p class="margin-p">
+        {{ form_label(form.plainPassword.second) }}    
+        {{ form_widget(form.plainPassword.second) }}
+    </p>
+    <div class="msg-error">  
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+    <div class="margin-p">
+        Selectionne ton avatar
+        <a href="" id="btn-add-img">
+            <div id="add-img">+</div>
+            <p>ADD</p>
+        </a>
+    </div>
+    <div class="msg-error">  
         {{ form_errors(form.avatar) }}
-        {% for child in form.avatar %}
-            <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
-        {% endfor %}
+        
     </div>
-    <div>
+    <div class="margin-p">
         {{form_row(form._token)}}
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
 </form>
+
+<div>
+      {% for child in form.avatar %}
+            <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
+        {% endfor %}
+</div>
+
 {% endblock %}

@@ -32,33 +32,35 @@ class RegistrationController extends BaseController
         $user->setFaction($faction);
 
         $formFactory = $this->container->get('form.factory');
-        $form = $formFactory->create("potager_front_registration", $user, array('faction' => $faction));
+        $form = $formFactory->create("potager_front_registration", $user, array('faction' => $faction, 'validation_groups' => array('Registration', 'Default')));
         $form->setData($user);
-        $form->handleRequest($request);
-        
-        if ($form->isValid()) {
-            echo 'valid';
-            var_dump($form);
-            die();
-            $user = $form->getData();
-            $userManager->updateUser($user);
-            $attribute = new Attribute();
-            $attribute->setUser($user);
-            $em->persist($attribute);
-            $em->flush();
+      //  $form->handleRequest($request);
+        if ('POST' === $request->getMethod()) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                echo 'valid';
+                var_dump($form);
+                die();
+                $user = $form->getData();
+                $userManager->updateUser($user);
+                $attribute = new Attribute();
+                $attribute->setUser($user);
+                $em->persist($attribute);
+                $em->flush();
 
-            $authUser = true;
-            $route = 'fos_user_registration_confirmed';
+                $authUser = true;
+                $route = 'fos_user_registration_confirmed';
 
-            $this->setFlash('fos_user_success', 'registration.flash.user_created');
-            $url = $this->container->get('router')->generate($route, array('factionName' => $faction->getName()));
-            $response = new RedirectResponse($url);
+                $this->setFlash('fos_user_success', 'registration.flash.user_created');
+                $url = $this->container->get('router')->generate($route, array('factionName' => $faction->getName()));
+                $response = new RedirectResponse($url);
 
-            if ($authUser) {
-                $this->authenticateUser($user, $response);
+                if ($authUser) {
+                    $this->authenticateUser($user, $response);
+                }
+
+                return $response;
             }
-
-            return $response;
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
