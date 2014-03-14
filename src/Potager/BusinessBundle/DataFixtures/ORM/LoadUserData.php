@@ -22,16 +22,15 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 			$user->setEnabled(true);
 
 			if($i%2 === 1) {
-				$user->setAvatar($this->getReference('avatarBetterave'));
+				$user->setAvatar('bundles/potagerbusiness/images/faction/betterave-angry.png');
 				$user->setFaction($this->getReference('Betterave'));
 			} else {
-				$user->setAvatar($this->getReference('avatarKiwi'));
+				$user->setAvatar('bundles/potagerbusiness/images/faction/kiwi-angry.png');
 				$user->setFaction($this->getReference('Kiwi'));
 			}
 
 			$this->addReference('user-'.$i, $user);
 			$manager->persist($user);
-
 		}
 		
 		$manager->flush();
@@ -42,6 +41,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 3;
+        return 2;
     }
 }

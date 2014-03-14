@@ -16,9 +16,13 @@
 <div id="banner" class="{{ factionName|lower }}">
     <div id="about_game">
         {% if factionName == "Kiwi" %}
-        <h1>Killwome !!!!!</h1>
+        <h1>Bienvenue chez les kiwis !</h1>
+        <p> Rejoignez la force verte ! </p>
+        <a href="{{ path('home') }}">Vous n'aimez pas le vert ? Cliquez ici </a>
         {% else %}
-        <h1>Bienvenue dans le 4éme Reich</h1>
+        <h1>Bienvenue chez les Betteraves !</h1>
+        <p> Rejoignez la force rouge ! </p>
+        <a href="{{ path('home') }}">Le rouge vous déplait ? Cliquez ici </a>
         {% endif %}
         <div class="msg-error">{{ form_errors(form) }}</div>
     </div>
