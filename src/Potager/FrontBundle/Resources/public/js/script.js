@@ -8,7 +8,7 @@ $(function() {
 		}, 500, function() {/**/
 		});
 		$("#betterave_team a").stop().animate({
-			marginLeft : 200
+			paddingLeft : 260
 		}, 500, function() {/**/
 		});
 		$("#betterave_team").stop().animate({
@@ -23,7 +23,7 @@ $(function() {
 	}, function() {
 		$("#betterave_team a").html("betterave");
 		$("#betterave_team a").stop().animate({
-			left : 0
+			paddingLeft : 60
 		}, 500, function() {/**/
 		});
 		$("#kiwi_team").stop().animate({

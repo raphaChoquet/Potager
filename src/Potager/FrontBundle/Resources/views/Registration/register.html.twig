@@ -18,10 +18,15 @@
             <p>Bienvenue dans le 4éme Reich</p>
             {% endif %}
             <p class="msg-error">{{ form_errors(form) }}</p>
-            <p class="marge-p">
+            <p class="margin-p">
                 {{ form_label(form.username) }}
                 {{ form_errors(form.username) }}
                 {{ form_widget(form.username) }}
+            </p>
+            <p class="margin-p">
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
             </p>
         </div>
     </div>
