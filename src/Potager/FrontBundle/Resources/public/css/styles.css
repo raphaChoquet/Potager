@@ -361,7 +361,7 @@ a:hover {
 	text-align: center;
 }
 
-#avatar > img {
+#avatar img {
 	max-height: 95%;
 	max-width: 95%;
 	padding: 2.5%;
@@ -967,5 +967,7 @@ a:hover {
   /* ------------------------
  ---- CAMILLE --------------
  ------------------------- */
-
+.bkg-white {
+	background-color: #fff;
+}
 

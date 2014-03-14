@@ -1,8 +1,25 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
 
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-    </div>
-</form>
+{{ include('PotagerFrontBundle::header.html.twig') }}
+{{ include('PotagerFrontBundle::nav.html.twig') }}
+
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="bkg-white border-{{ app.user.faction.name|lower}}">
+	<div id="email">
+		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+		    {{ form_widget(form) }}
+		    <div>
+		        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+		    </div>
+		</form>
+
+	</div>
+
+{#{{ include('PotagerFrontBundle:ChangePassword:changePassword.html.twig') }}#}
+
+{{ render (controller('PotagerFrontBundle:ChangePassword:changePassword')) }}
+
+</div>
+
+
+{% endblock content %}

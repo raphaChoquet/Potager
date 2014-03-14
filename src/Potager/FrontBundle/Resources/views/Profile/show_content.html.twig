@@ -1,23 +1,10 @@
 {% block content %}
-{% set page = 'visitusers' %}
+{% set page = 'visit_users' %}
 
-<div id="header">
-	<img id="logo"
-		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-		alt="Garden War" />
-</div>
-<div id="banner" class="{{ app.user.faction.name|lower }}">
-	<div id="avatar" class="{{ app.user.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(app.user.avatar.url) }}">
-	</div>
-	<div id="myUser" class="{{ app.user.faction.name|lower }}">
-		<p>Bienvenue {{ app.user.username }}</p>
-		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
-		<p><br>Visite du potager</p>
-	</div>
-</div>
-<!-- fin#banner -->
+
+{{ include('PotagerFrontBundle::header.html.twig') }}
 {{ include('PotagerFrontBundle::nav.html.twig') }}
+
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div id="identification" class="bkg-{{ user.faction.name|lower}} border-{{ app.user.faction.name|lower}} clr-white center">
@@ -34,7 +21,11 @@
 
 <div id="caracteristic" class="betterave">
 	<p class="title_caracteristic">Caractéristiques</p>
-
+	<ul>
+		<li>Nombre de victoires : {{ user.fightWon }}</li>
+		<li>Nombre de défaites : {{ user.fightLost }}</li>
+		<li>Nombre d'égalités : {{ user.fightDraw }}</li>
+	</ul>
 	<p>{{ user.username|lower }} est niveau <span id="levelUser">{{ user.attribute.level }}</span></p>
 
 	<div class="skill experience">
@@ -64,7 +55,6 @@
 						</div>
 					</div>
 				</div>
-				<a id="strenght" class="addSkill" href="{{ path('addSkill', { attribute: 'strenght' }) }}">Add</a>
 			</div>
 
 			<div class="skill stamina">
@@ -79,7 +69,6 @@
 						</div>
 					</div>
 				</div>
-				<a id="stamina" class="addSkill" href="{{ path('addSkill', { attribute: 'stamina' }) }}">Add</a>
 			</div>
 		</div>
 		<div id="skills_right">
@@ -95,7 +84,6 @@
 						</div>
 					</div>
 				</div>
-				<a id="agility" class="addSkill" href="{{ path('addSkill', { attribute: 'agility' }) }}">Add</a>
 			</div>
 
 			<div class="skill luck">
@@ -110,7 +98,6 @@
 						</div>
 					</div>
 				</div>
-				<a id="luck" class="addSkill" href="{{ path('addSkill', { attribute: 'luck' }) }}">Add</a>
 			</div>
 		</div>
 	</div>
