@@ -8,7 +8,7 @@
 <div id="banner" class="{{ app.user.faction.name|lower }}">
 	<div id="avatar" class="{{ app.user.faction.name|lower }}">
 		<a href="{{ path('personnage') }}" title="Mon personnage">
-			<img alt="avatar" src="{{ asset(app.user.avatar.url) }}">
+			<img alt="avatar" src="{{ asset(app.user.avatar) }}">
 		</a>
 	</div>
 	<div id="myUser" class="{{ app.user.faction.name|lower }}">
