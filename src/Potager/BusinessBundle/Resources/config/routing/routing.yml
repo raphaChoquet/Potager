@@ -12,7 +12,7 @@ fos_user_security_logout:
 
 fos_user_profile:
     resource: "@PotagerBusinessBundle/Resources/config/routing/profil.xml"
-    prefix: /profil
+    prefix: /personnage
 
 fos_user_register:
     resource: "@PotagerBusinessBundle/Resources/config/routing/inscription.xml"
@@ -24,7 +24,7 @@ fos_user_resetting:
 
 fos_user_change_password:
     resource: "@PotagerBusinessBundle/Resources/config/routing/change_motdepasse.xml"
-    prefix: /change_motdepasse
+    prefix: /fos_user_profile
 
 sonata_admin_dashboard:
      pattern:  /admin/dashboard

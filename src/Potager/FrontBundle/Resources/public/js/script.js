@@ -93,6 +93,19 @@ $(function() {
 		$.get($(this).attr('href'), function(data) {
 			$(".prepareToFight").remove();
 			$('#doFight').replaceWith(data);
+			$('#plop').data('result');
+			var dataResult = $('#plop').data('result');
+
+			if ($('#plop').data('result') == 0) {
+				$("#duels_center").html('ÉGALITÉ');
+			}
+			else if ($('#plop').data('result') == 1) {
+				$("#duels_center").html('VICTOIRE !');
+			}
+			else if ($('#plop').data('result') == -1) {
+				$("#duels_center").html('DÉFAITE...');
+			}
+
 			$("html, body").animate({scrollTop:400}, '500', 'swing', function() {});
 		});
 	});
@@ -126,7 +139,6 @@ $(function() {
 
 
 function defineBar($progress) {
-	console.log($progress);
 	var percentage = Math.ceil($progress.attr('data-percentage'));
 	$({countNum : 0}).animate(
 	{

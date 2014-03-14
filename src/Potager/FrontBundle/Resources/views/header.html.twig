@@ -1,0 +1,23 @@
+<div id="header">
+	<a href="{{ path('home') }}" title="Potager">
+		<img id="logo"
+		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+		alt="Garden War" />
+	</a>
+</div>
+<div id="banner" class="{{ app.user.faction.name|lower }}">
+	<div id="avatar" class="{{ app.user.faction.name|lower }}">
+		<a href="{{ path('personnage') }}" title="Mon personnage">
+			<img alt="avatar" src="{{ asset(app.user.avatar.url) }}">
+		</a>
+	</div>
+	<div id="myUser" class="{{ app.user.faction.name|lower }}">
+		<p>Bienvenue {{ app.user.username }}</p>
+		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
+		{% if page == 'visit_users' %}
+			<p><br>Visite du potager</p>
+		{% endif %}
+
+	</div>
+</div>
+<!-- fin#banner -->

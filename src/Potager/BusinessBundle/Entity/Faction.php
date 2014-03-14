@@ -168,4 +168,8 @@ class Faction
     {
         return $this->users;
     }
+
+    public function incrementScore() {
+        $this->score++;
+    }
 }

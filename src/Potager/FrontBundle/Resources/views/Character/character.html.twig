@@ -1,21 +1,9 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 {% set page = 'character' %}
-<div id="header">
-	<img id="logo"
-		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-		alt="Garden War" />
-</div>
-<div id="banner" class="{{ user.faction.name|lower }}">
-	<div id="avatar" class="{{ user.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(user.avatar) }}">
-	</div>
-	<div id="myUser" class="{{ user.faction.name|lower }}">
-		<p>Bienvenue {{ user.username }}</p>
-		<a href="../deconnexion" class="deconnexion">Se déconnecter</a>
-	</div>
-</div>
-<!-- fin#banner -->
+
+{{ include('PotagerFrontBundle::header.html.twig') }}
 {{ include('PotagerFrontBundle::nav.html.twig') }}
+
 <div id="resumeFight" class="{{ user.faction.name|lower }}">
 	{{ render (controller('PotagerFrontBundle:Character:stats', {'user': user})) }}
 </div>

@@ -73,11 +73,17 @@ class FightController extends Controller
 	
 		$fightManager = $this->get('potager_business.fight');
 		$resultFight = $fightManager->computeFightResult($attacker, $fight->getDefender());
-	
+
 		$fight->setAttackerWin($resultFight);
-	
+
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($fight);
+
+		if ($resultFight === 1 ) {
+			$attacker->getFaction()->incrementScore();
+		} else if ($resultFight === -1 ) {
+			$defender->getFaction()->incrementScore();
+		}
 
 		$experienceManager = $this->get('potager_business.experience');
 		$experienceManager->fightResult($fight);
@@ -87,6 +93,7 @@ class FightController extends Controller
 		$em->flush();
 	
 		return array('fight' => $fight);
+
 	}
 
 }

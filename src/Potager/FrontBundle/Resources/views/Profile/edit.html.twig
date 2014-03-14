@@ -1,29 +1,8 @@
 {% extends 'PotagerFrontBundle::layout.html.twig' %} {% block content %}
 {% set page = 'profile_edit' %}
 
-<div id="header">
-	<img id="logo"
-		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-		alt="Garden War" />
-</div>
-<div id="banner" class="{{ app.user.faction.name|lower }}">
-	<div id="avatar" class="{{ app.user.faction.name|lower }}">
-		<img alt="avatar" src="{{ asset(app.user.avatar) }}">
-	</div>
-	<div id="myUser" class="{{ app.user.faction.name|lower }}">
-		<p>Bienvenue {{ app.user.username }}</p>
-		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
-	</div>
-</div>
-<!-- fin#banner -->
-{{ include('PotagerFrontBundle::nav.html.twig') }}
-	<div id="wrapper" class="">
-		{% block fos_user_content %}
-		{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-		{% endblock fos_user_content %}
-
-		
-		
-	</div>
+	{% block fos_user_content %}
+	{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+	{% endblock fos_user_content %}
 
 {% endblock content %}
