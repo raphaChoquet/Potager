@@ -2,6 +2,6 @@
 	<ul>
 		<li class="{% if page == 'character' %}active{% endif %}"><a href="{{ path('personnage') }}">Personnage</a></li>
 		<li class="{% if page == 'fight' %}active{% endif %}"><a href="{{ path('fight') }}">Rejoindre le champs</a></li>
-		<li class="{% if page == 'account' %}active{% endif %}"><a href="#">Compte</a></li>
+		<li class="{% if page == 'account' %}active{% endif %}"><a href="{{ path('fos_user_profile_edit') }}">Compte</a></li>
 	</ul>
 </div>
