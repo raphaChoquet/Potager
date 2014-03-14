@@ -11,7 +11,7 @@
 	</div>
 	<div id="myUser" class="{{ user.faction.name|lower }}">
 		<p>Bienvenue {{ user.username }}</p>
-		<a href="../deconnexion" class="deconnexion">Se déconnecter</a>
+		<a href="{{ path('fos_user_security_logout') }}" class="deconnexion">Se déconnecter</a>
 	</div>
 </div>
 <!-- fin#banner -->
