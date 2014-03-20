@@ -2,27 +2,29 @@
 
 <div id="header">
 	<img id="logo"
-		src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
-		alt="Garden War" />
+	src="{{ asset('bundles/potagerbusiness/images/logo.png') }}"
+	alt="Garden War" />
 </div>
 <div id="banner" class="home">
 	<div id="about_game">
 		<h2>Rejoins le combat !</h2>
 		<p>
-			Bienvenue sur le champ de bataille, la guerre est déclarée entre les Kiwis et les Betteraves, mais qui va gagner ?<br> <br> Choisis ton
-			<span class="bkg-white color-kiwi">Kiwis</span> et les <span class="bkg-white color-betterave">Betteraves</span>, mais qui va gagner ?<br> <br> Choisis ton camp, crée un personnage et apporte la victoire à ton équipe !
+			Bienvenue sur le champ de bataille, la guerre est déclarée entre les Kiwis et les Betteraves, mais qui va gagner ?
 		</p>
-	</div>
-	<div id="connect_form">
+		<p>
+			Choisis ton camp, crée un personnage et apporte la victoire à ton équipe !
+		</p>
+		</div>
+		<div id="connect_form">
 <!-- 		<h2>Se connecter</h2>
 		
- -->
- 	{{ render (controller('FOSUserBundle:Security:login')) }}
-	</div>
-	<div id="vs_round">
-		<img src="{{ asset('bundles/potagerfront/images/vs_round.png') }}"
-			alt="VS">
-	</div>
+-->
+{{ render (controller('FOSUserBundle:Security:login')) }}
+</div>
+<div id="vs_round">
+	<img src="{{ asset('bundles/potagerfront/images/vs_round.png') }}"
+	alt="VS">
+</div>
 </div>
 <!-- fin #banner -->
 <div id="wrapper" class="home">
