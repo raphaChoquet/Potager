@@ -93,7 +93,6 @@ a:hover {
 
 #main {
 	margin: 0 auto;
-	overflow: hidden;
 	width: 1200px;
 }
 
@@ -967,7 +966,8 @@ h1 {
 }
 
 #rejoindre {
-	position:relative;
+	box-sizing: border-box;
+	-moz-box-sizing: border;
 	background-color: #fff;
 	width:100%;
 	padding:0 50px;
@@ -984,16 +984,95 @@ h1 {
 }
 
 #listAvatars {
-    border: 1px solid #CCCCCC;
-    position: absolute;
+	display: none;
+    position: fixed;
     top: 0;
-    width: 1000px;
+	left: 0;
+	right: 0;
+	bottom: 0;
     z-index: 99;
-    display:none;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-#listAvatars .test {
-    display: inline-block;
+#listAvatars .t {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#listAvatars .tc {
+	margin: 0;
+	display: table-cell;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+}
+
+#listAvatars .t-content {
+	position: relative;
+	width: 560px;
+	height: 100%;
+	max-height: 500px;
+	margin: 0 auto;
+	background: #FFF;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+#listAvatars h2 {
+	text-align: left;
+	font-size: 2em;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px; 
+	border-bottom: 2px solid #000;
+}
+
+#listAvatars .close {
+	background: url(../images/close.png);
+	width: 16px;
+	height: 0;
+	padding-top: 16px;
+	overflow: hidden;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.checkbox {
+	margin: 10px;
+	border: 4px solid #ccc;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.checkbox:hover {
+	border-color: #aaa;
+}
+
+.checkbox.checked.betterave {
+	border-color: #92162d;
+}
+
+.checkbox.checked.kiwi {
+	border-color: #97ce38;
+}
+
+.checkbox input{
+	position: fixed;  
+	left: -100%;  
+}
+
+.checkbox img {
+	cursor: pointer;
+	vertical-align: middle;
+	max-width: 150px;
+	max-height: 150px;
 }
 
 .msg-error {
@@ -1029,15 +1108,55 @@ h1 {
     display:block;
 }
 
+
 #btn-add-img p {
-    border: 1px solid #CCCCCC;
-    bottom: 0;
-    padding: 10px 20px;
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	border-radius: 0px;
+	border: none;
+    border-top: 1px solid #aaa;
+    bottom: 0px;
+    width: 150px;
+    padding: 5px 10px;
     position: absolute;
     text-align: center;
-    width: 108px;
+    background: rgba(0, 0, 0, 0.5);
 }
 
+.avatarForm {
+	display: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 4px solid;
+	width: 150px;
+	height: 150px;
+	background: #FFF;
+}
+
+.avatarForm.betterave {
+	border-color: #92162d;
+}
+
+.avatarForm.kiwi {
+	border-color: #97ce38;
+}
+
+.avatarForm img {
+	max-height: 142px;
+	max-width: 142px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#confirmed .btn{
+	display: inline-block;
+	width: 50%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-radius: 0;
+}
  /* ------------------------
  ---- NARINDRA --------------
  ------------------------- */
@@ -1276,6 +1395,7 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
+  -moz-box-sizing:border-box;
 }
 
 /* Column */
@@ -1308,31 +1428,19 @@ h1 {
 	border: 3px #b2a47f;
 	border-style: none solid;
 	background: white;
+	transition: all .1s ease;
+	-webkit-transition: all .1s ease; /* Safari */
 }
 
-.btn-taupe:hover {
+.btn-taupe:hover,
+.btn-taupe:focus {
 	color: #fff;
 	background: #b2a47f; /* Old browsers */
-background: -moz-linear-gradient(top,  #b2a47f 0%, #dbc899 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2a47f), color-stop(100%,#dbc899)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #b2a47f 0%,#dbc899 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2a47f', endColorstr='#dbc899',GradientType=0 ); /* IE6-9 */
-
 }
 
 .btn-taupe.active {
 	color: #fff;
 	background: #b2a47f; /* Old browsers */
-background: -moz-linear-gradient(top,  #b2a47f 0%, #dbc899 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2a47f), color-stop(100%,#dbc899)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #b2a47f 0%,#dbc899 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2a47f', endColorstr='#dbc899',GradientType=0 ); /* IE6-9 */
 }
 
 .color-betterave {

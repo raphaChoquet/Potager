@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{{ asset('bundles/potagerfront/css/style2.css') }}" type="text/css" media="all" />
 {% endblock %}
 
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/potagerfront/js/signIn.js') }}" ></script>
+{% endblock %}
+
 {% block content %}
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -58,9 +63,12 @@
     </div>
     <div class="margin-p">
         Selectionne ton avatar
-        <a href="" id="btn-add-img">
-            <div id="add-img" class="">+</div>
-            <p>ADD</p>
+        <a href="#listAvatars" id="btn-add-img">
+            <div class="avatarForm">
+                <img src="#" alt="avatar">
+            </div>
+            <div id="add-img" >+</div>
+            <p class="btn">Ajouter</p>
         </a>
     </div>
     <div class="msg-error">  
@@ -72,10 +80,15 @@
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
     <div id="listAvatars">
-      {% for child in form.avatar %}
-      <p class="test">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>
-      {% endfor %}
+        <div class="t">
+            <div class="tc">
+                <div class="t-content">
+                    <a href="#" class="close">Close</a>
+                    <h2>Select Your {{ factionName }}</h2>
+                    {% for child in form.avatar %}<p class="checkbox {{ factionName|lower }}">{{ form_widget(child) }} <label for="{{child.vars.id}}" ><img src={{ asset(child.vars.label) }} /> </label></p>{% endfor %}
+                </div>
+            </div>
+        </div>
   </div>
 </form>
-
 {% endblock %}
