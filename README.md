@@ -33,15 +33,15 @@ following command:
 
 You need to have a database to use our project. You can install ours, following these instructions
 
-    Create the database
+Create the database
 
     php app/console doctrine:database:create
 
-    Create the schemas
+Create the schemas
 
     php app/console doctrine:schema:update --force
 
-    Load the fixtures
+Load the fixtures
 
     php app/console doctrine:fixtures:load
 
