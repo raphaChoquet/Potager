@@ -64,6 +64,10 @@ class CharacterController extends Controller
 	{
 		$user = $this->getUser();
 
+        if($user->getAttribute()->getXp() < 100) {
+            return new JsonResponse(array('level' => $user->getAttribute()->getLevel(), 'attribute' => $user->getAttribute()->{'get'.ucfirst($attribute)}()));
+        }
+
 		$newLevel = $user->getAttribute()->getLevel() + 1;
 		$user->getAttribute()->setLevel($newLevel);
 
