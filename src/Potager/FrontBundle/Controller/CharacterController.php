@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Potager\BusinessBundle\Entity\Attribute;
 
 class CharacterController extends Controller
 {
@@ -14,8 +15,19 @@ class CharacterController extends Controller
      * @Template()
      */
     public function characterAction()
-	{
+	{  
         $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        //Création d'atribut pour un utilisateur créer via l'admin
+        if (!$user->getAttribute()) {
+            $attribute = new Attribute();
+            $attribute->setUser($user);
+            $user->setAttribute($attribute);
+            $em->persist($attribute);
+            $em->flush();
+        } 
+
         return array('user' => $user);
 	}
 
