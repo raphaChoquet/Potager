@@ -17,7 +17,7 @@ following options.
 
 ### Use Composer
 
-As Garden War uses [Composer][2] to manage its dependencies.
+As Garden War uses [Composer][1] to manage its dependencies.
 
 If you don't have Composer yet, download it following the instructions on
 http://getcomposer.org/ or just run the following command:
@@ -50,5 +50,22 @@ Install assets
     php app/console assets:install --symlink
 
 
-
 Enjoy the fight !
+
+2) Access the site administration
+----------------------------------
+
+if you don't have a user, you must to create a user by the site registration form.
+
+To access in admin, you need to promote the user as Admin, run the following command
+
+    php app/console fos:user:promote
+    
+Type your username and type the role: 'ROLE_ADMIN'
+
+To end, you can access in admin by the url http://yourdomaine.com/admin
+
+Enjoy
+
+
+[1]:  http://getcomposer.org/
