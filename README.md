@@ -29,6 +29,22 @@ following command:
 
     php composer.phar install
 
+### Install the database
+
+You need to have a database to use our project. You can install ours, following these instructions
+
+    Create the database
+
+    php app/console doctrine:database:create
+
+    Create the schemas
+
+    php app/console doctrine:schema:update --force
+
+    Load the fixtures
+
+    php app/console doctrine:fixtures:load
+
 2) Checking your System Configuration
 -------------------------------------
 
