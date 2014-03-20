@@ -75,7 +75,7 @@ class Attribute
         $this->strenght = 5;
         $this->stamina = 5;
         $this->agility = 5;
-        $this->luck = 1;
+        $this->luck = 5;
     }
 
     /**

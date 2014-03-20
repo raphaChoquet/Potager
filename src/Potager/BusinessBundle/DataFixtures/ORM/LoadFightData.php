@@ -14,9 +14,9 @@ class LoadFightData extends AbstractFixture implements OrderedFixtureInterface
 	*/
 	public function load(ObjectManager $manager)
 	{
-		for($i = 0; $i < 10; $i++) {
-			if($i === 9) {
-				$defender = $this->getReference('user-0');
+		for($i = 8; $i < 17; $i++) {
+			if($i === 16) {
+				$defender = $this->getReference('user-5');
 			} else {
 				$defender = $this->getReference('user-' . ($i + 1));
 			}
@@ -25,7 +25,7 @@ class LoadFightData extends AbstractFixture implements OrderedFixtureInterface
 			$fight->setAttacker($this->getReference('user-'.$i));
 			$fight->setDefender($defender);
 
-			$fight->setAttackerWin(rand(0, 1));
+			$fight->setAttackerWin(rand(-1, 1));
 
 			$manager->persist($fight);
 
