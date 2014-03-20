@@ -1146,9 +1146,16 @@ h1 {
 	max-width: 142px;
 }
 
-
 .text-center {
 	text-align: center;
+}
+
+#confirmed .btn{
+	display: inline-block;
+	width: 50%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-radius: 0;
 }
  /* ------------------------
  ---- NARINDRA --------------
