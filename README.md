@@ -45,6 +45,10 @@ Load the fixtures
 
     php app/console doctrine:fixtures:load
 
+Install assets
+
+    php app/console assets:install --symlink
+
 
 
 Enjoy the fight !
