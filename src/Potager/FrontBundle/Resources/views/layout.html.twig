@@ -18,7 +18,9 @@
 	    	<p>© GardenWar - 2014</p>
 	    </div>
     </div>
-    <script src="{{ asset('bundles/potagerfront/js/jquery-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('bundles/potagerfront/js/script.js') }}"></script>
+    {% block javascript %}
+        <script src="{{ asset('bundles/potagerfront/js/jquery-2.1.0.min.js') }}"></script>
+        <script src="{{ asset('bundles/potagerfront/js/script.js') }}"></script>
+    {% endblock %}
 </body>
 </html>
