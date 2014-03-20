@@ -14,14 +14,15 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	*/
 	public function load(ObjectManager $manager)
 	{
-		for($i = 0; $i < 10; $i++) {
+		$name = array('Dolan', 'Obama', 'Bush', 'Hollande', 'Sarkozy', 'Michelangelo', 'Spoderman', 'Donatello', 'Gooby', 'Canarticho', 'Doge', 'Kulbutoke', 'Pruto', 'Leonardo', 'Bogs', 'Raphael', 'OMGWTFBBQ');
+		for($i = 0; $i < 17; $i++) {
 			$user = new User();
-			$user->setUsername('user' . $i);
-			$user->setEmail('user-' . $i . '@user.com');
+			$user->setUsername($name[$i]);
+			$user->setEmail($name[$i] . '@potager.com');
 			$user->setPlainPassword('test');
 			$user->setEnabled(true);
 
-			if($i%2 === 1) {
+			if($i%2 !== 1) {
 				$user->setAvatar('bundles/potagerbusiness/images/faction/betterave-angry.png');
 				$user->setFaction($this->getReference('Betterave'));
 			} else {
@@ -29,9 +30,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 				$user->setFaction($this->getReference('Kiwi'));
 			}
 
-			$this->addReference('user-'.$i, $user);
+			$this->addReference('user-' .$i, $user);
 			$manager->persist($user);
 		}
+
+
 		
 		$manager->flush();
 	}

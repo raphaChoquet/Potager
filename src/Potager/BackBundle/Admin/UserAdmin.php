@@ -1,7 +1,7 @@
 <?php
-//src/Potager/BusinessBundle/Admin/UserAdmin.php
+//src/Potager/BackBundle/Admin/UserAdmin.php
 
-namespace Potager\BusinessBundle\Admin;
+namespace Potager\BackBundle\Admin;
 
 use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
@@ -72,6 +72,7 @@ class UserAdmin extends BaseUserAdmin
                         'expanded' => true
                     ))
                    ->add('avatar', 'choice', array(
+                        'label' => 'Avatar',
                         'choices'  => $fieldAvatar,
                         'expanded' => true,
                         'required' => true
@@ -89,7 +90,7 @@ class UserAdmin extends BaseUserAdmin
             ->add('username')
             ->add('locked')
             ->add('email')
-            ->add('faction.name', 'doctrine_orm_choice', array('label' => 'Factions'), 'choice',  array(
+            ->add('faction.name', 'doctrine_orm_choice', array('label' => 'faction'), 'choice',  array(
                      'choices' => array('Betterave' => 'Betterave', 'Kiwi' => 'Kiwi'),
                      'expanded' => false,
                      'multiple' => false
@@ -107,7 +108,10 @@ class UserAdmin extends BaseUserAdmin
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
-            ->add('faction', null, array('associated_tostring' => 'getName'))
+            ->add('faction', null, array(
+                'associated_tostring' => 'getName',
+                'label' => 'Faction')
+            )
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {

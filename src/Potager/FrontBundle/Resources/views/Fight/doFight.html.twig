@@ -1,4 +1,4 @@
-<div id="plop" data-result="{{fight.attackerWin}}">
+<div id="plop" class="clearfix" data-result="{{fight.attackerWin}}">
     {% if fight.attacker.faction.name == 'Betterave' %} 
         {% if fight.attackerWin == 1 %}
              <img src="{{ asset('bundles/potagerfront/images/betterave_attack.gif') }}">
@@ -22,4 +22,5 @@
     {% endif %}
 
     <a id="backToCharacters" href="{{ path('personnage') }}">&#60; Retour au camp</a>
+    <a id="backToFight" href="{{ path('fight') }}">ENCORE &#62;</a>
 </div>
