@@ -208,6 +208,7 @@ a:hover {
 }
 
 #join_team {
+	overflow: hidden;
 	padding-top: 45px;
 	position: relative;
 	height: 120px;
