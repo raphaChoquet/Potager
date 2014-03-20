@@ -1,13 +1,22 @@
+{% extends 'PotagerFrontBundle::layout.html.twig' %}
+{% set page = '' %}
+{% block content %}
+
+{{ include('PotagerFrontBundle::header.html.twig') }}
+{{ include('PotagerFrontBundle::nav.html.twig') }}
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+<div id="duels" class="{{ app.user.faction.name|lower }} clearfix">
+    <p class="text-center">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+</div>
+
+    
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
     {% endif %}
-    <a href="{{ path('home') }}">Retour sur la page d'accueil</a><br>
-    <a href="{{ path('personnage') }}">Allez voir votre personnage !</a>
-
-{% endblock fos_user_content %}
+    <div id="confirmed" class="bkg-white">
+        <a href="{{ path('home') }}" class="btn btn-taupe">Retour sur la page d'accueil</a><a href="{{ path('personnage') }}" class="btn btn-taupe">Allez voir votre personnage !</a>
+    </div>
+{% endblock %}
 

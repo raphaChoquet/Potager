@@ -29,6 +29,10 @@ class RegistrationController extends BaseController
         $faction = $em->getRepository('PotagerBusinessBundle:Faction')
             ->findOneBy(array('name' => $request->get('factionName')));
 
+        if (!$faction) {
+            throw new NotFoundHttpException('La faction ' . $request->get('factionName') . ' n\'existe pas');
+        }
+
         $user->setFaction($faction);
 
         $avatarManager = $this->container->get('potager_business.avatar');
