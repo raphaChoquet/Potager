@@ -103,7 +103,7 @@ a:hover {
 	height: 118px;
 }
 
-#footer {
+#footer {	
 	border-top: 5px solid #b2a47f;
 	background-color: #f9f8f8;
 	width: 1200px;
@@ -1275,6 +1275,7 @@ h1 {
   float: left;
   padding-left: 10px;
   padding-right: 10px;
+  box-sizing: border-box;
 }
 
 /* Column */
@@ -1295,24 +1296,22 @@ h1 {
 	display: inline-block;
 	padding: 10px;
 	border-radius: 5px;
-	color: #fff;
+	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
+	box-sizing: border-box;
 }
 
 .btn-taupe {
-	background: #dbc899; /* Old browsers */
-background: -moz-linear-gradient(top,  #dbc899 0%, #b2a47f 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbc899), color-stop(100%,#b2a47f)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #dbc899 0%,#b2a47f 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #dbc899 0%,#b2a47f 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbc899', endColorstr='#b2a47f',GradientType=0 ); /* IE6-9 */
-
+	display: block;
+	color: #000;
+	border: 3px #b2a47f;
+	border-style: none solid;
+	background: white;
 }
 
 .btn-taupe:hover {
+	color: #fff;
 	background: #b2a47f; /* Old browsers */
 background: -moz-linear-gradient(top,  #b2a47f 0%, #dbc899 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2a47f), color-stop(100%,#dbc899)); /* Chrome,Safari4+ */
@@ -1325,7 +1324,47 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2a47f', end
 }
 
 .btn-taupe.active {
-	background: white;
-	border: 3px solid #b2a47f;
-	color: #000;
+	color: #fff;
+	background: #b2a47f; /* Old browsers */
+background: -moz-linear-gradient(top,  #b2a47f 0%, #dbc899 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2a47f), color-stop(100%,#dbc899)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #b2a47f 0%,#dbc899 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #b2a47f 0%,#dbc899 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2a47f', endColorstr='#dbc899',GradientType=0 ); /* IE6-9 */
+}
+
+.color-betterave {
+	color: #92162d;
+}
+.color-kiwi {
+	color: #97ce38;
+}
+
+.fos_user_change_password label,
+.fos_user_profile_edit label {
+	display: inline-block;
+	width: 26%;
+}
+.fos_user_change_password input,
+.fos_user_profile_edit input {
+	width: 34%;
+}
+
+.form-submit {
+	padding: 9px 15px;
+	margin-top: 15px;
+	background: #b2a47f;
+	color: #fff;
+	border: 1px solid #dbc899;
+}
+
+.bkg-taupe {
+	background-color: #b2a47f;
+}
+
+#about_game,
+#connect_form {
+	line-height: 1.4;
 }
