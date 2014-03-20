@@ -1,9 +1,7 @@
-Guide d'installation Garden War
+Install guide Garden War
 ========================
 
 Welcome on the install guide of Garden War.
-
-Bienvenue sur le guide d'installation de Garden War.
 
 Follow the next step to make a nice soup !
 
@@ -15,7 +13,7 @@ following options.
 
 ### Clone project from Github
 
-  git clone https://github.com/raphaChoquet/Potager.git
+    git clone https://github.com/raphaChoquet/Potager.git
 
 ### Use Composer
 
