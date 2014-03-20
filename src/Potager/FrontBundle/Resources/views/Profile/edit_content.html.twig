@@ -6,15 +6,21 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="bkg-white border-{{ app.user.faction.name|lower}}">
 	
-	Changer Adresse e-mail
+	<div class="row">
+		<p class="col-6">
+			<a href="#" class="btn btn-taupe active">Changer Adresse e-mail</a>
+		</p>
+		<p class="col-6">
+			<a href="{{ path('fos_user_change_password') }}" class="btn btn-taupe">Changer Mot de passe</a>
+		</p>
+	</div>
 
-	<a href="{{ path('fos_user_change_password') }}">Changer Mot de passe </a>
-
-	<div id="email">
-		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+	<div class="row">
+		<p class="center">Entre directement ta nouvelle adresse e-mail :</p>
+		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="col-12 center fos_user_profile_edit">
 		    {{ form_widget(form) }}
 		    <div>
-		        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+		        <input type="submit" class="form-submit" value="{{ 'profile.edit.submit'|trans }}" />
 		    </div>
 		</form>
 

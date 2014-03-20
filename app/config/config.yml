@@ -77,6 +77,9 @@ fos_user:
     registration:
         form:
             type: potager_front_registration
+    profile:
+        form:
+            type: potager_front_profile_edit
     group:
         group_class: Sonata\UserBundle\Entity\Group
 
