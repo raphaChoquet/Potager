@@ -857,6 +857,22 @@ a:hover {
 	font-size:35px;
 }
 
+.updateXp {
+    border-top: 4px solid #FFFFFF;
+    font-size: 1.7em;
+    padding: 20px 0;
+    text-align: center;
+    color:#fff;
+}
+
+.updateXp > a {
+    color: #FFFFFF;
+}
+
+.updateXp > a:hover {
+    color: #FFFFFF;
+}
+
 #duels.betterave {
 	background-color: #92162d;
 }

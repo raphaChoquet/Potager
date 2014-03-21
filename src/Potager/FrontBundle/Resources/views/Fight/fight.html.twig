@@ -10,6 +10,9 @@
 	<div id="duels_center">VS</div>
 	<div id="duels_right">{{ defender.username }}</div>
 </div>
+{% if attacker.attribute.xp == 100 %}
+<p class="updateXp bkg-{{ attacker.faction.name|lower }}">Vous avez 100% d'expérience, rendez-vous sur votre <a href="{{ path('personnage') }}">personnage</a> pour monter de niveau !</p>
+{% endif %}
 <div id="ring">
 	<p class="prepareToFight">Préparez-vous au combat !</p>
 	<a id="doFight" href="{{ path('doFight', { id: defender.id, token: token }) }}">La bagarre</a>
