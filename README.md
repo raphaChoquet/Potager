@@ -50,22 +50,20 @@ Install assets
     php app/console assets:install --symlink
 
 
-Enjoy the fight !
-
 2) Access the site administration
 ----------------------------------
 
-if you don't have a user, you must to create a user by the site registration form.
+if you don't have an user, you must create it by registration form on the site.
 
-To access in admin, you need to promote the user as Admin, run the following command
+To access the admin, you need to promote the user as Admin, to do so, run the following command
 
     php app/console fos:user:promote
     
-Type your username and type the role: 'ROLE_ADMIN'
+Then type your username and type the role: 'ROLE_ADMIN'
 
-To end, you can access in admin by the url http://yourdomaine.com/admin
+At the end, you can access the administration with the url http://yourdomaine.com/admin
 
-Enjoy
+Enjoy the fight and have fun slaining everyone !
 
 
 [1]:  http://getcomposer.org/
