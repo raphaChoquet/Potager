@@ -53,7 +53,7 @@ Install assets
 2) Access the site administration
 ----------------------------------
 
-if you don't have an user, you must create it by registration form on the site.
+If you don't have an user, you must create it using the registration form on the site.
 
 To access the admin, you need to promote the user as Admin, to do so, run the following command
 
