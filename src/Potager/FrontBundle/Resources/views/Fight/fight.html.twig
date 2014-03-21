@@ -12,6 +12,6 @@
 </div>
 <div id="ring">
 	<p class="prepareToFight">Préparez-vous au combat !</p>
-	<a id="doFight" href="{{ path('doFight', { id: defender.id }) }}">La bagarre</a>
+	<a id="doFight" href="{{ path('doFight', { id: defender.id, token: token }) }}">La bagarre</a>
 </div>
 {% endblock %}

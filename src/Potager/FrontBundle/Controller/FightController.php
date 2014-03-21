@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityRepository;
 use Potager\BusinessBundle\Entity\Fight;
 use Potager\BusinessBundle\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class FightController extends Controller
 {
@@ -51,16 +52,23 @@ class FightController extends Controller
 			->getResult();
 
 		$defender = $result[0];
-
-		return array('defender' => $defender, 'attacker' => $attacker);
+		$token = $this->get('form.csrf_provider')->generateCsrfToken('fight');
+		return array('defender' => $defender, 'attacker' => $attacker, 'token' => $token);
 	}
 	
 	/**
-	 * @Route("/fight/go/{id}", name="doFight")
+	 * @Route("/fight/go/{id}/{token}", name="doFight")
 	 * @Template()
 	 */
-	public function doFightAction(User $defender) 
+	public function doFightAction(User $defender, $token) 
 	{
+		if (FALSE === $this->get('form.csrf_provider')->isCsrfTokenValid('fight', $token)) {
+			throw new AccessDeniedHttpException('Invalid CSRF token.');
+		}
+
+		$this->get('form.csrf_provider')->getTokenManager()->removeToken('fight');
+
+
 		$attacker = $this->getUser();
 
 		$fight = new Fight();
